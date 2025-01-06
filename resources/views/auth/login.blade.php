@@ -10,21 +10,18 @@
                     você precisa, <br> 
                     <span class="text-blue-950">em um só lugar!</span>
                 </h1>
-                <img src="asset/img/illustration/{{ rand(1,8) }}.png" alt="Ilustração" class="w-full lg:w-60">
+                @include('auth.partials.auth-illustration')
             </div>
 
             <!-- Direita: Formulário de Login -->
-            <div class="md:w-8/12 bg-blue-500 p-10 flex flex-col justify-center items-center flex-1">
-                <div class="bg-white p-6 rounded-xl shadow-xl w-full md:w-96">
-                    <div class="text-center mb-6">
-                        <div class="flex justify-center items-center text-2xl gap-2 mb-10">
-                            <img src="asset/img/logo.png" alt="Logo" class="size-10">
-                            <p class="font-semibold text-blue-950">{{ env('APP_NAME' )}}</p>
-                        </div>
-                    </div>
+            <div class="md:w-8/12 bg-blue-500 p-10 flex flex-col justify-center items-center flex-1">                
+                
+                @include('auth.partials.auth-brand')
+
+                <div class="bg-white p-6 rounded-xl shadow-xl w-full md:w-96 mb-10">
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="space-y-4 mb-4">
+                        <div class="space-y-4 mb-6">
                             <!-- Campo de Email -->
                             <div>
                                 <x-form.form-label for="email" value="Email" />
@@ -46,15 +43,15 @@
                         </div>
     
                         <!-- Botões -->
-                        <div class="flex flex-col md:flex-row justify-between gap-3">
-
+                        <div>
                             <x-button.btn-primary value="Entrar" />
-
-                            <x-button.link-outline href="{{ route('register') }}" value="Cadastre-se" />
-                            
                         </div>
                     </form>
-                </div>                
+                </div>
+
+                <div class="text-sm">
+                    <span class="text-gray-200">Novo por aqui?</span> <a href="{{ route('register') }}" class="text-white font-semibold">Cadastre-se</a>
+                </div>              
             </div>
         </div>
 
