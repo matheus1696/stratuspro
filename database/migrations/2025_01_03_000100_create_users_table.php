@@ -17,13 +17,17 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedInteger('gender_id')->nullable();
-            $table->unsignedInteger('occupation_id')->nullable();
+            $table->string('cpf')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('matriculation')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('phone_1')->nullable();
+            $table->string('phone_2')->nullable();
+            $table->string('birth_date')->nullable();
+            $table->foreignId('gender_id')->nullable()->constrained('user_genders');
+            $table->foreignId('occupation_id')->nullable()->constrained('professional_occupations');
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('gerder_id')->references('id')->on('user_genders');
-            $table->foreign('occupation_id')->references('id')->on('professional_occupations');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

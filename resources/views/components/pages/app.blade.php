@@ -1,7 +1,9 @@
 @extends('adminlte::page')
 
 @section('content')
-    {{$body ?? ''}}
+    <div class="px-5">
+        {{ $body ?? '' }}
+    </div>
 @endsection
 
 @section('css')

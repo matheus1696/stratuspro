@@ -9,4 +9,12 @@ class RegionCity extends Model
 {
     /** @use HasFactory<\Database\Factories\\Region\RegionCityFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'code',
+        'title',
+        'filter',
+        'state_id',
+        'is_active',
+    ];
 }

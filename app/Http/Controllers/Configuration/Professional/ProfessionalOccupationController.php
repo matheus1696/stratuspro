@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Configuration\Professional;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Professional\ProfessionalOccupationStoreRequest;
+use App\Http\Requests\Professional\ProfessionalOccupationUpdateRequest;
 use App\Models\Professional\ProfessionalOccupation;
-use App\Http\Requests\StoreProfessionalOccupationRequest;
-use App\Http\Requests\UpdateProfessionalOccupationRequest;
 
 class ProfessionalOccupationController extends Controller
 {
@@ -27,7 +28,7 @@ class ProfessionalOccupationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProfessionalOccupationRequest $request)
+    public function store(ProfessionalOccupationStoreRequest $request)
     {
         //
     }
@@ -51,7 +52,7 @@ class ProfessionalOccupationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProfessionalOccupationRequest $request, ProfessionalOccupation $professionalOccupation)
+    public function update(ProfessionalOccupationUpdateRequest $request, ProfessionalOccupation $professionalOccupation)
     {
         //
     }

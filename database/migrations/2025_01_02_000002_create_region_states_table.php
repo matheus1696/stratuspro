@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('region_states', function (Blueprint $table) {
             $table->id();
+            $table->string('acronym')->unique();
+            $table->string('title')->unique();
+            $table->string('filter');
+            $table->foreignId('country_id')->constrained('region_countries');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

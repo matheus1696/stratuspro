@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => 'Stratus<b>PRO</b>',
+    'logo_img' => 'asset/img/logo.png',
+    'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Admin Logo',
+    'logo_img_alt' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -110,7 +110,7 @@ return [
     */
 
     'preloader' => [
-        'enabled' => true,
+        'enabled' => false,
         'mode' => 'fullscreen',
         'img' => [
             'path' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
@@ -133,9 +133,9 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
+    'usermenu_header_class' => 'bg-success',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -171,12 +171,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => '',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -196,8 +196,8 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
-    'classes_sidebar_nav' => '',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-5',
+    'classes_sidebar_nav' => 'text-sm space-y-2',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
@@ -315,6 +315,42 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
+        
+        [
+            'text' => 'Configurações do Sistema',
+            'icon' => 'fas fa-cogs',
+            'submenu' => [
+                [
+                    'text' => 'Configuração de Usuários',
+                    'submenu' => [
+                        [
+                            'text' => 'Gêneros',
+                            'route' => 'genders.index',
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'Configuração de Regiões',
+                    'submenu' => [
+                        [
+                            'text' => 'Paises',
+                            'route' => 'countries.index',
+                        ],
+                        [
+                            'text' => 'Estados',
+                            'route' => 'states.index',
+                        ],
+                        [
+                            'text' => 'Cidades',
+                            'route' => 'cities.index',
+                        ],
+
+                    ],
+                ],
+            ],
+        ],
+
+
         [
             'text' => 'blog',
             'url' => 'admin/blog',
@@ -376,6 +412,7 @@ return [
                 ],
             ],
         ],
+
         ['header' => 'labels'],
         [
             'text' => 'important',

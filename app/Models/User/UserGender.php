@@ -9,4 +9,9 @@ class UserGender extends Model
 {
     /** @use HasFactory<\Database\Factories\\User\UserGenderFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'is_active',
+    ];
 }
