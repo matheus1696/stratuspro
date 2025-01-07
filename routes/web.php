@@ -6,23 +6,19 @@ use App\Http\Controllers\Configuration\Region\RegionStateController;
 use App\Http\Controllers\Configuration\User\UserGenderController;
 use App\Http\Controllers\Configuration\User\UserManagenmentController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //Rota de redirecionamento para a página de login
 Route::get('/', function () { return redirect()->route('login'); });
 
-//Rotas de Autenticação
-Auth::routes();
-
 //Usuário Autenciados
 Route::middleware('auth')->group(function () {
-    
-    //Rota de Página Inicial
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     //Usuários Verificados
-    Route::middleware('verified')->group(function () {
+    Route::middleware('verified')->group(function () {        
+    
+        //Rota de Página Inicial
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     
         Route::prefix('configuration')->group(function () {
 
@@ -53,3 +49,5 @@ Route::middleware('auth')->group(function () {
     });
     
 });
+
+require __DIR__.'/auth.php';
