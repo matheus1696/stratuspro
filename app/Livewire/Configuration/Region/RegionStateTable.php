@@ -12,7 +12,6 @@ class RegionStateTable extends Component
     use WithPagination, WithoutUrlPagination;
 
     public $search = '';
-    public $perPage = 50;
 
     public function updated($propertyName)
     {
@@ -32,7 +31,7 @@ class RegionStateTable extends Component
         }
 
         // Paginando os resultados
-        $dbRegionStates = $query->orderBy('country_id')->orderBy('name')->paginate($this->perPage);
+        $dbRegionStates = $query->orderBy('country_id')->orderBy('title')->get();
 
         return view('livewire.configuration.region.region-state-table', compact('dbRegionStates'));
     }

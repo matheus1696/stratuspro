@@ -13,16 +13,16 @@
 
         <!-- Inicio Slot THead -->
         @slot('thead')
-            <x-table.th class="w-24">Título</x-table.th>
-            <x-table.th>Pais</x-table.th>
+            <x-table.th>Gêneros</x-table.th>
+            <x-table.th class="w-24">Status</x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
         @slot('tbody')
             @foreach ($dbUserGenders as $dbUserGender)
                 <x-table.tr>
-                    <x-table.td>{{ $dbUserGender->acronym }}</x-table.td>
                     <x-table.td>{{ $dbUserGender->title }}</x-table.td>
+                    <x-table.td>{{ $dbUserGender->is_active }}</x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

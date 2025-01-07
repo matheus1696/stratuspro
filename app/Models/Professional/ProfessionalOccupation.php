@@ -11,10 +11,6 @@ class ProfessionalOccupation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
-        'title',
-        'filter',
-        'description',
         'is_active',
     ];
 }

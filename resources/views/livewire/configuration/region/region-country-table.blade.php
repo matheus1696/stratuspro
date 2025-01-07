@@ -24,7 +24,8 @@
         <!-- Inicio Slot THead -->
         @slot('thead')
             <x-table.th class="w-24">Sigla</x-table.th>
-            <x-table.th>Pais</x-table.th>
+            <x-table.th>Paises</x-table.th>
+            <x-table.th class="w-24"></x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
@@ -33,6 +34,7 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbRegionCountry->acronym }}</x-table.td>
                     <x-table.td>{{ $dbRegionCountry->title }}</x-table.td>
+                    <x-table.td>{{ $dbRegionCountry->is_active }}</x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

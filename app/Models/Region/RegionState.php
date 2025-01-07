@@ -11,10 +11,6 @@ class RegionState extends Model
     use HasFactory;
 
     protected $fillable = [
-        'acronym',
-        'title',
-        'filter',
-        'country_id',
         'is_active',
     ];
 }

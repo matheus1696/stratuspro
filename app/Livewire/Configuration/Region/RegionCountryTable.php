@@ -32,7 +32,7 @@ class RegionCountryTable extends Component
         }
 
         // Paginando os resultados
-        $dbRegionCountries = $query->orderBy('name')->paginate($this->perPage);
+        $dbRegionCountries = $query->orderBy('title')->paginate($this->perPage);
 
         return view('livewire.configuration.region.region-country-table', compact('dbRegionCountries'));
     }

@@ -11,10 +11,6 @@ class RegionCity extends Model
     use HasFactory;
 
     protected $fillable = [
-        'code',
-        'title',
-        'filter',
-        'state_id',
         'is_active',
     ];
 }

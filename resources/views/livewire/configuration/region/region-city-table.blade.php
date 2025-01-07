@@ -23,16 +23,18 @@
         
         <!-- Inicio Slot THead -->
         @slot('thead')
-            <x-table.th class="w-24">Sigla</x-table.th>
-            <x-table.th>Pais</x-table.th>
+            <x-table.th class="w-24">IBGE</x-table.th>
+            <x-table.th>Cidade</x-table.th>
+            <x-table.th class="w-24">Status</x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
         @slot('tbody')
             @foreach ($dbRegionCities as $dbRegionCity)
                 <x-table.tr>
-                    <x-table.td>{{ $dbRegionCity->acronym }}</x-table.td>
+                    <x-table.td>{{ $dbRegionCity->code }}</x-table.td>
                     <x-table.td>{{ $dbRegionCity->title }}</x-table.td>
+                    <x-table.td>{{ $dbRegionCity->is_active }}</x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

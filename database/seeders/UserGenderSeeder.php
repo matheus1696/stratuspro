@@ -14,10 +14,10 @@ class UserGenderSeeder extends Seeder
     public function run(): void
     {
         //
-        UserGender::create(['title'=>'Masculino',]);
+        UserGender::create(['title' => 'Masculino', 'filter' => 'masculino']);
 
-        UserGender::create(['title'=>'Feminino',]);
+        UserGender::create(['title' => 'Feminino', 'filter' => 'feminino']);
 
-        UserGender::create(['title'=>'Não Definido',]);
+        UserGender::create(['title' => 'Não Definido', 'filter' => 'não definido']);
     }
 }

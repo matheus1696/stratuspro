@@ -32,7 +32,7 @@ class RegionCityTable extends Component
         }
 
         // Paginando os resultados
-        $dbRegionCities = $query->orderBy('state_id')->orderBy('name')->paginate($this->perPage);
+        $dbRegionCities = $query->orderBy('state_id')->orderBy('title')->paginate($this->perPage);
 
         return view('livewire.configuration.region.region-city-table', compact('dbRegionCities'));
     }

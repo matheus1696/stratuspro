@@ -10,10 +10,7 @@ class RegionCountry extends Model
     /** @use HasFactory<\Database\Factories\\Region\RegionCountryFactory> */
     use HasFactory;
 
-    protected $fillable = [ 
-        'acronym', 
-        'title', 
-        'filter', 
+    protected $fillable = [
         'is_active' 
     ];
 }
