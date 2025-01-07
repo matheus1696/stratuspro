@@ -16,7 +16,10 @@ return new class extends Migration
             $table->string('acronym')->unique();
             $table->string('title')->unique();
             $table->string('filter');
-            $table->boolean('is_active')->default(true);
+            $table->string('title_ing')->unique();
+            $table->string('filter_title_ing')->unique();
+            $table->string('code_iso')->unique();
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

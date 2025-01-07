@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('region_cities', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->string('title')->unique();
+            $table->string('title');
             $table->string('filter');
             $table->foreignId('state_id')->constrained('region_states');
-            $table->boolean('is_active')->default(true);
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
     }

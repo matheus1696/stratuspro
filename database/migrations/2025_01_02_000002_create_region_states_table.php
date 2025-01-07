@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('acronym')->unique();
             $table->string('title')->unique();
             $table->string('filter');
+            $table->string('code_uf')->unique();
+            $table->string('code_ddd')->nullable();
             $table->foreignId('country_id')->constrained('region_countries');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
