@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Configuration\Region;
+namespace App\Livewire\Configuration\User;
 
-use App\Models\Region\RegionState;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-class RegionStateTable extends Component
+class UserTable extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
@@ -24,16 +24,17 @@ class RegionStateTable extends Component
     public function render()
     {
         // Inicia a consulta de usuários
-        $query = RegionState::query();
+        $query = User::query();
 
         // Aplica os filtros de busca, se existirem
         if (!empty($this->search)) {
             $query->orWhere('filter', 'like', '%' . strtolower($this->search) . '%');
+            $query->orWhere('email', 'like', '%' . strtolower($this->search) . '%');
         }
 
         // Paginando os resultados
-        $dbRegionStates = $query->orderBy('country_id')->orderBy('name')->paginate($this->perPage);
+        $dbUsers = $query->orderBy('name')->paginate($this->perPage);
 
-        return view('livewire.configuration.region.region-state-table', compact('dbRegionStates'));
+        return view('livewire.configuration.user.user-table', compact('dbUsers'));
     }
 }

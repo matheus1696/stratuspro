@@ -4,6 +4,7 @@ use App\Http\Controllers\Configuration\Region\RegionCityController;
 use App\Http\Controllers\Configuration\Region\RegionCountryController;
 use App\Http\Controllers\Configuration\Region\RegionStateController;
 use App\Http\Controllers\Configuration\User\UserGenderController;
+use App\Http\Controllers\Configuration\User\UserManagenmentController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,11 @@ Route::middleware('auth')->group(function () {
                 //Rotas dos Países
                 Route::get('genders', [UserGenderController::class, 'index'])->name('genders.index');
                 Route::get('genders/update/{id}', [UserGenderController::class, 'update'])->name('genders.update');
+
+                Route::prefix('managenment')->group(function () {
+                    //Rotas dos Países
+                    Route::get('users', [UserManagenmentController::class, 'index'])->name('users.index');
+                });
             });
 
             Route::prefix('region')->group(function () {

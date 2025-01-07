@@ -315,6 +315,18 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'Procurar no Menu',
         ],
+
+        [
+            'text' => 'Configuração de Perfis',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Lista de Usuários',
+                    'icon' => 'fas fa-user',
+                    'route' => 'users.index',
+                ],
+            ],
+        ],
         
         [
             'text' => 'Configurações do Sistema',

@@ -12,10 +12,13 @@ class RegionCountryTable extends Component
     use WithPagination, WithoutUrlPagination;
 
     public $search = '';
-    public $perPage = 10;
+    public $perPage = 50;
 
-    public function updatedSearch(){
-        $this->resetPage();
+    public function updated($propertyName)
+    {
+        if (in_array($propertyName, ['search', 'perPage'])) {
+            $this->resetPage();
+        }
     }
 
     public function render()
