@@ -6,6 +6,7 @@ use App\Http\Controllers\Configuration\Region\RegionStateController;
 use App\Http\Controllers\Configuration\User\UserGenderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Managenment\User\UserManagenmentController;
+use App\Http\Controllers\Profile\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 //Rota de redirecionamento para a página de login
@@ -13,6 +14,17 @@ Route::get('/', function () { return redirect()->route('login'); });
 
 //Usuário Autenciados
 Route::middleware('auth')->group(function () {
+
+    //Rotas de Usuários
+    Route::prefix('profile')->group(function () {
+        Route::get('personal', [ProfileController::class, 'editPersonal'])->name('profiles.editPersonal');
+        Route::get('professional', [ProfileController::class, 'editProfessional'])->name('profiles.editProfessional');
+        Route::get('password', [ProfileController::class, 'editPassword'])->name('profiles.editPassword');
+
+        Route::put('personal/{user}', [ProfileController::class, 'updatePersonal'])->name('profiles.updatePersonal');
+        Route::put('professional/{user}', [ProfileController::class, 'updateProfessional'])->name('profiles.updateProfessional');
+        Route::put('password/{user}', [ProfileController::class, 'updatePassword'])->name('profiles.updatePassword');
+    });
 
     //Usuários Verificados
     Route::middleware('verified')->group(function () {        

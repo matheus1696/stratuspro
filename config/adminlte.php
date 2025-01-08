@@ -316,6 +316,40 @@ return [
             'text' => 'Procurar no Menu',
         ],
 
+        //Perfil
+        [
+            'text'    => 'Perfil',
+            'icon'    => 'fas fa-user-circle pr-1',
+            'can'     => 'user_profile',
+            'submenu' => [
+
+                //Dados dos Usuários e Permissões dos Módulos
+                [
+                    'text'    => 'Dados dos Usuários',
+                    'route'   => 'profiles.editPersonal',
+                    'icon'    => 'fas fa-user pr-1',
+                    'can'     => 'user_profile',
+                ],
+
+                //Dados dos Usuários e Permissões dos Módulos
+                [
+                    'text'    => 'Dados dos Profissionais',
+                    'route'   => 'profiles.editProfessional',
+                    'icon'    => 'fas fa-id-badge pr-1',
+                    'can'     => 'user_profile',
+                ],
+
+                //Dados dos Usuários e Permissões dos Módulos
+                [
+                    'text'    => 'Alterar Senha',
+                    'route'   => 'profiles.editPassword',
+                    'icon'    => 'fas fa-key pr-1',
+                    'icon_color' => 'teal',
+                    'can'     => 'user_profile',
+                ],
+            ]
+        ],
+
         [
             'text' => 'Gerenciamento de Perfis',
             'icon' => 'fas fa-users pr-1',
