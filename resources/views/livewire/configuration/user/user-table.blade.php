@@ -16,7 +16,8 @@
 
                 <div class="w-full md:w-48">
                     <!-- Filtros de Pesquisa -->
-                    <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Procurar por nome ou email" />
+                    <x-form.form-input type="text" wire:model.live.debounce.300ms="search"
+                        placeholder="Procurar por nome ou email" />
                 </div>
             </div>
         @endslot
@@ -39,24 +40,40 @@
                     <x-table.td>
 
                         <!-- Modal Permissões -->
-                        <x-modal.modal id="UserPermissionModal{{ $dbUser->id }}" title="Permissões" icon="fas fa-lock" class="bg-yellow-400">
+                        <x-modal.modal id="UserPermissionModal{{ $dbUser->id }}" title="Permissões" icon="fas fa-lock"
+                            class="bg-yellow-400">
 
                             <form action="{{ route('users.permission', $dbUser->id) }}" method="post">
                                 @csrf @method('PUT')
 
                                 <x-form.form-group>
-                                    @foreach ($dbPermissions as $permission)
-                                        <div class="col-span-6 md:col-span-4 flex items-center gap-2">
-                                            <input type="checkbox" id="permission_{{ $permission->id }}_{{$dbUser->id}}"
-                                                name="permissions[]" value="{{ $permission->name  }}" class="hidden peer"
-                                                {{ $dbUser->hasPermissionTo($permission->name) ? 'checked' : '' }}>
-                                            <label for="permission_{{ $permission->id }}_{{$dbUser->id}}"
-                                                class="flex items-center justify-center w-full px-3 py-1 text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-green-700 peer-checked:text-white peer-checked:border-green-700 hover:border-green-700">
-                                                {{ $permission->display_name }}
-                                            </label>
+                                    @foreach ($dbRoles as $role)
+                                        @if ($role->name != 'super_admin')
+                                        <div class="col-span-12 mb-6">
+                                            <h2 class="text-lg font-semibold">{{ $role->display_name }}</h2>
+                                            <p class="text-xs text-gray-400">{{ $role->description }}</p>
+                                
+                                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-4">
+                                                @foreach ($role->permissions as $permission)
+                                                    <div class="flex items-center gap-2">
+                                                        <input type="checkbox"
+                                                            id="permission_{{ $permission->id }}_{{ $dbUser->id }}"
+                                                            name="permissions[]" value="{{ $permission->name }}"
+                                                            class="hidden peer"
+                                                            {{ $dbUser->hasPermissionTo($permission->name) ? 'checked' : '' }}>
+                                                        <label for="permission_{{ $permission->id }}_{{ $dbUser->id }}"
+                                                            class="flex items-center justify-center w-full px-2 py-1 text-center text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-green-700 peer-checked:text-white peer-checked:border-green-700 hover:border-green-700">
+                                                            {{ $permission->display_name }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 </x-form.form-group>
+                                
+
 
                                 <x-button.btn-primary value="Alterar Permissões" />
                             </form>

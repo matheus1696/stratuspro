@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
             RegionCountrySeeder::class,
             RegionStateSeeder::class,
             RegionCitySeeder::class,
-            UserPermissionSeeder::class,
+            UserPermissionUserSeeder::class,
+            UserPermissionManagenmentsSeeder::class,
+            UserPermissionConfigurationSeeder::class,
+            UserPermissionGlobalSeeder::class,
             UserGenderSeeder::class,
             UserSeeder::class,
         ]);

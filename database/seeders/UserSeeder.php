@@ -14,11 +14,19 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'Test User',
-            'filter' => 'test user',
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
+            'name' => 'Super Admin',
+            'filter' => 'super admin',
+            'email' => 'superadmin@stratuspro.com.br',
+            'password' => bcrypt('superadmin'),
             'email_verified_at' => now(),
-        ]);
+        ])->assignRole('super_admin');
+
+        User::create([
+            'name' => 'User',
+            'filter' => 'user',
+            'email' => 'user@stratuspro.com.br',
+            'password' => bcrypt('user'),
+            'email_verified_at' => now(),
+        ])->assignRole('users');
     }
 }
