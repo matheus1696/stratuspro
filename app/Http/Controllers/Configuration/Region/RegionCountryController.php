@@ -24,6 +24,6 @@ class RegionCountryController extends Controller
     {
         //
         $regionCountry->update($request->all());
-        return redirect()->back();      
+        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

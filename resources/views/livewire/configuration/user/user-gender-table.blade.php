@@ -22,7 +22,9 @@
             @foreach ($dbUserGenders as $dbUserGender)
                 <x-table.tr>
                     <x-table.td>{{ $dbUserGender->title }}</x-table.td>
-                    <x-table.td>{{ $dbUserGender->is_active }}</x-table.td>
+                    <x-table.td>
+                        <x-button.btn-status route="{{ route('genders.update', $dbUserGender->id) }}" condition="{{ $dbUserGender->is_active }}" />
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

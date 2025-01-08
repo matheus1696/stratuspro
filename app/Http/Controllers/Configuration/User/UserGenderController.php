@@ -24,6 +24,6 @@ class UserGenderController extends Controller
     {
         //
         $userGender->update($request->all());
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

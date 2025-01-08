@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
             Route::prefix('user')->group(function () {
                 //Rotas dos Países
                 Route::get('genders', [UserGenderController::class, 'index'])->name('genders.index');
-                Route::get('genders/update/{id}', [UserGenderController::class, 'update'])->name('genders.update');
+                Route::put('genders/update/{user_gender}', [UserGenderController::class, 'update'])->name('genders.update');
 
                 Route::prefix('managenment')->group(function () {
                     //Rotas dos Países
@@ -36,13 +36,13 @@ Route::middleware('auth')->group(function () {
             Route::prefix('region')->group(function () {
                 //Rotas dos Países
                 Route::get('countries', [RegionCountryController::class, 'index'])->name('countries.index');
-                Route::get('countries/update/{id}', [RegionCountryController::class, 'update'])->name('countries.update');
+                Route::put('countries/update/{region_country}', [RegionCountryController::class, 'update'])->name('countries.update');
                 //Rotas dos Estados
                 Route::get('states', [RegionStateController::class, 'index'])->name('states.index');
-                Route::get('states/update/{id}', [RegionStateController::class, 'update'])->name('states.update');
+                Route::put('states/update/{region_state}', [RegionStateController::class, 'update'])->name('states.update');
                 //Rotas dos Países
                 Route::get('cities', [RegionCityController::class, 'index'])->name('cities.index');
-                Route::get('cities/update/{id}', [RegionCityController::class, 'update'])->name('cities.update');
+                Route::put('cities/update/{region_city}', [RegionCityController::class, 'update'])->name('cities.update');
             });
         });
 

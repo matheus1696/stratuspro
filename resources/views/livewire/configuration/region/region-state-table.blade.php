@@ -24,7 +24,9 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbRegionState->acronym }}</x-table.td>
                     <x-table.td>{{ $dbRegionState->title }}</x-table.td>
-                    <x-table.td>{{ $dbRegionState->is_active }}</x-table.td>
+                    <x-table.td>
+                        <x-button.btn-status route="{{ route('states.update', $dbRegionState->id) }}" condition="{{ $dbRegionState->is_active }}" />
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

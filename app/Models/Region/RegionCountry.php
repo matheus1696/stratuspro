@@ -11,6 +11,6 @@ class RegionCountry extends Model
     use HasFactory;
 
     protected $fillable = [
-        'is_active' 
+        'is_active',
     ];
 }

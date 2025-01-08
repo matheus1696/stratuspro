@@ -34,7 +34,9 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbRegionCity->code }}</x-table.td>
                     <x-table.td>{{ $dbRegionCity->title }}</x-table.td>
-                    <x-table.td>{{ $dbRegionCity->is_active }}</x-table.td>
+                    <x-table.td>
+                        <x-button.btn-status route=" {{ route('cities.update', $dbRegionCity->id) }}" condition="{{ $dbRegionCity->is_active }}" />
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

@@ -23,7 +23,7 @@ class RegionCityController extends Controller
     public function update(Request $request, RegionCity $regionCity)
     {
         //
-        $regionCity->update($request->all());
-        return redirect()->back();        
+        $regionCity->update($request->only(['is_active']));
+        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }
