@@ -19,26 +19,26 @@ class UserPermissionSeeder extends Seeder
 
         // Configurações
         Permission::create(['name' => 'configuration_users', 'display_name' => 'Configurações Usuários']);
-        Permission::create(['name' => 'configuration_region', 'display_name' => 'Configurações Regiões']);
+        Permission::create(['name' => 'configuration_regions', 'display_name' => 'Configurações Regiões']);
 
         // Gerenciamento
-        Permission::create(['name' => 'management_users', 'display_name' => 'Gerenciamento de Usuários']);
+        Permission::create(['name' => 'managenment_users', 'display_name' => 'Gerenciamento de Usuários']);
 
         // Criando roles com nomes consistentes
-        $configuration = Role::create([
-            'name' => 'configuration', 
+        $configurations = Role::create([
+            'name' => 'configurations', 
             'display_name' => 'Configurações de Sistema', 
             'description' => 'Permite modificar parâmetros críticos e ajustes que afetam o funcionamento global do sistema.'
         ]);
 
-        $management = Role::create([
-            'name' => 'management', 
+        $managenments = Role::create([
+            'name' => 'managenments', 
             'display_name' => 'Gerenciamento do Sistema', 
             'description' => 'Permite gerenciar módulos, informações e recursos operacionais para o funcionamento diário do sistema.'
         ]);
 
         // Atribuindo permissões às roles
-        $configuration->givePermissionTo(['configuration_users', 'configuration_region']);
-        $management->givePermissionTo('management_users');
+        $configurations->givePermissionTo(['configuration_users', 'configuration_regions']);
+        $managenments->givePermissionTo('managenment_users');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Configuration\User;
+namespace App\Http\Controllers\Managenment\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 
 class UserManagenmentController extends Controller
 {
+    /*
+     * Controller access permission resource.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:managenment_users']);
+    }
+    
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        return view('configuration.user.user-managenment-index');
+        return view('managenment.user.user-managenment-index');
     }
 
     /**

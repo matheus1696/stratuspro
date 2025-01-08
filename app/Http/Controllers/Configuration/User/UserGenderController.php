@@ -13,7 +13,7 @@ class UserGenderController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['permission:configuration_users', 'role:configuration']);
+        $this->middleware(['permission:configuration_users']);
     }
 
     /**

@@ -335,11 +335,13 @@ return [
                 [
                     'text' => 'Configuração de Usuários',
                     'icon' => 'fas fa-users-cog pr-1',
+                    'can' => 'configuration_users',
                     'submenu' => [
                         [
                             'text' => 'Gêneros',
                             'icon' => 'fas fa-venus-mars pr-1',
                             'route' => 'genders.index',
+                            'can' => 'configuration_users',
                         ],
                     ],
                 ],
