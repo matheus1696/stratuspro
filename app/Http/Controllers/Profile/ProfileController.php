@@ -10,10 +10,17 @@ use App\Http\Requests\Profile\ProfilePersonalUpdateRequest;
 use App\Http\Requests\Profile\ProfileProfessionalUpdateRequest;
 use App\Models\User;
 use App\Models\User\UserGender;
-use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    /*
+     * Controller access permission resource.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:user_profile']);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

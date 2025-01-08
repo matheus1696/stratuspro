@@ -64,7 +64,7 @@ return [
     */
 
     'logo' => 'Stratus<b>PRO</b>',
-    'logo_img' => 'asset/img/logo.png',
+    'logo_img' => 'assets/img/logo.png',
     'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -197,7 +197,7 @@ return [
     'classes_content_header' => '',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-5',
-    'classes_sidebar_nav' => 'text-sm space-y-2',
+    'classes_sidebar_nav' => 'text-sm',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
@@ -219,7 +219,7 @@ return [
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
-    'sidebar_scrollbar_theme' => 'os-theme-light',
+    'sidebar_scrollbar_theme' => 'os-theme-dark',
     'sidebar_scrollbar_auto_hide' => 'l',
     'sidebar_nav_accordion' => true,
     'sidebar_nav_animation_speed' => 300,
@@ -303,7 +303,7 @@ return [
         [
             'type' => 'navbar-search',
             'text' => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type' => 'fullscreen-widget',
@@ -344,7 +344,6 @@ return [
                     'text'    => 'Alterar Senha',
                     'route'   => 'profiles.editPassword',
                     'icon'    => 'fas fa-key pr-1',
-                    'icon_color' => 'teal',
                     'can'     => 'user_profile',
                 ],
             ]
@@ -353,11 +352,13 @@ return [
         [
             'text' => 'Gerenciamento de Perfis',
             'icon' => 'fas fa-users pr-1',
+            'can' => 'managenment_users',
             'submenu' => [
                 [
                     'text' => 'Lista de Usuários',
                     'icon' => 'fas fa-user pr-1',
                     'route' => 'users.index',
+                    'can' => 'managenment_users',
                 ],
             ],
         ],
@@ -365,6 +366,7 @@ return [
         [
             'text' => 'Configurações do Sistema',
             'icon' => 'fas fa-cogs pr-1',
+            'can'     => ['configuration_users','configuration_regions'],
             'submenu' => [
                 [
                     'text' => 'Configuração de Usuários',
@@ -382,21 +384,25 @@ return [
                 [
                     'text' => 'Configuração de Regiões',
                     'icon' => 'fas fa-globe-americas pr-1',
+                    'can' => 'configuration_regions',
                     'submenu' => [
                         [
                             'text' => 'Paises',
                             'icon' => 'fas fa-flag pr-1',
                             'route' => 'countries.index',
+                            'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Estados',
                             'icon' => 'fas fa-flag pr-1',
                             'route' => 'states.index',
+                            'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Cidades',
                             'icon' => 'fas fa-flag pr-1',
                             'route' => 'cities.index',
+                            'can' => 'configuration_regions',
                         ],
 
                     ],
