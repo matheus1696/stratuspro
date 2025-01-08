@@ -317,12 +317,12 @@ return [
         ],
 
         [
-            'text' => 'Configuração de Perfis',
-            'icon' => 'fas fa-users',
+            'text' => 'Gerenciamento de Perfis',
+            'icon' => 'fas fa-users pr-1',
             'submenu' => [
                 [
                     'text' => 'Lista de Usuários',
-                    'icon' => 'fas fa-user',
+                    'icon' => 'fas fa-user pr-1',
                     'route' => 'users.index',
                 ],
             ],
@@ -330,36 +330,36 @@ return [
         
         [
             'text' => 'Configurações do Sistema',
-            'icon' => 'fas fa-cogs',
+            'icon' => 'fas fa-cogs pr-1',
             'submenu' => [
                 [
                     'text' => 'Configuração de Usuários',
-                    'icon' => 'fas fa-users-cog',
+                    'icon' => 'fas fa-users-cog pr-1',
                     'submenu' => [
                         [
                             'text' => 'Gêneros',
-                            'icon' => 'fas fa-venus-mars',
+                            'icon' => 'fas fa-venus-mars pr-1',
                             'route' => 'genders.index',
                         ],
                     ],
                 ],
                 [
                     'text' => 'Configuração de Regiões',
-                    'icon' => 'fas fa-globe-americas',
+                    'icon' => 'fas fa-globe-americas pr-1',
                     'submenu' => [
                         [
                             'text' => 'Paises',
-                            'icon' => 'fas fa-flag',
+                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'countries.index',
                         ],
                         [
                             'text' => 'Estados',
-                            'icon' => 'fas fa-flag',
+                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'states.index',
                         ],
                         [
                             'text' => 'Cidades',
-                            'icon' => 'fas fa-flag',
+                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'cities.index',
                         ],
 
