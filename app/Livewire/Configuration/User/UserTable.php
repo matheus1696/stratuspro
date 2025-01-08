@@ -6,6 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Permission;
 
 class UserTable extends Component
 {
@@ -34,7 +35,8 @@ class UserTable extends Component
 
         // Paginando os resultados
         $dbUsers = $query->orderBy('name')->paginate($this->perPage);
+        $dbPermissions = Permission::all();
 
-        return view('livewire.configuration.user.user-table', compact('dbUsers'));
+        return view('livewire.configuration.user.user-table', compact('dbUsers', 'dbPermissions'));
     }
 }

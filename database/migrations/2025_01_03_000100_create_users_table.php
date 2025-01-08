@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->string('cpf')->nullable();
             $table->string('rg')->nullable();
-            $table->string('matriculation')->nullable();
             $table->string('avatar')->nullable();
             $table->string('phone_1')->nullable();
             $table->string('phone_2')->nullable();
             $table->string('birth_date')->nullable();
             $table->foreignId('gender_id')->nullable()->constrained('user_genders');
+            $table->string('matriculation')->nullable();
             $table->foreignId('occupation_id')->nullable()->constrained('professional_occupations');
             $table->rememberToken();
             $table->timestamps();

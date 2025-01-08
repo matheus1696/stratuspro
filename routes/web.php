@@ -19,18 +19,25 @@ Route::middleware('auth')->group(function () {
     
         //Rota de Página Inicial
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+        
+        //Rotas de Gerenciamento
+        Route::prefix('managenment')->group(function () {
+            
+            //Rotas de Usuários
+            Route::prefix('users')->group(function () {
+                Route::get('/', [UserManagenmentController::class, 'index'])->name('users.index');
+                Route::put('users/permission/{user}', [UserManagenmentController::class, 'permission'])->name('users.permission');
+            });
+        });
     
+        //Rotas de Configuração
         Route::prefix('configuration')->group(function () {
 
             Route::prefix('user')->group(function () {
                 //Rotas dos Países
                 Route::get('genders', [UserGenderController::class, 'index'])->name('genders.index');
                 Route::put('genders/update/{user_gender}', [UserGenderController::class, 'update'])->name('genders.update');
-
-                Route::prefix('managenment')->group(function () {
-                    //Rotas dos Países
-                    Route::get('users', [UserManagenmentController::class, 'index'])->name('users.index');
-                });
             });
 
             Route::prefix('region')->group(function () {

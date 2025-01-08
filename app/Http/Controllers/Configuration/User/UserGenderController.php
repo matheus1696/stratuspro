@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 class UserGenderController extends Controller
 {
+    /*
+     * Controller access permission resource.
+     */
+    public function __construct()
+    {
+        $this->middleware(['permission:configuration_users', 'role:configuration']);
+    }
+
     /**
      * Display a listing of the resource.
      */

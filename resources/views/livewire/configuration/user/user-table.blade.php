@@ -25,6 +25,8 @@
         @slot('thead')
             <x-table.th>Nome</x-table.th>
             <x-table.th>Email</x-table.th>
+            <x-table.th>Data de Nascimento</x-table.th>
+            <x-table.th class="w-24"></x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
@@ -33,6 +35,34 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbUser->name }}</x-table.td>
                     <x-table.td>{{ $dbUser->email }}</x-table.td>
+                    <x-table.td>{{ $dbUser->birth_date }}</x-table.td>
+                    <x-table.td>
+
+                        <!-- Modal Permissões -->
+                        <x-modal.modal id="UserPermissionModal{{ $dbUser->id }}" title="Permissões" icon="fas fa-lock" class="bg-yellow-400">
+
+                            <form action="{{ route('users.permission', $dbUser->id) }}" method="post">
+                                @csrf @method('PUT')
+
+                                <x-form.form-group>
+                                    @foreach ($dbPermissions as $permission)
+                                        <div class="col-span-6 md:col-span-4 flex items-center gap-2">
+                                            <input type="checkbox" id="permission_{{ $permission->id }}_{{$dbUser->id}}"
+                                                name="permissions[]" value="{{ $permission->name  }}" class="hidden peer"
+                                                {{ $dbUser->hasPermissionTo($permission->name) ? 'checked' : '' }}>
+                                            <label for="permission_{{ $permission->id }}_{{$dbUser->id}}"
+                                                class="flex items-center justify-center w-full px-3 py-1 text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-green-700 peer-checked:text-white peer-checked:border-green-700 hover:border-green-700">
+                                                {{ $permission->display_name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </x-form.form-group>
+
+                                <x-button.btn-primary value="Alterar Permissões" />
+                            </form>
+                        </x-modal.modal>
+
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot
