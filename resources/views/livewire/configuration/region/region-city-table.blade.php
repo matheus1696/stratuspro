@@ -25,6 +25,7 @@
         @slot('thead')
             <x-table.th class="w-24">IBGE</x-table.th>
             <x-table.th>Cidade</x-table.th>
+            <x-table.th>Estado</x-table.th>
             <x-table.th class="w-24">Status</x-table.th>
         @endslot
 
@@ -34,6 +35,7 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbRegionCity->code }}</x-table.td>
                     <x-table.td>{{ $dbRegionCity->title }}</x-table.td>
+                    <x-table.td>{{ $dbRegionCity->RegionState->title }}</x-table.td>
                     <x-table.td>
                         <x-button.btn-status route=" {{ route('cities.update', $dbRegionCity->id) }}" condition="{{ $dbRegionCity->is_active }}" />
                     </x-table.td>

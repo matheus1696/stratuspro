@@ -14,7 +14,8 @@
         <!-- Inicio Slot THead -->
         @slot('thead')
             <x-table.th class="w-24">Sigla</x-table.th>
-            <x-table.th>Pais</x-table.th>
+            <x-table.th>Estados</x-table.th>
+            <x-table.th>Paises</x-table.th>
             <x-table.th class="w-24"></x-table.th>
         @endslot
 
@@ -24,6 +25,7 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbRegionState->acronym }}</x-table.td>
                     <x-table.td>{{ $dbRegionState->title }}</x-table.td>
+                    <x-table.td>{{ $dbRegionState->RegionCountry->title }}</x-table.td>
                     <x-table.td>
                         <x-button.btn-status route="{{ route('states.update', $dbRegionState->id) }}" condition="{{ $dbRegionState->is_active }}" />
                     </x-table.td>

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Models\Professional\ProfessionalOccupation;
+use App\Models\User\UserGender;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,5 +59,13 @@ class User extends Authenticatable implements MustVerifyEmail
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function UserGender(){
+        return $this->belongsTo(UserGender::class, 'gender_id');
+    }
+
+    public function ProfessionalOccupation(){
+        return $this->belongsTo(ProfessionalOccupation::class, 'occupation_id');
     }
 }

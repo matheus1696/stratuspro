@@ -13,4 +13,9 @@ class RegionState extends Model
     protected $fillable = [
         'is_active',
     ];
+
+    public function RegionCountry()
+    {
+        return $this->belongsTo(RegionCountry::class, 'country_id');
+    }
 }
