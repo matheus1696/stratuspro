@@ -14,7 +14,7 @@ class RegionCountryController extends Controller
     public function index()
     {
         //
-        return view('configuration.region.region-country-index');
+        return view('pages.configuration.region.region-country-index');
     }
 
     /**

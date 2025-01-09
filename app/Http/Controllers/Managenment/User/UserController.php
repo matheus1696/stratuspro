@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserManagenmentController extends Controller
+class UserController extends Controller
 {
     /*
      * Controller access permission resource.
@@ -22,7 +22,7 @@ class UserManagenmentController extends Controller
     public function index()
     {
         //
-        return view('managenment.user.user-managenment-index');
+        return view('pages.managenment.user.user-index');
     }
 
     /**

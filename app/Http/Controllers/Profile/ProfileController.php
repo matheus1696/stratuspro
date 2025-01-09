@@ -30,7 +30,7 @@ class ProfileController extends Controller
         $dbUser = Auth::user();
         $dbGenders = UserGender::where('is_active', true)->get();
 
-        return view('profile.profile_personal', compact('dbUser','dbGenders'));
+        return view('pages.profile.profile_personal', compact('dbUser','dbGenders'));
     }
 
     /**
@@ -41,7 +41,7 @@ class ProfileController extends Controller
         //Listando Dados
         $dbUser = Auth::user();
 
-        return view('profile.profile_professional', compact('dbUser'));
+        return view('pages.profile.profile_professional', compact('dbUser'));
     }
 
     /**
@@ -52,7 +52,7 @@ class ProfileController extends Controller
         //Listando Dados
         $dbUser = Auth::user();
 
-        return view('profile.profile_password', compact('dbUser'));
+        return view('pages.profile.profile_password', compact('dbUser'));
     }
 
     /**

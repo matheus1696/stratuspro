@@ -14,7 +14,7 @@ class RegionCityController extends Controller
     public function index()
     {
         //
-        return view('configuration.region.region-city-index');
+        return view('pages.configuration.region.region-city-index');
     }
 
     /**

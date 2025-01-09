@@ -10,13 +10,13 @@
                     você precisa, <br> 
                     <span class="text-blue-950">em um só lugar!</span>
                 </h1>
-                @include('auth.partials.auth-illustration')
+                @include('pages.auth.partials.auth-illustration')
             </div>
 
             <!-- Direita: Formulário de Login -->
             <div class="md:w-8/12 bg-blue-500 p-10 flex flex-col justify-center items-center flex-1">                
                 
-                @include('auth.partials.auth-brand')
+                @include('pages.auth.partials.auth-brand')
 
                 <div class="bg-white p-6 rounded-xl shadow-xl w-full md:w-96 mb-10">
                     <form action="{{ route('login') }}" method="POST">

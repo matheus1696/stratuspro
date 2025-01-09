@@ -14,7 +14,7 @@ class RegionStateController extends Controller
     public function index()
     {
         //
-        return view('configuration.region.region-state-index');
+        return view('pages.configuration.region.region-state-index');
     }
     
     /**

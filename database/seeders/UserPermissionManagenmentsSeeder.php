@@ -16,6 +16,7 @@ class UserPermissionManagenmentsSeeder extends Seeder
     {
         // Gerenciamento
         Permission::create(['name' => 'managenment_users', 'display_name' => 'Gerenciamento de Usuários']);
+        Permission::create(['name' => 'managenment_contracts', 'display_name' => 'Gerenciamento de Contratos']);
 
         $managenments = Role::create([
             'name' => 'managenments', 
@@ -24,6 +25,6 @@ class UserPermissionManagenmentsSeeder extends Seeder
         ]);
 
         // Atribuindo permissões às roles
-        $managenments->givePermissionTo('managenment_users');
+        $managenments->givePermissionTo('managenment_users','managenment_contracts');
     }
 }

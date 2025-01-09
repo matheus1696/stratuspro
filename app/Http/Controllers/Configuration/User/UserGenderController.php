@@ -22,7 +22,7 @@ class UserGenderController extends Controller
     public function index()
     {
         //
-        return view('configuration.user.user-gender-index');
+        return view('pages.configuration.user.user-gender-index');
     }
 
     /**

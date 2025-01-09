@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Configuration\User;
+namespace App\Livewire\Managenment\User;
 
 use App\Models\User;
 use Livewire\Component;
@@ -39,6 +39,6 @@ class UserTable extends Component
         $dbPermissions = Permission::all();
         $dbRoles = Role::with('permissions')->get();
 
-        return view('livewire.configuration.user.user-table', compact('dbUsers', 'dbRoles' ,'dbPermissions'));
+        return view('livewire.managenment.user.user-table', compact('dbUsers', 'dbRoles' ,'dbPermissions'));
     }
 }

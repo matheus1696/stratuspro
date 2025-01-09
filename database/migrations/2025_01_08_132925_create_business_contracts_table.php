@@ -18,16 +18,24 @@ return new class extends Migration
             $table->string('number_price_registration')->nullable();
             $table->string('number_price_record_document')->nullable();
             $table->string('title');
+            $table->string('filter');
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
             $table->enum('status', ['active', 'expired', 'renewed']);
-            $table->integer('total_price')->nullable();
-            $table->integer('request_price')->nullable();
-            $table->integer('balance_price')->nullable();
+            $table->decimal('total_price', 15, 2)->nullable(); // Valor total
+            $table->decimal('request_price', 15, 2)->nullable(); // Valor solicitado
+            $table->decimal('balance_price', 15, 2)->nullable(); // Saldo
             $table->timestamps();
         });
 
+        Schema::create('business_contract_has_financial_blocks', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('contract_id')->constrained('business_contracts');
+            $table->foreignId('financial_block_id')->constrained('configuration_financial_blocks');
+            $table->timestamps();
+        });
+        
         Schema::create('business_contract_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('contract_id');
@@ -35,7 +43,7 @@ return new class extends Migration
             $table->text('change_description'); // Descrição das alterações
             $table->timestamps();
         
-            $table->foreign('contract_id')->references('id')->on('contracts');
+            $table->foreign('contract_id')->references('id')->on('business_contracts');
         });
     }
 
@@ -44,8 +52,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('business_contracts');
-        
-        Schema::dropIfExists('business_contract_histories');
+        Schema::dropIfExists('business_contracts');        
+        Schema::dropIfExists('business_contract_histories');        
+        Schema::dropIfExists('business_contract_has_financial_blocks');
     }
 };

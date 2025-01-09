@@ -7,7 +7,7 @@
         </div>   
     
         <div>
-            <livewire:configuration.user.user-table />
+            <livewire:managenment.user.user-table />
         </div>
 
     @endslot

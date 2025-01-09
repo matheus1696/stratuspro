@@ -4,9 +4,10 @@ use App\Http\Controllers\Configuration\Region\RegionCityController;
 use App\Http\Controllers\Configuration\Region\RegionCountryController;
 use App\Http\Controllers\Configuration\Region\RegionStateController;
 use App\Http\Controllers\Configuration\User\UserGenderController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Managenment\User\UserManagenmentController;
+use App\Http\Controllers\Managenment\User\UserController;
+use App\Http\Controllers\Managenment\Business\Contract\BusinessContractController;
 use App\Http\Controllers\Profile\ProfileController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 //Rota de redirecionamento para a página de login
@@ -38,13 +39,18 @@ Route::middleware('auth')->group(function () {
             
             //Rotas de Usuários
             Route::prefix('users')->group(function () {
-                Route::get('/', [UserManagenmentController::class, 'index'])
+                Route::get('/', [UserController::class, 'index'])
                     ->name('users.index')
                     ->middleware('permission:managenment_users');
 
-                Route::put('users/permission/{user}', [UserManagenmentController::class, 'permission'])
+                Route::put('users/permission/{user}', [UserController::class, 'permission'])
                     ->name('users.permission')
                     ->middleware('permission:managenment_users');
+            });
+
+            //Rotas de Contratos
+            Route::prefix('contract')->group(function () {
+                Route::get('/', [BusinessContractController::class, 'index'])->name('contracts.index')->middleware('permission:managenment_contracts');
             });
         });
     

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Business\BusinessContract;
-use App\Http\Requests\StoreBusinessContractRequest;
-use App\Http\Requests\UpdateBusinessContractRequest;
+use App\Models\Configuration\ConfigurationFinancialBlock;
+use App\Http\Requests\StoreConfigurationFinancialBlockRequest;
+use App\Http\Requests\UpdateConfigurationFinancialBlockRequest;
 
-class BusinessContractController extends Controller
+class ConfigurationFinancialBlockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class BusinessContractController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreBusinessContractRequest $request)
+    public function store(StoreConfigurationFinancialBlockRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class BusinessContractController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(BusinessContract $businessContract)
+    public function show(ConfigurationFinancialBlock $configurationFinancialBlock)
     {
         //
     }
@@ -43,7 +43,7 @@ class BusinessContractController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(BusinessContract $businessContract)
+    public function edit(ConfigurationFinancialBlock $configurationFinancialBlock)
     {
         //
     }
@@ -51,7 +51,7 @@ class BusinessContractController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBusinessContractRequest $request, BusinessContract $businessContract)
+    public function update(UpdateConfigurationFinancialBlockRequest $request, ConfigurationFinancialBlock $configurationFinancialBlock)
     {
         //
     }
@@ -59,7 +59,7 @@ class BusinessContractController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(BusinessContract $businessContract)
+    public function destroy(ConfigurationFinancialBlock $configurationFinancialBlock)
     {
         //
     }

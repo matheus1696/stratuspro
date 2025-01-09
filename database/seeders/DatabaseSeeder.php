@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             UserPermissionGlobalSeeder::class,
             UserGenderSeeder::class,
             UserSeeder::class,
+            ConfigurationFinancialBlockSeeder::class,
+            ConfigurationMeasurementUnitSeeder::class,
         ]);
     }
 }

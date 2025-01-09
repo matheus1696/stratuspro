@@ -352,15 +352,15 @@ return [
         [
             'text' => 'Gerenciamento de Perfis',
             'icon' => 'fas fa-users pr-1',
+            'route' => 'users.index',
             'can' => 'managenment_users',
-            'submenu' => [
-                [
-                    'text' => 'Lista de Usuários',
-                    'icon' => 'fas fa-user pr-1',
-                    'route' => 'users.index',
-                    'can' => 'managenment_users',
-                ],
-            ],
+        ],
+
+        [
+            'text' => 'Gerenciamento de Contratos',
+            'icon' => 'fas fa-users pr-1',
+            'route' => 'contracts.index',
+            'can' => 'managenment_contracts',
         ],
         
         [

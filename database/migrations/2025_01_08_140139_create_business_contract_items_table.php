@@ -14,14 +14,22 @@ return new class extends Migration
         Schema::create('business_contract_items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('filter');
             $table->text('description');
-            $table->string('unit');
-            $table->string('quantity');
-            $table->string('unit_price');
+            $table->foreignId('unit_id')->constrained('configuration_measurement_units');
+            $table->decimal('unit_price', 15, 2);
             $table->unsignedBigInteger('contract_id');
             $table->timestamps();
 
             $table->foreign('contract_id')->references('id')->on('business_contracts');
+        });
+
+        Schema::create('business_contract_item_has_financial_blocks', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('contract_item_id')->constrained('business_contract_items');
+            $table->foreignId('financial_block_id')->constrained('configuration_financial_blocks');
+            $table->integer('quantity');
+            $table->timestamps();
         });
     }
 
@@ -31,5 +39,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('business_contract_items');
+        Schema::dropIfExists('business_contract_item_has_financial_blocks');
     }
 };
