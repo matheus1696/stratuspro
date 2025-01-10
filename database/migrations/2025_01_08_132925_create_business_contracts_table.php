@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('business_contracts', function (Blueprint $table) {
             $table->id();
-            $table->string('number_process_bidding');
-            $table->string('number_auction');
-            $table->string('number_price_registration')->nullable();
-            $table->string('number_price_record_document')->nullable();
+            $table->string('number_process_bidding')->unique();
+            $table->string('number_auction')->unique();
+            $table->string('number_price_registration')->unique()->nullable();
+            $table->string('number_price_record_document')->unique()->nullable();
             $table->string('title');
             $table->string('filter');
             $table->text('description');

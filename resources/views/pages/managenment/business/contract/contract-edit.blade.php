@@ -10,7 +10,7 @@
         </div>   
     
         <div>
-            <livewire:managenment.business.contract.contract-form />
+            <livewire:managenment.business.contract.contract-form :contractId="{{$dbContract->id}}"/>
         </div>
 
     @endslot

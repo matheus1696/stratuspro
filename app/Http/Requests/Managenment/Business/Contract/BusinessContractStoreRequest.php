@@ -11,7 +11,7 @@ class BusinessContractStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,15 @@ class BusinessContractStoreRequest extends FormRequest
     {
         return [
             //
+            'number_process_bidding' => 'required|string|min:8|max:9',
+            'number_auction' => 'required|string|min:8|max:9',
+            'number_price_registration' => 'required|string|min:8|max:9',
+            'number_price_record_document' => 'required|string|min:8|max:9',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'start_date' => 'required|date',
+            'period' => 'required|in:6,12,24,36,48',
+            'status_id' => 'required',
         ];
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\BusinessContract;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractStoreRequest;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractUpdateRequest;
+use Carbon\Carbon;
 
 class BusinessContractController extends Controller
 {
@@ -24,6 +25,7 @@ class BusinessContractController extends Controller
     public function create()
     {
         //
+        return view('pages.managenment.business.contract.contract-create');
     }
 
     /**
@@ -32,6 +34,17 @@ class BusinessContractController extends Controller
     public function store(BusinessContractStoreRequest $request)
     {
         //
+        $period = (int) $request['period'];
+        $startDate = Carbon::parse($request['start_date']);
+        $endDate = $startDate->addMonths($period);
+        
+
+        $request['filter'] = strtolower($request['title']);
+        $request['end_date'] = $endDate;
+
+        $contract = BusinessContract::create($request->all());
+
+        return redirect()->route('contracts.show', $contract->id);
     }
 
     /**
@@ -40,6 +53,9 @@ class BusinessContractController extends Controller
     public function show(BusinessContract $businessContract)
     {
         //
+        $dbContract = $businessContract->id;
+        
+        return view('pages.managenment.business.contract.contract-show', compact('dbContract'));
     }
 
     /**
@@ -48,6 +64,9 @@ class BusinessContractController extends Controller
     public function edit(BusinessContract $businessContract)
     {
         //
+        $dbContract = $businessContract->id;
+        
+        return view('pages.managenment.business.contract.contract-create', compact('dbContract'));
     }
 
     /**

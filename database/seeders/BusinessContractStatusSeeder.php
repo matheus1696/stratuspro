@@ -14,14 +14,8 @@ class BusinessContractStatusSeeder extends Seeder
     public function run(): void
     {
         BusinessContractStatus::create([
-            'title' => 'Andamento',
+            'title' => 'Vigente',
             'description' => 'Contrato em execução e dentro do prazo estabelecido.',
-            'is_active' => true,
-        ]);
-
-        BusinessContractStatus::create([
-            'title' => 'Concluído',
-            'description' => 'Contrato finalizado com sucesso e todas as obrigações cumpridas.',
             'is_active' => true,
         ]);
 
@@ -38,7 +32,7 @@ class BusinessContractStatusSeeder extends Seeder
         ]);
 
         BusinessContractStatus::create([
-            'title' => 'Suspenso',
+            'title' => 'Pedidos Suspenso',
             'description' => 'Contrato temporariamente interrompido por decisão administrativa.',
             'is_active' => true,
         ]);

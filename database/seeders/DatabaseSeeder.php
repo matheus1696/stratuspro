@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             UserPermissionGlobalSeeder::class,
             UserGenderSeeder::class,
             UserSeeder::class,
+            BusinessContractStatusSeeder::class,
         ]);
     }
 }

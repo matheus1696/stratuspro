@@ -78,3 +78,22 @@ const crmMask = (value) => {
 
     return value;
 }
+
+const handleContract = (event) => {
+    let input = event.target;
+    input.value = ContractMask(input.value);
+}
+
+const ContractMask = (value) => {
+    if (!value) return "";
+    value = value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+
+    // Aplica a máscara 000-0000
+    if (value.length > 7) {
+        value = value.replace(/^(\d{4})(\d{4})/, "$1-$2");
+    } else {
+        value = value.replace(/^(\d{3})(\d{1,4})/, "$1-$2");
+    }
+
+    return value;
+}

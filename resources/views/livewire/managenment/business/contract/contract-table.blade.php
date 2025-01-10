@@ -3,7 +3,7 @@
 
         <!-- Inicio Slot Search -->
         @slot('search')
-            <div class="grid grid-cols-12 justify-between gap-2 py-3">
+            <div class="grid grid-cols-12 justify-between gap-2 px-3 py-3 bg-white rounded-lg shadow-lg">
 
                 <!-- Filtros de Pesquisa -->
                 <div class="col-span-3 md:col-span-1">
@@ -54,6 +54,7 @@
             <x-table.th class="w-28">Data Início</x-table.th>
             <x-table.th class="w-28">Data Fim</x-table.th>
             <x-table.th class="w-28">Status</x-table.th>
+            <x-table.th class="w-14">Status</x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
@@ -66,6 +67,10 @@
                     <x-table.td>{{ $dbContract->start_date }}</x-table.td>
                     <x-table.td>{{ $dbContract->end_date }}</x-table.td>
                     <x-table.td>{{ $dbContract->ContractStatus->title }}</x-table.td>
+                    <x-table.td>
+                        <a href=" {{route('contracts.show', $dbContract->id) }}">Show</a>
+                        <a href=" {{route('contracts.edit', $dbContract->id) }}">Edit</a>
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot
