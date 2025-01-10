@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         User::factory(200)->create();
 
         $this->call([
+            ConfigurationFinancialBlockSeeder::class,
+            ConfigurationMeasurementUnitSeeder::class,
             ProfessionalOccupationSeeder::class,
             RegionCountrySeeder::class,
             RegionStateSeeder::class,
@@ -27,8 +29,6 @@ class DatabaseSeeder extends Seeder
             UserPermissionGlobalSeeder::class,
             UserGenderSeeder::class,
             UserSeeder::class,
-            ConfigurationFinancialBlockSeeder::class,
-            ConfigurationMeasurementUnitSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('acronym');
             $table->string('title');
-            $table->string('filter');
             $table->string('description')->nullable();
             $table->boolean('is_active')->default(TRUE);
             $table->timestamps();

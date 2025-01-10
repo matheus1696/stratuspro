@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
             //Rotas de Contratos
             Route::prefix('contract')->group(function () {
                 Route::get('/', [BusinessContractController::class, 'index'])->name('contracts.index')->middleware('permission:managenment_contracts');
+                Route::get('create', [BusinessContractController::class, 'create'])->name('contracts.create')->middleware('permission:managenment_contracts');
             });
         });
     

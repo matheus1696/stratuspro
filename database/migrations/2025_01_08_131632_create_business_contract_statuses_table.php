@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('business_contract_statuses', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description')->nullable();
+            $table->boolean('is_active')->default(TRUE);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Managenment\Business\Contract;
 
 use App\Models\Business\BusinessContract;
+use App\Models\Business\BusinessContractStatus;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -16,8 +17,7 @@ class ContractTable extends Component
     public $auction = '';
     public $start_date = '';
     public $end_date = '';
-    public $status = '';
-    public $perPage = 50;
+    public $status = 'Todos';
 
     public function updated($propertyName)
     {
@@ -37,11 +37,12 @@ class ContractTable extends Component
         if (!empty($this->auction)) { $query->orWhere('number_auction', 'like', '%' . strtolower($this->auction) . '%'); }
         if (!empty($this->start_date)) { $query->orWhere('start_date', 'like', '%' . strtolower($this->start_date) . '%'); }
         if (!empty($this->end_date)) { $query->orWhere('end_date', 'like', '%' . strtolower($this->end_date) . '%'); }
-        if (!empty($this->status)) { $query->orWhere('status', $this->status); }
+        if (!empty($this->status) && $this->status != "Todos") { $query->orWhere('status', $this->status); }
 
         // Paginando os resultados
-        $dbContracts = $query->orderBy('title')->paginate($this->perPage);
+        $dbContracts = $query->orderBy('title')->paginate(100);
+        $dbStatuses = BusinessContractStatus::all();
 
-        return view('livewire.managenment.business.contract.contract-table', compact('dbContracts'));
+        return view('livewire.managenment.business.contract.contract-table', compact('dbContracts', 'dbStatuses'));
     }
 }

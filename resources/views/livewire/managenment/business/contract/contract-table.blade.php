@@ -24,40 +24,25 @@
                         placeholder="Título do Processo" />
                 </div>
                 <!-- Filtros de Pesquisa -->
-                <div class="col-span-6 md:col-span-2">
+                <div class="col-span-4 md:col-span-2">
                     <x-form.form-label for="start_date" value="Data Início" />
                     <x-form.form-input type="date" id="start_date" wire:model.live.debounce.300ms="start_date" />
                 </div>
                 <!-- Filtros de Pesquisa -->
-                <div class="col-span-6 md:col-span-2">
+                <div class="col-span-4 md:col-span-2">
                     <x-form.form-label for="end_date" value="Data Fim" />
                     <x-form.form-input type="date" id="end_date" wire:model.live.debounce.300ms="end_date" />
                 </div>
 
-                <div>
+                <div class="col-span-4 md:col-span-2">
                     <x-form.form-label for="status" value="Status" />
                     <x-form.form-select id="status" wire:model.live="status">
-                        <option value="50">50 por página</option>
-                        <option value="100">100 por página</option>
-                        <option value="150">150 por página</option>
-                        <option value="200">200 por página</option>
-                        <option value="250">250 por página</option>
+                        <option value="Todos">Todos</option>
+                        @foreach ($dbStatuses as $dbStatus)
+                            <option value="{{ $dbStatus->id }}">{{ $dbStatus->title }}</option>
+                        @endforeach
                     </x-form.form-select>
-                </div>
-
-                
-            </div>
-
-            <div class="flex justify-end py-3">
-                <div class="w-44">
-                    <x-form.form-select wire:model.live="perPage">
-                        <option value="50">50 por página</option>
-                        <option value="100">100 por página</option>
-                        <option value="150">150 por página</option>
-                        <option value="200">200 por página</option>
-                        <option value="250">250 por página</option>
-                    </x-form.form-select>
-                </div>
+                </div>                
             </div>
         @endslot
 
@@ -67,7 +52,7 @@
             <x-table.th class="w-20">Pregão</x-table.th>
             <x-table.th>Título</x-table.th>
             <x-table.th class="w-28">Data Início</x-table.th>
-            <x-table.th class="w-28">Vencimento</x-table.th>
+            <x-table.th class="w-28">Data Fim</x-table.th>
             <x-table.th class="w-28">Status</x-table.th>
         @endslot
 
@@ -75,9 +60,12 @@
         @slot('tbody')
             @foreach ($dbContracts as $dbContract)
                 <x-table.tr>
-                    <x-table.td>{{ $dbContract->name }}</x-table.td>
-                    <x-table.td>{{ $dbContract->email }}</x-table.td>
-                    <x-table.td>{{ $dbContract->birth_date }}</x-table.td>
+                    <x-table.td>{{ $dbContract->number_process_bidding }}</x-table.td>
+                    <x-table.td>{{ $dbContract->number_auction }}</x-table.td>
+                    <x-table.td>{{ $dbContract->title }}</x-table.td>
+                    <x-table.td>{{ $dbContract->start_date }}</x-table.td>
+                    <x-table.td>{{ $dbContract->end_date }}</x-table.td>
+                    <x-table.td>{{ $dbContract->ContractStatus->title }}</x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

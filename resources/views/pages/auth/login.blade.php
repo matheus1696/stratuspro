@@ -25,14 +25,14 @@
                             <!-- Campo de Email -->
                             <div>
                                 <x-form.form-label for="email" value="Email" />
-                                <x-form.form-input type="email" name='email' value="{{ old('email') }}" placeholder="email@example.com" required autofocus />
+                                <x-form.form-input type="email" name='email' value="superadmin@stratuspro.com.br" placeholder="email@example.com" required autofocus />
                                 <x-form.form-error for="email" />
                             </div>
     
                             <!-- Campo de Senha -->
                             <div>                        
                                 <x-form.form-label for="password" value="Senha" />
-                                <x-form.form-input type="password" name='password' placeholder="********" required />
+                                <x-form.form-input type="password" name='password' value="superadmin" placeholder="********" required />
                                 <x-form.form-error for="password" />
                             </div>
     
