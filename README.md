@@ -45,9 +45,6 @@ Iniciando sistema
 Usuários: `sysadmin@stratuspro.com.br` <br>
 Senha: `sysadmin`
 
-Usuários: `admin@stratuspro.com.br` <br>
-Senha: `admin`
-
 Usuários: `user@stratuspro.com.br` <br>
 Senha: `user`
 
