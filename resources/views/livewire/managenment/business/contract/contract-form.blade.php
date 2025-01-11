@@ -38,6 +38,28 @@
             </x-form.form-textarea>
             <x-form.form-error for="description" required/>
         </div>
+
+        <div class="col-span-12">            
+            <x-form.form-label for="financialBlocks" value="Blocos de Financiamento"/>
+            <div class="col-span-12 grid grid-cols-5 justify-center items-center gap-2">
+                @foreach ($dbFinancialBlocks as $dbFinancialBlock)
+                    <div class="text-xs">
+                        <!-- Checkbox de seleção -->
+                        <input type="checkbox"
+                            id="financialBlock_{{ $dbFinancialBlock->id }}"
+                            name="financialBlocks[]" 
+                            value="{{ $dbFinancialBlock->id }}"
+                            class="hidden peer">
+                        
+                        <!-- Label do checkbox -->
+                        <label for="financialBlock_{{ $dbFinancialBlock->id }}"
+                            class="flex items-center justify-center px-2 py-1 text-center text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-blue-700 peer-checked:text-white peer-checked:border-blue-700 hover:border-blue-700">
+                            {{ $dbFinancialBlock->acronym }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     
         <div class="col-span-4">
             <x-form.form-label for="start_date" value="Data de Início"/>

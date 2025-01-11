@@ -4,6 +4,7 @@ namespace App\Livewire\Managenment\Business\Contract;
 
 use App\Models\Business\BusinessContract;
 use App\Models\Business\BusinessContractStatus;
+use App\Models\Configuration\ConfigurationFinancialBlock;
 use Livewire\Component;
 
 class ContractForm extends Component
@@ -20,7 +21,8 @@ class ContractForm extends Component
     public function render()
     {
         $dbStatuses = BusinessContractStatus::orderBy('title')->get();
+        $dbFinancialBlocks = ConfigurationFinancialBlock::orderBy('title')->get();
 
-        return view('livewire.managenment.business.contract.contract-form', compact('dbStatuses'));
+        return view('livewire.managenment.business.contract.contract-form', compact('dbStatuses', 'dbFinancialBlocks'));
     }
 }

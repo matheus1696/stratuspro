@@ -44,6 +44,15 @@ class BusinessContractController extends Controller
 
         $contract = BusinessContract::create($request->all());
 
+        // Validação dos blocos financeiros
+        $validated = $request->validate([
+            'financialBlocks' => 'array',
+            'financialBlocks.*' => 'exists:financial_blocks,id',
+        ]);
+
+        // Sincroniza os blocos financeiros com o contrato de negócios
+        $contract->FinancialBlock()->sync($validated['financialBlocks']);
+
         return redirect()->route('contracts.show', $contract->id);
     }
 

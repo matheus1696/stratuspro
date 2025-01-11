@@ -2,6 +2,8 @@
 
 namespace App\Models\Business;
 
+use App\Models\Configuration\ConfigurationFinancialBlock;
+use Database\Seeders\ConfigurationFinancialBlockSeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,5 +32,11 @@ class BusinessContract extends Model
     public function ContractStatus()
     {
         return $this->belongsTo(BusinessContractStatus::class, 'status_id');
+    }
+
+    // Relacionamento muitos para muitos com FinancialBlock
+    public function FinancialBlock()
+    {
+        return $this->belongsToMany(ConfigurationFinancialBlock::class, 'business_contract_has_financial_block');
     }
 }
