@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
                 Route::get('create', [BusinessContractController::class, 'create'])->name('contracts.create')->middleware('permission:managenment_contracts');
                 Route::post('store', [BusinessContractController::class, 'store'])->name('contracts.store')->middleware('permission:managenment_contracts');
                 Route::get('edit/{business_contract}', [BusinessContractController::class, 'edit'])->name('contracts.edit')->middleware('permission:managenment_contracts');
+                Route::put('update/{business_contract}', [BusinessContractController::class, 'update'])->name('contracts.update')->middleware('permission:managenment_contracts');
                 Route::get('show/{business_contract}', [BusinessContractController::class, 'show'])->name('contracts.show')->middleware('permission:managenment_contracts');
             });
         });

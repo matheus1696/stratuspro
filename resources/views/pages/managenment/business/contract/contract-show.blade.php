@@ -2,15 +2,15 @@
 
     @slot('body')
     
-        <div class="flex justify-between items-center h-20">
-            <x-title.page-title title="Gestão de Contratos" />
+        <x-header.header-group>
+            <x-header.header-title title="Gestão de Contratos - Detalhes do Contrato" /> 
             <div>
-                <a href="{{ route('contracts.index') }}" class="text-sm bg-gray-600 hover:bg-gray-700 rounded-full shadown-lg px-2.5 py-1.5 text-white hover:text-white transition-all duration-100">Voltar</a>
+                <a href="{{ route('contracts.index') }}" class="text-sm bg-gray-600 hover:bg-gray-700 rounded-full shadown-lg px-2.5 py-1.5 text-white hover:text-white transition-all duration-100">Lista de Contratos</a>
             </div>
-        </div>
+        </x-header.header-group>  
 
         <div>
-            <livewire:managenment.business.contract.contract-show />
+            <livewire:managenment.business.contract.contract-show :contractId="$dbContract" />
         </div>
 
     @endslot

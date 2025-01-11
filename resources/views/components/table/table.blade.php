@@ -3,7 +3,7 @@
 </div>
 
 <div class="overflow-x-auto shadow-md rounded-xl">
-    <table class="w-full bg-white">
+    <table class="w-full bg-white table-fixed">
         <thead class="text-sm text-center bg-blue-200 border-b-2 border-blue-800">
             <tr>
                 {{$thead ?? ""}}

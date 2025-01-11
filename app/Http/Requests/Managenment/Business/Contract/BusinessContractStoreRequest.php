@@ -22,15 +22,14 @@ class BusinessContractStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-            'number_process_bidding' => 'required|string|min:8|max:9',
-            'number_auction' => 'required|string|min:8|max:9',
-            'number_price_registration' => 'required|string|min:8|max:9',
-            'number_price_record_document' => 'required|string|min:8|max:9',
+            'number_process_bidding' => 'required|string|min:8|max:9|unique:business_contracts,number_process_bidding',
+            'number_auction' => 'required|string|min:8|max:9|unique:business_contracts,number_auction',
+            'number_price_registration' => 'required|string|min:8|max:9|unique:business_contracts,number_price_registration',
+            'number_price_record_document' => 'required|string|min:8|max:9|unique:business_contracts,number_price_record_document',
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:1000',
             'start_date' => 'required|date',
-            'period' => 'required|in:6,12,24,36,48',
+            'period' => 'required',
             'status_id' => 'required',
         ];
     }

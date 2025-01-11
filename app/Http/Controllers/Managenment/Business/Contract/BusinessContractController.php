@@ -66,7 +66,7 @@ class BusinessContractController extends Controller
         //
         $dbContract = $businessContract->id;
         
-        return view('pages.managenment.business.contract.contract-create', compact('dbContract'));
+        return view('pages.managenment.business.contract.contract-edit', compact('dbContract'));
     }
 
     /**
@@ -75,13 +75,8 @@ class BusinessContractController extends Controller
     public function update(BusinessContractUpdateRequest $request, BusinessContract $businessContract)
     {
         //
-    }
+        $businessContract->update($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(BusinessContract $businessContract)
-    {
-        //
+        return redirect()->route('contracts.show', $businessContract->id);
     }
 }

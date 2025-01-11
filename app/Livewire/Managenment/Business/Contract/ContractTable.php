@@ -37,7 +37,7 @@ class ContractTable extends Component
         if (!empty($this->auction)) { $query->orWhere('number_auction', 'like', '%' . strtolower($this->auction) . '%'); }
         if (!empty($this->start_date)) { $query->orWhere('start_date', 'like', '%' . strtolower($this->start_date) . '%'); }
         if (!empty($this->end_date)) { $query->orWhere('end_date', 'like', '%' . strtolower($this->end_date) . '%'); }
-        if (!empty($this->status) && $this->status != "Todos") { $query->orWhere('status', $this->status); }
+        if (!empty($this->status) && $this->status != "Todos") { $query->orWhere('status_id', $this->status); }
 
         // Paginando os resultados
         $dbContracts = $query->orderBy('title')->paginate(100);

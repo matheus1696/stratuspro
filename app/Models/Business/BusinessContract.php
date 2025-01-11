@@ -20,6 +20,7 @@ class BusinessContract extends Model
         'description',
         'start_date',
         'end_date',
+        'period',
         'status_id',
         'total_price',
         'request_price',

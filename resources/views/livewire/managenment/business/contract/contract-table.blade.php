@@ -42,19 +42,19 @@
                             <option value="{{ $dbStatus->id }}">{{ $dbStatus->title }}</option>
                         @endforeach
                     </x-form.form-select>
-                </div>                
+                </div>
             </div>
         @endslot
 
         <!-- Inicio Slot THead -->
         @slot('thead')
-            <x-table.th class="w-20">PL</x-table.th>
-            <x-table.th class="w-20">Pregão</x-table.th>
-            <x-table.th>Título</x-table.th>
+            <x-table.th class="w-24">PL</x-table.th>
+            <x-table.th class="w-24">Pregão</x-table.th>
+            <x-table.th class="w-80">Título</x-table.th>
             <x-table.th class="w-28">Data Início</x-table.th>
             <x-table.th class="w-28">Data Fim</x-table.th>
             <x-table.th class="w-28">Status</x-table.th>
-            <x-table.th class="w-14">Status</x-table.th>
+            <x-table.th class="w-10"></x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
@@ -64,12 +64,13 @@
                     <x-table.td>{{ $dbContract->number_process_bidding }}</x-table.td>
                     <x-table.td>{{ $dbContract->number_auction }}</x-table.td>
                     <x-table.td>{{ $dbContract->title }}</x-table.td>
-                    <x-table.td>{{ $dbContract->start_date }}</x-table.td>
-                    <x-table.td>{{ $dbContract->end_date }}</x-table.td>
+                    <x-table.td>{{ date('d/m/Y', strtotime($dbContract->start_date)) }}</x-table.td>
+                    <x-table.td>{{ date('d/m/Y', strtotime($dbContract->end_date)) }}</x-table.td>
                     <x-table.td>{{ $dbContract->ContractStatus->title }}</x-table.td>
                     <x-table.td>
-                        <a href=" {{route('contracts.show', $dbContract->id) }}">Show</a>
-                        <a href=" {{route('contracts.edit', $dbContract->id) }}">Edit</a>
+                        <x-table.button.btn-group>
+                            <x-table.button.btn-show href=" {{ route('contracts.show', $dbContract->id) }}" />
+                        </x-table.button.btn-group>
                     </x-table.td>
                 </x-table.tr>
             @endforeach

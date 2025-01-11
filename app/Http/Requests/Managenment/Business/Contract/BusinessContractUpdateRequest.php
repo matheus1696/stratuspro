@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Managenment\Business\Contract;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class BusinessContractUpdateRequest extends FormRequest
 {
@@ -22,7 +23,54 @@ class BusinessContractUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
+            'number_process_bidding' => [
+                'required',
+                'string',
+                'min:8',
+                'max:9',
+                Rule::unique('business_contracts')->ignore($this->business_contract),
+            ],
+            'number_auction' => [
+                'required',
+                'string',
+                'min:8',
+                'max:9',
+                Rule::unique('business_contracts')->ignore($this->business_contract),
+            ],
+            'number_price_registration' => [
+                'required',
+                'string',
+                'min:8',
+                'max:9',
+                Rule::unique('business_contracts')->ignore($this->business_contract),
+            ],
+            'number_price_record_document' => [
+                'required',
+                'string',
+                'min:8',
+                'max:9',
+                Rule::unique('business_contracts')->ignore($this->business_contract),
+            ],
+            'title' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'description' => [
+                'nullable',
+                'string',
+                'max:1000',
+            ],
+            'start_date' => [
+                'required',
+                'date',
+            ],
+            'period' => [
+                'required',
+            ],
+            'status_id' => [
+                'required',
+            ],
+        ];          
     }
 }

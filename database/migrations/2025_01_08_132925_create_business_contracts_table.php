@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('filter');
             $table->text('description');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date');            
+            $table->integer('period');
             $table->foreignId('status_id')->constrained('business_contract_statuses');
             $table->decimal('total_price', 15, 2)->nullable(); // Valor total
             $table->decimal('request_price', 15, 2)->nullable(); // Valor solicitado
