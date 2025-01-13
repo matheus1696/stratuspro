@@ -16,7 +16,7 @@
             <div><strong>Saldo Restante:</strong> {{$dbContract->balance_price}}</div>
             <div class="col-span-4">
                 <strong>Dotações Orçamentárias:</strong>
-                <div>
+                <div class="space-y-1">
                     @foreach ($dbContract->FinancialBlocks as $FinancialBlock)
                         <div class="pl-5">{{ $FinancialBlock->title }}</div>
                     @endforeach
