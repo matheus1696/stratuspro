@@ -34,9 +34,10 @@ class BusinessContract extends Model
         return $this->belongsTo(BusinessContractStatus::class, 'status_id');
     }
 
-    // Relacionamento muitos para muitos com FinancialBlock
-    public function FinancialBlock()
+    public function FinancialBlocks()
     {
-        return $this->belongsToMany(ConfigurationFinancialBlock::class, 'business_contract_has_financial_block');
+        return $this->belongsToMany(ConfigurationFinancialBlock::class, 'business_contract_has_financial_blocks', 'contract_id', 'financial_block_id')
+                        ->orderBy('title');
     }
+
 }

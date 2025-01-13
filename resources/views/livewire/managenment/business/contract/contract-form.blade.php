@@ -39,17 +39,24 @@
             <x-form.form-error for="description" required/>
         </div>
 
-        <div class="col-span-12">            
-            <x-form.form-label for="financialBlocks" value="Blocos de Financiamento"/>
+        <div class="col-span-12">
+            <x-form.form-label for="FinancialBlocks" value="Blocos de Financiamento"/>
             <div class="col-span-12 grid grid-cols-5 justify-center items-center gap-2">
                 @foreach ($dbFinancialBlocks as $dbFinancialBlock)
+                    @isset($dbContract)
+                        @php
+                            // Verifica se o bloco foi selecionado anteriormente ou está associado ao contrato
+                            $isChecked = in_array($dbFinancialBlock->id, old('financialBlock', $dbContract->FinancialBlocks->pluck('id')->toArray() ?? []));
+                        @endphp
+                    @endisset
                     <div class="text-xs">
                         <!-- Checkbox de seleção -->
                         <input type="checkbox"
                             id="financialBlock_{{ $dbFinancialBlock->id }}"
-                            name="financialBlocks[]" 
+                            name="financialBlock[]" 
                             value="{{ $dbFinancialBlock->id }}"
-                            class="hidden peer">
+                            class="hidden peer"
+                            @isset($dbContract) {{ $isChecked ? 'checked' : '' }} @endisset>
                         
                         <!-- Label do checkbox -->
                         <label for="financialBlock_{{ $dbFinancialBlock->id }}"
@@ -60,6 +67,7 @@
                 @endforeach
             </div>
         </div>
+        
     
         <div class="col-span-4">
             <x-form.form-label for="start_date" value="Data de Início"/>

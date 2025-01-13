@@ -13,7 +13,7 @@ class ContractShow extends Component
     public function mount($contractId = null)
     {
         $this->contractId = $contractId;
-        $this->dbContract = BusinessContract::find($this->contractId);
+        $this->dbContract = BusinessContract::with('FinancialBlocks')->find($this->contractId);
     }
 
     public function render()

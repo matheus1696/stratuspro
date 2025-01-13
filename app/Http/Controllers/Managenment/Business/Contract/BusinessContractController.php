@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\BusinessContract;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractStoreRequest;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractUpdateRequest;
+use App\Models\Business\BusinessContractHasFinancialBlock;
 use Carbon\Carbon;
 
 class BusinessContractController extends Controller
@@ -44,14 +45,8 @@ class BusinessContractController extends Controller
 
         $contract = BusinessContract::create($request->all());
 
-        // Validação dos blocos financeiros
-        $validated = $request->validate([
-            'financialBlocks' => 'array',
-            'financialBlocks.*' => 'exists:financial_blocks,id',
-        ]);
-
-        // Sincroniza os blocos financeiros com o contrato de negócios
-        $contract->FinancialBlock()->sync($validated['financialBlocks']);
+        // Sincroniza os blocos financeiros
+        $contract->FinancialBlocks()->sync($request->input('financialBlock', []));
 
         return redirect()->route('contracts.show', $contract->id);
     }
@@ -85,6 +80,7 @@ class BusinessContractController extends Controller
     {
         //
         $businessContract->update($request->all());
+        $businessContract->FinancialBlocks()->sync($request->input('financialBlock', []));
 
         return redirect()->route('contracts.show', $businessContract->id);
     }
