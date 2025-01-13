@@ -1,5 +1,10 @@
 <div>
-    <div class="bg-white rounded-lg shadow-lg p-6 text-sm">
+    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-6 text-sm">
+        <div class="flex justify-end">
+            <a href="{{ route('contracts.edit', $dbContract->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 hover:text-gray-900 rounded-full shadown-lg text-xs transition-all duration-300 px-2.5 py-2 absolute">
+                <i class="fas fa-pen"></i>
+            </a>
+        </div>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
             <div><strong>Nº Processo:</strong> {{$dbContract->number_process_bidding}}</div>
             <div><strong>Nº Pregão:</strong> {{$dbContract->number_auction}}</div>
@@ -22,18 +27,6 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-
-        <div class="flex justify-center items-center gap-3 mt-2 border-t border-gray-300 pt-4">
-            <a href="{{ route('contracts.edit', $dbContract->id) }}" class="flex flex-col justify-center items-center gap-1.5 bg-yellow-500 hover:bg-yellow-600 text-gray-800 hover:text-gray-900 rounded shadown-lg py-3 px-5 text-xs transition-all duration-300 w-24">
-                <i class="fas fa-pen"></i>
-                <p>Editar</p>
-            </a>
-            
-            <a href="{{ route('contracts.edit', $dbContract->id) }}" class="flex flex-col justify-center items-center gap-1.5 bg-green-700 hover:bg-green-800 text-gray-200 hover:text-gray-100 rounded shadown-lg py-3 px-5 text-xs transition-all duration-300 w-24">
-                <i class="fas fa-plus"></i>
-                <p>Add. Item</p>
-            </a>
         </div>
     </div>   
 </div>

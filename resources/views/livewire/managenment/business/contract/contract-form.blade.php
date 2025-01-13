@@ -28,7 +28,7 @@
         <div class="col-span-12">
             <x-form.form-label for="title" value="Título"/>
             <x-form.form-input name="title" value="{{ old('title') ?? $dbContract->title ?? '' }}" placeholder="Título"/>
-            <x-form.form-error for="title" required/>
+            <x-form.form-error for="title"/>
         </div>
     
         <div class="col-span-12">
@@ -36,7 +36,7 @@
             <x-form.form-textarea name="description" placeholder="Descrição ou objetivo do contrato">
                 {{ old('description') ?? $dbContract->description ?? '' }}
             </x-form.form-textarea>
-            <x-form.form-error for="description" required/>
+            <x-form.form-error for="description"/>
         </div>
 
         <div class="col-span-12">
