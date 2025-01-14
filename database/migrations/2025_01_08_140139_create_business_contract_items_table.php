@@ -17,19 +17,21 @@ return new class extends Migration
             $table->string('filter');
             $table->text('description');
             $table->foreignId('unit_id')->constrained('configuration_measurement_units');
+            $table->integer('quantity_adm')->nullable();
+            $table->integer('quantity_atb')->nullable();
+            $table->integer('quantity_mac')->nullable();
+            $table->integer('quantity_vepd')->nullable();
+            $table->integer('quantity_vsan')->nullable();
+            $table->integer('request_adm')->nullable();
+            $table->integer('request_atb')->nullable();
+            $table->integer('request_mac')->nullable();
+            $table->integer('request_vepd')->nullable();
+            $table->integer('request_vsan')->nullable();
             $table->decimal('unit_price', 15, 2);
             $table->unsignedBigInteger('contract_id');
             $table->timestamps();
 
             $table->foreign('contract_id')->references('id')->on('business_contracts');
-        });
-
-        Schema::create('business_contract_item_has_financial_blocks', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('contract_item_id')->constrained('business_contract_items');
-            $table->foreignId('financial_block_id')->constrained('configuration_financial_blocks');
-            $table->integer('quantity');
-            $table->timestamps();
         });
     }
 

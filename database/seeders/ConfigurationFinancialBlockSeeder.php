@@ -15,6 +15,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
     {
         //
         ConfigurationFinancialBlock::create([
+            'code' => 'adm',
             'acronym' => 'ADM',
             'title' => 'Administração',
             'filter'=>'administração',
@@ -24,6 +25,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
         ]);
 
         ConfigurationFinancialBlock::create([
+            'code' => 'atb',
             'acronym' => 'ATB',
             'title' => 'Atenção Básica',
             'filter' => 'atenção básica',
@@ -33,6 +35,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
         ]);
 
         ConfigurationFinancialBlock::create([
+            'code' => 'mac',
             'acronym' => 'MAC',
             'title' => 'Média e Alta Especialidade',
             'filter' => 'média e alta especialidade',
@@ -42,6 +45,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
         ]);
 
         ConfigurationFinancialBlock::create([
+            'code' => 'vsan',
             'acronym' => 'V. SAN',
             'title' => 'Vigilância Sanitária',
             'filter' => 'Vigilância Sanitária',
@@ -51,6 +55,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
         ]);
 
         ConfigurationFinancialBlock::create([
+            'code' => 'vepd',
             'acronym' => 'V. EPD',
             'title' => 'Vigilância Epidemiológica',
             'filter' => 'vigilância epidemiológica',

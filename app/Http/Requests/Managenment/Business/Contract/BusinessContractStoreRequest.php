@@ -31,6 +31,7 @@ class BusinessContractStoreRequest extends FormRequest
             'start_date' => 'required|date',
             'period' => 'required',
             'status_id' => 'required',
+            'financialBlock' => 'required',
         ];
     }
 }

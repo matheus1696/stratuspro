@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\BusinessContract;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractStoreRequest;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractUpdateRequest;
-use App\Models\Business\BusinessContractHasFinancialBlock;
 use Carbon\Carbon;
 
 class BusinessContractController extends Controller

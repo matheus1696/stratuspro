@@ -1,4 +1,4 @@
-<div class="mb-5">
+<div class="mb-2">
     {{ $search ?? ""}}
 </div>
 

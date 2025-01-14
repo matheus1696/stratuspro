@@ -51,26 +51,12 @@ class BusinessContractUpdateRequest extends FormRequest
                 'max:9',
                 Rule::unique('business_contracts')->ignore($this->business_contract),
             ],
-            'title' => [
-                'required',
-                'string',
-                'max:255',
-            ],
-            'description' => [
-                'nullable',
-                'string',
-                'max:1000',
-            ],
-            'start_date' => [
-                'required',
-                'date',
-            ],
-            'period' => [
-                'required',
-            ],
-            'status_id' => [
-                'required',
-            ],
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'start_date' => 'required|date',
+            'period' => 'required',
+            'status_id' => 'required',
+            'financialBlock' => 'required',
         ];          
     }
 }
