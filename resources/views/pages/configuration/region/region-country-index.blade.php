@@ -1,15 +1,13 @@
 <x-pages.app>
 
-    @slot('body')    
-    
-        <div>
-            <x-title.page-title title="Paises" /> 
-        </div>   
-    
+    @slot('body')
+        <x-header.header-group>
+            <x-header.header-title title="Paises" />
+        </x-header.header-group>
+
         <div>
             <livewire:configuration.region.region-country-table />
         </div>
-
     @endslot
 
 </x-pages.app>

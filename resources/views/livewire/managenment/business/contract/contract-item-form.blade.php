@@ -43,13 +43,16 @@
 
                 @if ($isLinked)
                     <div>
-                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->title" />
-                        <x-form.form-input type="number" id="financial_block_{{ $dbFinancialBlock->id }}" name="quantity_{{ $dbFinancialBlock->code }}" placeholder="1" value="{{ old('financialBlock.' . $dbFinancialBlock->id) }}" />
+                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->acronym" class="md:hidden" />
+                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->title" class="hidden md:inline-block" />
+                        <x-form.form-input type="number" id="financial_block_{{ $dbFinancialBlock->id }}" name="quantity_{{ $dbFinancialBlock->code }}" placeholder="1"
+                            value="{{ old('financialBlock.' . $dbFinancialBlock->id) ?? data_get($dbContractItem, 'quantity_' . $dbFinancialBlock->code, '') }}" />
                         <x-form.form-error for="financialBlock.{{ $dbFinancialBlock->id }}" />
                     </div>
                 @else
                     <div>
-                        <x-form.form-label :value="$dbFinancialBlock->title" />
+                        <x-form.form-label :value="$dbFinancialBlock->acronym" class="md:hidden" />
+                        <x-form.form-label :value="$dbFinancialBlock->title" class="hidden md:inline-block" />
                         <x-form.form-input disabled value="0" />
                     </div>
                 @endif

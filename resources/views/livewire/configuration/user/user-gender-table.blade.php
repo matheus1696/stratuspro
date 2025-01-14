@@ -3,8 +3,8 @@
 
         <!-- Inicio Slot Search -->
         @slot('search')
-            <div class="flex justify-end gap-2 py-3">
-                <div class="w-full md:w-40">
+            <div class="flex justify-end gap-2">
+                <div class="w-full md:w-60">
                     <!-- Filtros de Pesquisa -->
                     <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Procurar por gênero" />
                 </div>

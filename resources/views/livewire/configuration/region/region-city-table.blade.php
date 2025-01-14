@@ -3,7 +3,7 @@
 
         <!-- Inicio Slot Search -->
         @slot('search')
-            <div class="flex justify-between gap-2 py-3">
+            <div class="flex justify-between gap-2">
                 <div class="w-44 md:w-32">
                     <x-form.form-select wire:model.live="perPage">
                         <option value="50">50 por página</option>
@@ -14,7 +14,7 @@
                     </x-form.form-select>
                 </div>
 
-                <div class="w-full md:w-40">
+                <div class="w-full md:w-60">
                     <!-- Filtros de Pesquisa -->
                     <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Procurar por cidade" />
                 </div>

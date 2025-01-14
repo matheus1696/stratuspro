@@ -17,7 +17,7 @@ Route::get('/', function () { return redirect()->route('login'); });
 //Usuário Autenciados
 Route::middleware('auth')->group(function () {
 
-    Route::middleware('user_profile')->group(function (){
+    Route::middleware('permission:user_profile')->group(function (){
         //Rotas de Usuários
         Route::prefix('profile')->group(function () {
             Route::get('personal', [ProfileController::class, 'editPersonal'])->name('profiles.editPersonal');
@@ -60,8 +60,8 @@ Route::middleware('auth')->group(function () {
                     //Rotas de Contratos
                     Route::get('{business_contract}/item/create', [BusinessContractItemController::class, 'create'])->name('contract_items.create');
                     Route::post('{business_contract}/item/create', [BusinessContractItemController::class, 'store'])->name('contract_items.store');
-                    Route::get('edit/{business_contract_item}', [BusinessContractItemController::class, 'edit'])->name('contract_items.edit');
-                    Route::put('update/{business_contract_item}', [BusinessContractItemController::class, 'update'])->name('contract_items.update');
+                    Route::get('edit/item/{business_contract_item}', [BusinessContractItemController::class, 'edit'])->name('contract_items.edit');
+                    Route::put('update/item/{business_contract_item}', [BusinessContractItemController::class, 'update'])->name('contract_items.update');
                 });
 
                   

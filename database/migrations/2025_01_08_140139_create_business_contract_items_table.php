@@ -17,17 +17,19 @@ return new class extends Migration
             $table->string('filter');
             $table->text('description');
             $table->foreignId('unit_id')->constrained('configuration_measurement_units');
-            $table->integer('quantity_adm')->nullable();
-            $table->integer('quantity_atb')->nullable();
-            $table->integer('quantity_mac')->nullable();
-            $table->integer('quantity_vepd')->nullable();
-            $table->integer('quantity_vsan')->nullable();
-            $table->integer('request_adm')->nullable();
-            $table->integer('request_atb')->nullable();
-            $table->integer('request_mac')->nullable();
-            $table->integer('request_vepd')->nullable();
-            $table->integer('request_vsan')->nullable();
+            $table->integer('quantity_adm')->nullable()->default(0);
+            $table->integer('quantity_atb')->nullable()->default(0);
+            $table->integer('quantity_mac')->nullable()->default(0);
+            $table->integer('quantity_vepd')->nullable()->default(0);
+            $table->integer('quantity_vsan')->nullable()->default(0);
+            $table->integer('request_adm')->nullable()->default(0);
+            $table->integer('request_atb')->nullable()->default(0);
+            $table->integer('request_mac')->nullable()->default(0);
+            $table->integer('request_vepd')->nullable()->default(0);
+            $table->integer('request_vsan')->nullable()->default(0);
             $table->decimal('unit_price', 15, 2);
+            $table->decimal('total_price', 15, 2)->nullable(); // Valor total
+            $table->decimal('request_price', 15, 2)->nullable(); // Valor solicitado
             $table->unsignedBigInteger('contract_id');
             $table->timestamps();
 

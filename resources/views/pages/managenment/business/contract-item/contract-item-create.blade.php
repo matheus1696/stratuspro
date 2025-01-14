@@ -15,7 +15,7 @@
                                 
                 <livewire:managenment.business.contract.contract-item-form :contractId="$dbContract" />
         
-                <x-button.btn-primary value="Cadastrar Novo Contrato" />
+                <x-button.btn-primary value="Cadastrar Novo Item" />
         
             </form>
         </div>

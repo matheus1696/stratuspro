@@ -1,15 +1,13 @@
 <x-pages.app>
 
-    @slot('body')    
-    
-        <div>
-            <x-title.page-title title="Gestão de Usuários" /> 
-        </div>   
-    
+    @slot('body')
+        <x-header.header-group>
+            <x-header.header-title title="Gerenciamento de Usuários" />
+        </x-header.header-group>
+
         <div>
             <livewire:managenment.user.user-table />
         </div>
-
     @endslot
 
 </x-pages.app>

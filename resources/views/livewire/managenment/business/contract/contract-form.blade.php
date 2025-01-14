@@ -66,8 +66,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>
-        
+        </div>        
     
         <div class="col-span-4">
             <x-form.form-label for="start_date" value="Data de Início"/>

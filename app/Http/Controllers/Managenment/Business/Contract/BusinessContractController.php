@@ -41,6 +41,9 @@ class BusinessContractController extends Controller
 
         $request['filter'] = strtolower($request['title']);
         $request['end_date'] = $endDate;
+        $request['total_price'] = 0.00;
+        $request['request_price'] = 0.00;
+        $request['balance_price'] = 0.00;
 
         $contract = BusinessContract::create($request->all());
 

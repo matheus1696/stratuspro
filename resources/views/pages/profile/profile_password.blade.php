@@ -2,7 +2,7 @@
 <x-pages.app>
     @slot('body')
         <div class="flex justify-center items-center min-h-96 md:pt-20">
-            <div class="w-full md:w-3/4 xl:w-2/3 bg-white rounded-lg shadown-lg p-6">
+            <x-pages.conteiner class="w-full md:w-3/4 xl:w-2/3">
                     <h3 class="mb-3 text-lg font-semibold text-center">Alteração de Senha</h3>
 
                     <form action="{{ route('profiles.updatePassword', $dbUser->id) }}" method="post">
@@ -36,7 +36,7 @@
 
                         <x-button.btn-primary value="Salvar Alteração"/>
                     </form>
-            </div>
+            </x-pages.conteiner>
         </div>
     @endslot
 </x-pages.app>

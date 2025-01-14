@@ -3,47 +3,51 @@
 
         <!-- Inicio Slot Search -->
         @slot('search')
-            <div class="grid grid-cols-12 justify-between gap-2 px-3 py-3 bg-white rounded-lg shadow-lg">
+            <x-pages.conteiner class="px-3 py-3">
+                <p class="font-bold uppercase text-sm pl-1 text-gray-400"> <i class="fas fa-filter text-xs"></i> Filtros:</p>
+                <x-form.form-group class="mb-1">
 
-                <!-- Filtros de Pesquisa -->
-                <div class="col-span-3 md:col-span-1">
-                    <x-form.form-label for="process" value="Nº PL" />
-                    <x-form.form-input type="text" id="process" wire:model.live.debounce.300ms="process"
-                        placeholder="000-{{ now()->format('Y') }}" />
-                </div>
-                <!-- Filtros de Pesquisa -->
-                <div class="col-span-3 md:col-span-1">
-                    <x-form.form-label for="auction" value="Nº Pregão" />
-                    <x-form.form-input type="text" id="auction" wire:model.live.debounce.300ms="auction"
-                        placeholder="000-{{ now()->format('Y') }}" />
-                </div>
-                <!-- Filtros de Pesquisa -->
-                <div class="col-span-6 md:col-span-4">
-                    <x-form.form-label for="titulo" value="Título do Processo" />
-                    <x-form.form-input type="text" id="titulo" wire:model.live.debounce.300ms="titulo"
-                        placeholder="Título do Processo" />
-                </div>
-                <!-- Filtros de Pesquisa -->
-                <div class="col-span-4 md:col-span-2">
-                    <x-form.form-label for="start_date" value="Data Início" />
-                    <x-form.form-input type="date" id="start_date" wire:model.live.debounce.300ms="start_date" />
-                </div>
-                <!-- Filtros de Pesquisa -->
-                <div class="col-span-4 md:col-span-2">
-                    <x-form.form-label for="end_date" value="Data Fim" />
-                    <x-form.form-input type="date" id="end_date" wire:model.live.debounce.300ms="end_date" />
-                </div>
+                    <!-- Filtros de Pesquisa -->
+                    <div class="col-span-3 md:col-span-1">
+                        <x-form.form-label for="process" value="Nº PL" />
+                        <x-form.form-input type="text" id="process" wire:model.live.debounce.300ms="process"
+                            placeholder="000-{{ now()->format('Y') }}" />
+                    </div>
+                    <!-- Filtros de Pesquisa -->
+                    <div class="col-span-3 md:col-span-1">
+                        <x-form.form-label for="auction" value="Nº Pregão" />
+                        <x-form.form-input type="text" id="auction" wire:model.live.debounce.300ms="auction"
+                            placeholder="000-{{ now()->format('Y') }}" />
+                    </div>
+                    <!-- Filtros de Pesquisa -->
+                    <div class="col-span-6 md:col-span-4">
+                        <x-form.form-label for="titulo" value="Título do Processo" />
+                        <x-form.form-input type="text" id="titulo" wire:model.live.debounce.300ms="titulo"
+                            placeholder="Título do Processo" />
+                    </div>
+                    <!-- Filtros de Pesquisa -->
+                    <div class="col-span-4 md:col-span-2">
+                        <x-form.form-label for="start_date" value="Data Início" />
+                        <x-form.form-input type="date" id="start_date" wire:model.live.debounce.300ms="start_date" />
+                    </div>
+                    <!-- Filtros de Pesquisa -->
+                    <div class="col-span-4 md:col-span-2">
+                        <x-form.form-label for="end_date" value="Data Fim" />
+                        <x-form.form-input type="date" id="end_date" wire:model.live.debounce.300ms="end_date" />
+                    </div>
 
-                <div class="col-span-4 md:col-span-2">
-                    <x-form.form-label for="status" value="Status" />
-                    <x-form.form-select id="status" wire:model.live="status">
-                        <option value="Todos">Todos</option>
-                        @foreach ($dbStatuses as $dbStatus)
-                            <option value="{{ $dbStatus->id }}">{{ $dbStatus->title }}</option>
-                        @endforeach
-                    </x-form.form-select>
-                </div>
-            </div>
+                    <div class="col-span-4 md:col-span-2">
+                        <x-form.form-label for="status" value="Status" />
+                        <x-form.form-select id="status" wire:model.live="status">
+                            <option value="Todos">Todos</option>
+                            @foreach ($dbStatuses as $dbStatus)
+                                <option value="{{ $dbStatus->id }}">{{ $dbStatus->title }}</option>
+                            @endforeach
+                        </x-form.form-select>
+                    </div>
+
+                </x-form.form-group>
+            </x-pages.conteiner>
         @endslot
 
         <!-- Inicio Slot THead -->

@@ -28,8 +28,9 @@ class BusinessContractItem extends Model
         'request_vepd',
         'request_vsan',
         'unit_price',
-        'unit_price',
-        'unit_price',
+        'total_price',
+        'request_price',
+        'balance_price',
         'contract_id',
     ];
 

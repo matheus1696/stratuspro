@@ -1,6 +1,10 @@
 @extends('adminlte::page')
 
 @section('content')
+
+    <!-- Alerta de Atulizações -->
+    <x-alert.alert />
+
     <div class="px-5">
         {{ $body ?? '' }}
     </div>
