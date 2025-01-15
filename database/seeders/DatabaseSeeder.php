@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\User\UserGender;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,8 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(200)->create();
-
         $this->call([
             ConfigurationFinancialBlockSeeder::class,
             ConfigurationMeasurementUnitSeeder::class,
@@ -30,6 +26,7 @@ class DatabaseSeeder extends Seeder
             UserGenderSeeder::class,
             UserSeeder::class,
             BusinessContractStatusSeeder::class,
+            BusinessContractSupplierSeeder::class,
         ]);
     }
 }

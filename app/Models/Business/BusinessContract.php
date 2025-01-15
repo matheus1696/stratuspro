@@ -29,13 +29,11 @@ class BusinessContract extends Model
         'balance_price',
     ];
 
-    public function ContractStatus()
-    {
+    public function ContractStatus(){
         return $this->belongsTo(BusinessContractStatus::class, 'status_id');
     }
 
-    public function FinancialBlocks()
-    {
+    public function FinancialBlocks(){
         return $this->belongsToMany(ConfigurationFinancialBlock::class, 'business_contract_has_financial_blocks', 'contract_id', 'financial_block_id')
                         ->orderBy('title');
     }

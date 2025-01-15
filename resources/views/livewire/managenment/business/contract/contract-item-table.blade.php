@@ -45,16 +45,21 @@
 
                     <x-table.td>R$ {{ number_format(($dbContractItem->total_price - $dbContractItem->request_price), 2, ',', '.') }}</x-table.td>
 
-                    <x-table.td>
+                    <x-table.td> 
                         
                         <x-table.button.btn-group>                            
                             <x-table.button.btn-modal title="Detalhe do Item: {{$dbContractItem->title}}">
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 text-start">
-                                    <div class="lg:col-span-3"><strong>Nome:</strong> {{ $dbContractItem->title }}</div>
+                                    
+                                    <div><strong>CNPJ:</strong> {{ $dbContractItem->BusinessContractSupplier->cnpj }}</div>
+                                    <div class="lg:col-span-2"><strong>Fornecedor:</strong> {{ $dbContractItem->BusinessContractSupplier->supplier }}</div>
+
+                                    <div class="lg:col-span-3"><strong>Item:</strong> {{ $dbContractItem->title }}</div>
                                     <div class="lg:col-span-3"><strong>Descrição:</strong> {{ $dbContractItem->description }}</div>
                                     <div><strong>Unidade de Medida:</strong> {{ $dbContractItem->ConfigurationUnit->title }}</div>
                                     <div><strong>Valor Unitário:</strong> R$ {{ number_format($dbContractItem->unit_price, 2, ',', '.') }}</div>
                                     <div><strong>Valor Total:</strong> R$ {{ number_format($dbContractItem->total_price, 2, ',', '.') }}</div>
+
                                     <div class="lg:col-span-3 py-1 border-t border-gray-300">
                                         <x-table.table>                                            
                                             @slot('thead')                                            

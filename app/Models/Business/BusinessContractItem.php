@@ -2,7 +2,6 @@
 
 namespace App\Models\Business;
 
-use App\Models\Configuration\ConfigurationFinancialBlock;
 use App\Models\Configuration\ConfigurationMeasurementUnit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +15,6 @@ class BusinessContractItem extends Model
         'title',
         'filter',
         'description',
-        'unit_id',
         'quantity_adm',
         'quantity_atb',
         'quantity_mac',
@@ -31,10 +29,16 @@ class BusinessContractItem extends Model
         'total_price',
         'request_price',
         'balance_price',
+        'supplier_id',
+        'unit_id',
         'contract_id',
     ];
 
     public function ConfigurationUnit(){
         return $this->belongsTo(ConfigurationMeasurementUnit::class, 'unit_id');
+    }
+
+    public function BusinessContractSupplier(){
+        return $this->belongsTo(BusinessContractSupplier::class, 'supplier_id');
     }
 }

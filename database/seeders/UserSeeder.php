@@ -12,7 +12,9 @@ class UserSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {        
+        User::factory(50)->create();
+
         User::create([
             'name' => 'Super Admin',
             'filter' => 'super admin',

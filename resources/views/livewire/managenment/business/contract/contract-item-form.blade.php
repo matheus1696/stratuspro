@@ -14,7 +14,20 @@
             <x-form.form-error for="description" />
         </div>
 
-        <div class="col-span-12">
+        <div class="col-span-12 lg:col-span-6">
+            <x-form.form-label for="supplier_id" value="Fornecedor" />
+            <x-form.form-select id="supplier_id" name="supplier_id">
+                @foreach ($dbSuppliers as $dbSupplier)
+                    <option value="{{ $dbSupplier->id }}"
+                        {{ (old('supplier_id') ?? ($dbContractItem->supplier_id ?? '')) == $dbSupplier->id ? 'selected' : '' }}>
+                        {{ $dbSupplier->cnpj }} - {{ $dbSupplier->supplier }}
+                    </option>
+                @endforeach
+            </x-form.form-select>
+            <x-form.form-error for="supplier_id" />
+        </div>
+
+        <div class="col-span-6 lg:col-span-3">
             <x-form.form-label for="unit_id" value="Unidade de Medida" />
             <x-form.form-select id="unit_id" name="unit_id">
                 @foreach ($dbUnits as $dbUnit)
@@ -27,7 +40,7 @@
             <x-form.form-error for="unit_id" />
         </div>
 
-        <div class="col-span-12">
+        <div class="col-span-6 lg:col-span-3">
             <x-form.form-label for="unit_price" value="Valor Unitário R$ " />
             <x-form.form-input type="number" step="0.01" id="unit_price" name="unit_price"
                 value="{{ old('unit_price') ?? ($dbContractItem->unit_price ?? '') }}" placeholder="0,01" required />
@@ -58,7 +71,5 @@
                 @endif
             @endforeach
         </div>
-
-
     </x-form.form-group>
 </div>

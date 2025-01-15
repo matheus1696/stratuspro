@@ -14,8 +14,7 @@ class BusinessContractHasFinancialBlock extends Model
         'financial_block_id',
     ];
 
-    public function FinancialBlock()
-    {
+    public function FinancialBlock(){
         return $this->belongsTo(ConfigurationFinancialBlock::class, 'financial_block_id');
     }
 }

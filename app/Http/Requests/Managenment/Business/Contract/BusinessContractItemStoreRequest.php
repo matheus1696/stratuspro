@@ -21,16 +21,21 @@ class BusinessContractItemStoreRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'title' => 'required|string|min:5|max:255',
-            'description' => 'required|string',
+            'description' => 'required|string|min:20|max:255',
             'unit_id' => 'required|exists:configuration_measurement_units,id',
-            'unit_price' => 'required|numeric|min:0',
-            'quantity_adm' => 'nullable|numeric|min:0',
-            'quantity_atb' => 'nullable|numeric|min:0',
-            'quantity_mac' => 'nullable|numeric|min:0',
-            'quantity_vepd' => 'nullable|numeric|min:0',
-            'quantity_vsan' => 'nullable|numeric|min:0',
+            'supplier_id' => 'required|exists:business_contract_suppliers,id',
+            'unit_price' => 'required|numeric|min:0.01',
         ];
+
+        // Adiciona a validação de quantidade apenas se ela foi informada
+        if ($this->has('quantity_adm')) { $rules['quantity_adm'] = 'required|numeric|min:1';}
+        if ($this->has('quantity_atb')) { $rules['quantity_atb'] = 'required|numeric|min:1';}
+        if ($this->has('quantity_mac')) { $rules['quantity_mac'] = 'required|numeric|min:1';}
+        if ($this->has('quantity_vepd')) { $rules['quantity_vepd'] = 'required|numeric|min:1';}
+        if ($this->has('quantity_vsan')) { $rules['quantity_vsan'] = 'required|numeric|min:1';}
+
+        return $rules;
     }
 }

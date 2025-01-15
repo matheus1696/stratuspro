@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('filter');
             $table->text('description');
             $table->foreignId('unit_id')->constrained('configuration_measurement_units');
+            $table->foreignId('supplier_id')->constrained('business_contract_suppliers');
             $table->integer('quantity_adm')->nullable()->default(0);
             $table->integer('quantity_atb')->nullable()->default(0);
             $table->integer('quantity_mac')->nullable()->default(0);
