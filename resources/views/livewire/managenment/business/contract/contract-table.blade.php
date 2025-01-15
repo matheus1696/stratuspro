@@ -5,7 +5,7 @@
         @slot('search')
             <x-pages.conteiner class="px-3 py-3">
                 <p class="font-bold uppercase text-sm pl-1 text-gray-400"> <i class="fas fa-filter text-xs"></i> Filtros:</p>
-                <x-form.form-group class="mb-1">
+                <div class="grid grid-cols-12 gap-3">
 
                     <!-- Filtros de Pesquisa -->
                     <div class="col-span-3 md:col-span-1">
@@ -46,7 +46,7 @@
                         </x-form.form-select>
                     </div>
 
-                </x-form.form-group>
+                </div>
             </x-pages.conteiner>
         @endslot
 

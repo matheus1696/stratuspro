@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\BusinessContract;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractStoreRequest;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractUpdateRequest;
+use App\Models\Business\BusinessContractStatus;
 use Carbon\Carbon;
 
 class BusinessContractController extends Controller
@@ -36,14 +37,14 @@ class BusinessContractController extends Controller
         //
         $period = (int) $request['period'];
         $startDate = Carbon::parse($request['start_date']);
-        $endDate = $startDate->addMonths($period);
-        
+        $endDate = $startDate->addMonths($period);        
 
         $request['filter'] = strtolower($request['title']);
         $request['end_date'] = $endDate;
         $request['total_price'] = 0.00;
         $request['request_price'] = 0.00;
         $request['balance_price'] = 0.00;
+        $request['status_id'] = BusinessContractStatus::where('is_default', TRUE)->first()->id;
 
         $contract = BusinessContract::create($request->all());
 

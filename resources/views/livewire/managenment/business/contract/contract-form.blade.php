@@ -8,7 +8,7 @@
         </div>
     
         <div class="col-span-3">
-            <x-form.form-label for="number_auction" value="Nº PL"/>
+            <x-form.form-label for="number_auction" value="Nº PE"/>
             <x-form.form-input name="number_auction" value="{{ old('number_auction') ?? $dbContract->number_auction ?? '' }}" placeholder="000-{{ now()->format('Y') }}" onkeyup="handleContract(event)" maxlength="9" minlength="8" required/>
             <x-form.form-error for="number_auction"/>
         </div>
@@ -60,21 +60,22 @@
                         
                         <!-- Label do checkbox -->
                         <label for="financialBlock_{{ $dbFinancialBlock->id }}"
-                            class="flex items-center justify-center px-2 py-1 text-center text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-blue-700 peer-checked:text-white peer-checked:border-blue-700 hover:border-blue-700">
+                            class="flex items-center justify-center py-1 text-center text-sm font-medium text-gray-700 border rounded-lg cursor-pointer peer-checked:bg-blue-700 peer-checked:text-white peer-checked:border-blue-700 hover:border-blue-700">
                             {{ $dbFinancialBlock->acronym }}
                         </label>
                     </div>
                 @endforeach
             </div>
+            <x-form.form-error for="financialBlock"/>
         </div>        
     
-        <div class="col-span-4">
+        <div class="col-span-6">
             <x-form.form-label for="start_date" value="Data de Início"/>
             <x-form.form-input type="date" name="start_date" value="{{ old('start_date') ?? $dbContract->start_date ?? '' }}"/>
-            <x-form.form-error for="start_date" required/>
+            <x-form.form-error for="start_date"/>
         </div>
     
-        <div class="col-span-4">
+        <div class="col-span-6">
             <x-form.form-label for="period" value="Período"/>
             <x-form.form-select id="period" name="period">
                 <option value="6" {{ (old('period') ?? $dbContract->period ?? '') == '6' ? 'selected' : '' }}>6 Meses</option>
@@ -82,21 +83,6 @@
                 <option value="24" {{ (old('period') ?? $dbContract->period ?? '') == '24' ? 'selected' : '' }}>24 Meses</option>
                 <option value="36" {{ (old('period') ?? $dbContract->period ?? '') == '36' ? 'selected' : '' }}>36 Meses</option>
                 <option value="48" {{ (old('period') ?? $dbContract->period ?? '') == '48' ? 'selected' : '' }}>48 Meses</option>
-            </x-form.form-select>
-        </div>
-    
-        <div class="col-span-4">
-            <x-form.form-label for="status_id" value="Status"/>
-            <x-form.form-select id="status_id" name="status_id">
-                @foreach ($dbStatuses as $dbStatus)
-                    @if (isset($dbContract))                                                      
-                        <option value="{{ $dbStatus->id }}" {{ (old('status_id') ?? $dbContract->status_id ?? '') == $dbStatus->id ? 'selected' : '' }}>{{ $dbStatus->title }}</option>
-                    @else
-                        @if ($dbStatus->title === 'Vigente')                            
-                            <option value="{{ $dbStatus->id }}" selected>{{ $dbStatus->title }}</option>
-                        @endif
-                    @endif
-                @endforeach
             </x-form.form-select>
         </div>
     

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('color')->nullable();
+            $table->boolean('is_default')->default(FALSE);
             $table->boolean('is_active')->default(TRUE);
             $table->timestamps();
         });

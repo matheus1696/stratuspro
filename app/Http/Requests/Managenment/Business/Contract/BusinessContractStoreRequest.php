@@ -30,7 +30,6 @@ class BusinessContractStoreRequest extends FormRequest
             'description' => 'nullable|string|max:1000',
             'start_date' => 'required|date',
             'period' => 'required',
-            'status_id' => 'required',
             'financialBlock' => 'required',
         ];
     }

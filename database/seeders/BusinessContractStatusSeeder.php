@@ -26,12 +26,6 @@ class BusinessContractStatusSeeder extends Seeder
         ]);
 
         BusinessContractStatus::create([
-            'title' => 'Cancelado',
-            'description' => 'Contrato encerrado antes do seu término oficial.',
-            'is_active' => true,
-        ]);
-
-        BusinessContractStatus::create([
             'title' => 'Pedidos Suspenso',
             'description' => 'Contrato temporariamente interrompido por decisão administrativa.',
             'is_active' => true,
@@ -41,6 +35,13 @@ class BusinessContractStatusSeeder extends Seeder
             'title' => 'Rescindido',
             'description' => 'Contrato encerrado por quebra de cláusulas contratuais.',
             'is_active' => true,
+        ]);
+
+        BusinessContractStatus::create([
+            'title' => 'Cadastrando',
+            'description' => 'Contrato encerrado por quebra de cláusulas contratuais.',
+            'is_active' => true,
+            'is_default' => true,
         ]);
     }
 }
