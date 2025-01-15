@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function () {
                     Route::get('edit/{business_contract}', [BusinessContractController::class, 'edit'])->name('contracts.edit');
                     Route::put('update/{business_contract}', [BusinessContractController::class, 'update'])->name('contracts.update');
                     Route::get('show/{business_contract}', [BusinessContractController::class, 'show'])->name('contracts.show');
+                    Route::get('price/{business_contract}', [BusinessContractController::class, 'price'])->name('contracts.price');
                     
                     //Rotas de Contratos
                     Route::get('{business_contract}/item/create', [BusinessContractItemController::class, 'create'])->name('contract_items.create');

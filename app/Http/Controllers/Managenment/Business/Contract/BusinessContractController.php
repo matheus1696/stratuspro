@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Business\BusinessContract;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractStoreRequest;
 use App\Http\Requests\Managenment\Business\Contract\BusinessContractUpdateRequest;
+use App\Models\Business\BusinessContractItem;
 use App\Models\Business\BusinessContractStatus;
 use Carbon\Carbon;
 
@@ -86,5 +87,25 @@ class BusinessContractController extends Controller
         $businessContract->FinancialBlocks()->sync($request->input('financialBlock', []));
 
         return redirect()->route('contracts.show', $businessContract->id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function price(BusinessContract $businessContract)
+    {
+        
+        $total_price = 0;
+        $dbContractItems = BusinessContractItem::where('contract_id', $businessContract->id)->get();
+
+        foreach ($dbContractItems as $dbContractItem) {
+            $total_price += $dbContractItem->total_price;
+        }
+
+        $businessContract->update([
+            'total_price' => $total_price,
+        ]);
+
+        return redirect()->route('contracts.show', $businessContract->id)->with('success','Item alterado com sucesso');
     }
 }

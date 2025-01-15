@@ -8,6 +8,8 @@ use App\Http\Requests\Managenment\Business\Contract\BusinessContractItemUpdateRe
 use App\Models\Business\BusinessContractItem;
 use App\Models\Business\BusinessContract;
 
+use function Livewire\of;
+
 class BusinessContractItemController extends Controller
 {
     /**
@@ -25,7 +27,7 @@ class BusinessContractItemController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(BusinessContractItemStoreRequest $request, BusinessContract $businessContract)
-    {    
+    {           
         // Ajustando o filtro
         $request['filter'] = strtolower($request['title']);
         $request['contract_id'] = $businessContract->id;
@@ -40,7 +42,7 @@ class BusinessContractItemController extends Controller
             'total_price' => $businessContract->total_price + $request['total_price'],
         ]);
 
-        return redirect()->route('contracts.show', $businessContract->id)->with('success', 'Item cadastrado com sucesso');
+        return redirect()->route('contracts.price', $businessContract->id);
     }
 
     /**
@@ -68,6 +70,6 @@ class BusinessContractItemController extends Controller
         // Alterando o item do contrato
         $businessContractItem->update($request->all());
 
-        return redirect()->route('contracts.show', $businessContractItem->contract_id)->with('success','Item alterado com sucesso');
+        return redirect()->route('contracts.price', $businessContractItem->contract_id);
     }
 }

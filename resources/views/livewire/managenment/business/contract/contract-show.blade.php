@@ -11,14 +11,7 @@
             <div><strong>Nº Registro de Preço:</strong> {{$dbContract->number_price_registration}}</div>
             <div><strong>Nº Ata de Preço:</strong> {{$dbContract->number_price_record_document}}</div>
             <div class="lg:col-span-4"><strong>Título:</strong> {{$dbContract->title}}</div>
-            <div class="lg:col-span-4"><strong>Descrição:</strong> {{$dbContract->description}}</div>
-            <div><strong>Data Início:</strong> {{ date('d/m/Y', strtotime($dbContract->start_date)) }} </div>
-            <div><strong>Data Fim:</strong> {{ date('d/m/Y', strtotime($dbContract->end_date)) }} </div>
-            <div><strong>Período:</strong> {{$dbContract->period}} Meses</div>
-            <div><strong>Status:</strong> {{$dbContract->ContractStatus->title}}</div>
-            <div><strong>Valor Total:</strong> R$ {{ number_format($dbContract->total_price, 2, ',', '.') }} </div>
-            <div><strong>Valor Solicitado:</strong> R$ {{ number_format($dbContract->request_price, 2, ',', '.') }} </div>
-            <div><strong>Saldo Restante:</strong> R$ {{ number_format($dbContract->balance_price, 2, ',', '.') }} </div>
+            <div class="lg:col-span-4"><strong>Descrição:</strong> {{$dbContract->description}}</div>            
             <div class="lg:col-span-4">
                 <strong>Dotações Orçamentárias:</strong>
                 <div class="space-y-1">
@@ -27,6 +20,13 @@
                     @endforeach
                 </div>
             </div>
+            <div><strong>Data Início:</strong> {{ date('d/m/Y', strtotime($dbContract->start_date)) }} </div>
+            <div><strong>Data Fim:</strong> {{ date('d/m/Y', strtotime($dbContract->end_date)) }} </div>
+            <div><strong>Período:</strong> {{$dbContract->period}} Meses</div>
+            <div><strong>Status:</strong> {{$dbContract->ContractStatus->title}}</div>
+            <div><strong>Valor Total:</strong> R$ {{ number_format($dbContract->total_price, 2, ',', '.') }} </div>
+            <div><strong>Valor Solicitado:</strong> R$ {{ number_format($dbContract->request_price, 2, ',', '.') }} </div>
+            <div><strong>Saldo Restante:</strong> R$ {{ number_format($dbContract->balance_price, 2, ',', '.') }} </div>
         </div>
     </x-pages.conteiner>   
 </div>
