@@ -19,12 +19,11 @@ class ContractItemForm extends Component
     {
         $dbContract = BusinessContract::with('FinancialBlocks')->find($this->contractId);
         $dbContractItem = BusinessContractItem::find($this->contractItemId);
-        $dbContractStatuses = BusinessContractStatus::orderBy('title')->get();
         $dbSuppliers = BusinessContractSupplier::where('is_active',TRUE)->orderBy('supplier')->get();
         $dbUnits = ConfigurationMeasurementUnit::orderBy('acronym')->get();
         $dbFinancialBlocks = ConfigurationFinancialBlock::orderBy('title')->get();
 
 
-        return view('livewire.managenment.business.contract.contract-item-form', compact('dbContract', 'dbContractItem','dbContractStatuses','dbUnits','dbFinancialBlocks', 'dbSuppliers'));
+        return view('livewire.managenment.business.contract.contract-item-form', compact('dbContract', 'dbContractItem','dbUnits','dbFinancialBlocks', 'dbSuppliers'));
     }
 }

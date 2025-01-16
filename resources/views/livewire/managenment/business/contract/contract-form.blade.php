@@ -69,22 +69,35 @@
             <x-form.form-error for="financialBlock"/>
         </div>        
     
-        <div class="col-span-6">
-            <x-form.form-label for="start_date" value="Data de Início"/>
-            <x-form.form-input type="date" name="start_date" value="{{ old('start_date') ?? $dbContract->start_date ?? '' }}"/>
-            <x-form.form-error for="start_date"/>
-        </div>
+        <div class="col-span-12 grid {{ isset($dbContract) ? 'grid-cols-3' : 'grid-cols-2'}} gap-3">
+            <div>
+                <x-form.form-label for="start_date" value="Data de Início"/>
+                <x-form.form-input type="date" name="start_date" value="{{ old('start_date') ?? $dbContract->start_date ?? '' }}"/>
+                <x-form.form-error for="start_date"/>
+            </div>
+        
+            <div>
+                <x-form.form-label for="period" value="Período"/>
+                <x-form.form-select id="period" name="period">
+                    <option value="6" {{ (old('period') ?? $dbContract->period ?? '') == '6' ? 'selected' : '' }}>6 Meses</option>
+                    <option value="12" {{ (old('period') ?? $dbContract->period ?? '') == '12' ? 'selected' : 'selected' }}>12 Meses</option>
+                    <option value="24" {{ (old('period') ?? $dbContract->period ?? '') == '24' ? 'selected' : '' }}>24 Meses</option>
+                    <option value="36" {{ (old('period') ?? $dbContract->period ?? '') == '36' ? 'selected' : '' }}>36 Meses</option>
+                    <option value="48" {{ (old('period') ?? $dbContract->period ?? '') == '48' ? 'selected' : '' }}>48 Meses</option>
+                </x-form.form-select>
+            </div>
     
-        <div class="col-span-6">
-            <x-form.form-label for="period" value="Período"/>
-            <x-form.form-select id="period" name="period">
-                <option value="6" {{ (old('period') ?? $dbContract->period ?? '') == '6' ? 'selected' : '' }}>6 Meses</option>
-                <option value="12" {{ (old('period') ?? $dbContract->period ?? '') == '12' ? 'selected' : 'selected' }}>12 Meses</option>
-                <option value="24" {{ (old('period') ?? $dbContract->period ?? '') == '24' ? 'selected' : '' }}>24 Meses</option>
-                <option value="36" {{ (old('period') ?? $dbContract->period ?? '') == '36' ? 'selected' : '' }}>36 Meses</option>
-                <option value="48" {{ (old('period') ?? $dbContract->period ?? '') == '48' ? 'selected' : '' }}>48 Meses</option>
-            </x-form.form-select>
-        </div>
+            @isset($dbContract)
+                <div>
+                    <x-form.form-label for="status_id" value="Status"/>
+                    <x-form.form-select id="status_id" name="status_id">
+                        @foreach ($dbStatuses as $dbStatus)
+                            <option value="{{ $dbStatus->id }}" {{ $dbContract->status_id == $dbStatus->id ? 'selected' : '' }}>{{ $dbStatus->title }}</option>
+                        @endforeach
+                    </x-form.form-select>
+                </div>
+            @endisset    
+        </div>    
     
     </x-form.form-group>
 </div>
