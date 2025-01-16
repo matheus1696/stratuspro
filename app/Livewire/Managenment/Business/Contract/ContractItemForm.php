@@ -13,10 +13,20 @@ class ContractItemForm extends Component
 {
     public $contractId;
     public $contractItemId;
+    public $dbContractItem;
 
     public $query = '';
     public $suppliers = [];
     public $selectedSupplier = null;
+
+    public function mount($contractItemId = null)
+    {
+        if ($this->dbContractItem === NULL){
+            $this->dbContractItem = BusinessContractItem::find($contractItemId);
+            $this->query = $this->dbContractItem->supplier_id;
+            $this->selectedSupplier = $this->dbContractItem->BusinessContractStatus->cnpj . ' - ' . $this->dbContractItem->BusinessContractStatus->supplier;        
+        }
+    }
 
     public function updatedQuery()
     {
@@ -34,10 +44,9 @@ class ContractItemForm extends Component
 
     public function render(){
         $dbContract = BusinessContract::with('FinancialBlocks')->find($this->contractId);
-        $dbContractItem = BusinessContractItem::find($this->contractItemId);
         $dbUnits = ConfigurationMeasurementUnit::orderBy('acronym')->get();
         $dbFinancialBlocks = ConfigurationFinancialBlock::orderBy('title')->get();
 
-        return view('livewire.managenment.business.contract.contract-item-form', compact('dbContract', 'dbContractItem','dbUnits','dbFinancialBlocks'));
+        return view('livewire.managenment.business.contract.contract-item-form', compact('dbContract','dbUnits','dbFinancialBlocks'));
     }
 }
