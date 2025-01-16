@@ -3,6 +3,7 @@
 namespace App\Livewire\Managenment\Business\Contract;
 
 use App\Models\Business\BusinessContract;
+use App\Models\Business\BusinessContractStatus;
 use Livewire\Component;
 
 class ContractShow extends Component
@@ -18,6 +19,8 @@ class ContractShow extends Component
 
     public function render()
     {
-        return view('livewire.managenment.business.contract.contract-show');
+        $dbContractStatus = BusinessContractStatus::where('is_default',TRUE)->first();
+
+        return view('livewire.managenment.business.contract.contract-show', compact('dbContractStatus'));
     }
 }

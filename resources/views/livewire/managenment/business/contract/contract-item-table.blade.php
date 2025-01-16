@@ -10,10 +10,12 @@
                         placeholder="Buscar pelo Item" />
                 </div>
 
-                <div>
-                    <x-button.link-primary href="{{ route('contract_items.create', $dbContract->id) }}"
-                        value="Cadastrar Novo Item" class="bg-blue-600" />
-                </div>
+                @if ($dbContract->status_id === $dbContractStatus->id)
+                    <div>
+                        <x-button.link-primary href="{{ route('contract_items.create', $dbContract->id) }}"
+                            value="Cadastrar Novo Item" class="bg-blue-600" />
+                    </div>
+                @endif               
             </div>
         @endslot
 
@@ -26,7 +28,7 @@
             <x-table.th class="w-24" title="Quantidade de Saldo">Qtd Saldo</x-table.th>
             <x-table.th class="w-32" title="Valor Total">V. Tot.</x-table.th>
             <x-table.th class="w-32" title="Valor em Saldo">V. Saldo</x-table.th>
-            <x-table.th class="w-28"></x-table.th>
+            <x-table.th class="w-20"></x-table.th>
         @endslot
 
         <!-- Inicio Slot TBody -->
@@ -105,7 +107,9 @@
                                 </div>
                             </x-table.button.btn-modal>
 
-                            <x-table.button.btn-edit href="{{ route('contract_items.edit', $dbContractItem->id) }}"/>
+                            @if ($dbContract->status_id === $dbContractStatus->id)
+                                <x-table.button.btn-edit href="{{ route('contract_items.edit', $dbContractItem->id) }}"/>
+                            @endif
                             
                         </x-table.button.btn-group> 
                     </x-table.td>

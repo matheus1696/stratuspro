@@ -1,10 +1,12 @@
 <div>
     <x-pages.conteiner class="text-sm">
-        <div class="flex justify-end">
-            <a href="{{ route('contracts.edit', $dbContract->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 hover:text-gray-900 rounded-full shadown-lg text-xs transition-all duration-300 px-2.5 py-2 absolute">
-                <i class="fas fa-pen"></i>
-            </a>
-        </div>
+        @if ($dbContract->status_id === $dbContractStatus->id)
+            <div class="flex justify-end">
+                <a href="{{ route('contracts.edit', $dbContract->id) }}" class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 hover:text-gray-900 rounded-full shadown-lg text-xs transition-all duration-300 px-2.5 py-2 absolute">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </div>
+        @endif
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
             <div><strong>Nº Processo:</strong> {{$dbContract->number_process_bidding}}</div>
             <div><strong>Nº Pregão:</strong> {{$dbContract->number_auction}}</div>
