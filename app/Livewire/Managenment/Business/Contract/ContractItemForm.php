@@ -28,15 +28,13 @@ class ContractItemForm extends Component
         }
     }
 
-    public function updatedQuery()
-    {
+    public function updatedQuery(){
         $this->suppliers = BusinessContractSupplier::where('supplier', 'like', '%' . $this->query . '%')
             ->limit(10)
             ->get();
     }
 
-    public function selectSupplier($supplierId)
-    {
+    public function selectSupplier($supplierId){
         $this->selectedSupplier = BusinessContractSupplier::find($supplierId);
         $this->query = $this->selectedSupplier->supplier;
         $this->suppliers = []; // Limpa as sugestões após a seleção
