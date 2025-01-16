@@ -23,9 +23,10 @@ class BusinessContractItemUpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string|min:5|max:255',
-            'description' => 'required|string',
+            'description' => 'required|string|min:20|max:255',
             'unit_id' => 'required|exists:configuration_measurement_units,id',
-            'unit_price' => 'required|numeric|min:0',
+            'supplier_id' => 'required|exists:business_contract_suppliers,id',
+            'unit_price' => 'required|numeric|min:0.01',
             'financialBlock.*' => 'required|numeric|min:0',
         ];
     }
