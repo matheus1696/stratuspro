@@ -15,31 +15,17 @@
         </div>
 
         <div class="col-span-12 lg:col-span-6">
-            <div class="relative">
-                <x-form.form-label for="supplier_id" value="Fornecedor" />
-                <x-form.form-input
-                    type="text"
-                    wire:model.live="query"
-                    placeholder="Digite para buscar um fornecedor"
-                    class="form-input w-full"
-                />
-            
-                @if (!empty($suppliers))
-                    <div class="absolute bg-white border rounded mt-1 w-full shadow">
-                        @foreach($suppliers as $supplier)
-                            <div wire:click="selectSupplier({{ $supplier->id }})" class="text-sm cursor-pointer px-3 py-2 hover:bg-blue-100">
-                            {{ $supplier->cnpj }} - {{ $supplier->supplier }}
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            
-                @if ($selectedSupplier)
-                    <input type="hidden" name="supplier_id" value="{{ $selectedSupplier->id }}">
-                @endif
-            </div>            
+            <x-form.form-label for="supplier_id" value="Fornecedor" />
+            <x-form.form-select id="supplier_id" name="supplier_id">
+                @foreach ($dbSuppliers as $dbSupplier)
+                    <option value="{{ $dbSupplier->id }}"
+                        {{ (old('supplier_id') ?? ($dbContractItem->supplier_id ?? '')) == $dbSupplier->id ? 'selected' : '' }}>
+                        {{ $dbSupplier->cnpj }} - {{ $dbSupplier->supplier }}
+                    </option>
+                @endforeach
+            </x-form.form-select>
             <x-form.form-error for="supplier_id" />
-        </div>        
+        </div>
 
         <div class="col-span-6 lg:col-span-3">
             <x-form.form-label for="unit_id" value="Unidade de Medida" />
@@ -70,12 +56,9 @@
 
                 @if ($isLinked)
                     <div>
-                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->acronym"
-                            class="md:hidden" />
-                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->title"
-                            class="hidden md:inline-block" />
-                        <x-form.form-input type="number" id="financial_block_{{ $dbFinancialBlock->id }}"
-                            name="quantity_{{ $dbFinancialBlock->code }}" placeholder="1"
+                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->acronym" class="md:hidden" />
+                        <x-form.form-label for="financial_block_{{ $dbFinancialBlock->id }}" :value="$dbFinancialBlock->title" class="hidden md:inline-block" />
+                        <x-form.form-input type="number" id="financial_block_{{ $dbFinancialBlock->id }}" name="quantity_{{ $dbFinancialBlock->code }}" placeholder="1"
                             value="{{ old('quantity_' . $dbFinancialBlock->code) ?? data_get($dbContractItem, 'quantity_' . $dbFinancialBlock->code, '') }}" />
                         <x-form.form-error for="financialBlock.{{ $dbFinancialBlock->id }}" />
                     </div>
