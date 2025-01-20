@@ -12,11 +12,12 @@ class UserPermissionConfigurationSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run(): void 
     {
         // Configurações
         Permission::create(['name' => 'configuration_users', 'display_name' => 'Configurações Usuários']);
         Permission::create(['name' => 'configuration_regions', 'display_name' => 'Configurações Regiões']);
+        Permission::create(['name' => 'configuration_measurement_unit', 'display_name' => 'Configurações das Unidades de Medidas']);
 
         // Criando roles com nomes consistentes
         $configurations = Role::create([

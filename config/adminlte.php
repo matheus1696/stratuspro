@@ -366,7 +366,7 @@ return [
         [
             'text' => 'Configurações do Sistema',
             'icon' => 'fas fa-cogs pr-1',
-            'can'     => ['configuration_users','configuration_regions'],
+            'can'     => ['configuration_users','configuration_regions', 'configuration_measurement_unit'],
             'submenu' => [
                 [
                     'text' => 'Configuração de Usuários',
@@ -378,6 +378,19 @@ return [
                             'icon' => 'fas fa-venus-mars pr-1',
                             'route' => 'genders.index',
                             'can' => 'configuration_users',
+                        ],
+                    ],
+                ],
+                [
+                    'text' => 'Configuração de Medidas',
+                    'icon' => 'fas fa-users-cog pr-1',
+                    'can' => 'configuration_measurement_unit',
+                    'submenu' => [
+                        [
+                            'text' => 'Unidade de Medidas',
+                            'icon' => 'fas fa-venus-mars pr-1',
+                            'route' => 'measurement_units.index',
+                            'can' => 'configuration_measurement_unit',
                         ],
                     ],
                 ],

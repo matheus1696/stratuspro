@@ -11,4 +11,12 @@ class MeasurementUnit extends Model
     use HasFactory;
 
     protected $table = "configuration_measurement_units";
+
+    protected $fillable = [
+        'acronym',
+        'title',
+        'filter',
+        'description',
+        'is_active',
+    ];
 }

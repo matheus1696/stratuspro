@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\ProfilePasswordUpdateRequest;
 use App\Http\Requests\Profile\ProfilePersonalUpdateRequest;
 use App\Http\Requests\Profile\ProfileProfessionalUpdateRequest;
+use App\Models\Configuration\User\UserGender;
 use App\Models\User;
-use App\Models\User\UserGender;
 
 class ProfileController extends Controller
 {
