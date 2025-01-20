@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Company\CompanyEstablishmentStoreRequest;
+use App\Http\Requests\Company\CompanyEstablishmentUpdateRequest;
 use App\Models\Company\CompanyEstablishment;
-use App\Http\Requests\StoreCompanyEstablishmentRequest;
-use App\Http\Requests\UpdateCompanyEstablishmentRequest;
 
 class CompanyEstablishmentController extends Controller
 {
@@ -27,7 +28,7 @@ class CompanyEstablishmentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCompanyEstablishmentRequest $request)
+    public function store(CompanyEstablishmentStoreRequest $request)
     {
         //
     }
@@ -51,7 +52,7 @@ class CompanyEstablishmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCompanyEstablishmentRequest $request, CompanyEstablishment $companyEstablishment)
+    public function update(CompanyEstablishmentUpdateRequest $request, CompanyEstablishment $companyEstablishment)
     {
         //
     }

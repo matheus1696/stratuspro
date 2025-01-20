@@ -33,7 +33,7 @@ return new class extends Migration
         Schema::create('business_contract_has_financial_blocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('contract_id')->constrained('business_contracts');
-            $table->foreignId('financial_block_id')->constrained('configuration_financial_blocks');
+            $table->foreignId('financial_block_id')->constrained('company_financial_blocks');
             $table->timestamps();
         });
         

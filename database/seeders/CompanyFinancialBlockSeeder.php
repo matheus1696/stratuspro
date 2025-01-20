@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Configuration\ConfigurationFinancialBlock;
+use App\Models\Company\CompanyFinancialBlock;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ConfigurationFinancialBlockSeeder extends Seeder
+class CompanyFinancialBlockSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
     public function run(): void
     {
         //
-        ConfigurationFinancialBlock::create([
+        CompanyFinancialBlock::create([
             'code' => 'adm',
             'acronym' => 'ADM',
             'title' => 'Administração',
@@ -24,7 +24,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
             'is_active' => true
         ]);
 
-        ConfigurationFinancialBlock::create([
+        CompanyFinancialBlock::create([
             'code' => 'atb',
             'acronym' => 'ATB',
             'title' => 'Atenção Básica',
@@ -34,7 +34,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
             'is_active' => true
         ]);
 
-        ConfigurationFinancialBlock::create([
+        CompanyFinancialBlock::create([
             'code' => 'mac',
             'acronym' => 'MAC',
             'title' => 'Média e Alta Especialidade',
@@ -44,7 +44,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
             'is_active' => true
         ]);
 
-        ConfigurationFinancialBlock::create([
+        CompanyFinancialBlock::create([
             'code' => 'vsan',
             'acronym' => 'V. SAN',
             'title' => 'Vigilância Sanitária',
@@ -54,7 +54,7 @@ class ConfigurationFinancialBlockSeeder extends Seeder
             'is_active' => true
         ]);
 
-        ConfigurationFinancialBlock::create([
+        CompanyFinancialBlock::create([
             'code' => 'vepd',
             'acronym' => 'V. EPD',
             'title' => 'Vigilância Epidemiológica',

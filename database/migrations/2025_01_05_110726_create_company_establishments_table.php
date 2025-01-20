@@ -33,7 +33,7 @@ return new class extends Migration
             $table->foreign('city_id')->references('id')->on('configuration_region_cities');
             $table->foreign('state_id')->references('id')->on('configuration_region_states');
             $table->foreign('country_id')->references('id')->on('configuration_region_countries');
-            $table->foreign('financial_block_id')->references('id')->on('configuration_financial_blocks');
+            $table->foreign('financial_block_id')->references('id')->on('company_financial_blocks');
         });
     }
 
