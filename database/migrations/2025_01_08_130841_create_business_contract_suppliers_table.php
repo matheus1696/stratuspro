@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nire')->nullable(); // NIRE (Número de Identificação do Registro de Empresas)
             $table->string('responsible_name')->nullable(); // Nome do responsável
             $table->string('responsible_cpf')->nullable(); // CPF do responsável
-            $table->foreignId('responsible_state_id')->nullable()->constrained('region_states'); // Estado do responsável
-            $table->foreignId('responsible_city_id')->nullable()->constrained('region_cities'); // Cidade do responsável
+            $table->foreignId('responsible_state_id')->nullable()->constrained('configuration_region_states'); // Estado do responsável
+            $table->foreignId('responsible_city_id')->nullable()->constrained('configuration_region_cities'); // Cidade do responsável
             $table->string('email')->nullable(); // Email principal
             $table->string('email_opcional')->nullable(); // Email opcional
             $table->string('phone_1')->nullable(); // Telefone principal
@@ -27,8 +27,8 @@ return new class extends Migration
             $table->string('address_street')->nullable(); // Logradouro
             $table->string('address_number')->nullable(); // Número
             $table->string('address_neighborhood')->nullable(); // Bairro
-            $table->foreignId('state_id')->nullable()->constrained('region_states'); // Estado do fornecedor
-            $table->foreignId('city_id')->nullable()->constrained('region_cities'); // Cidade do fornecedor
+            $table->foreignId('state_id')->nullable()->constrained('configuration_region_states'); // Estado do fornecedor
+            $table->foreignId('city_id')->nullable()->constrained('configuration_region_cities'); // Cidade do fornecedor
             $table->boolean('is_active')->default(true); // Status do fornecedor
             $table->text('notes')->nullable(); // Observações gerais
             $table->timestamps();

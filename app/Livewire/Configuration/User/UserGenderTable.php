@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Configuration\User;
 
-use App\Models\User\UserGender;
+use App\Models\Configuration\User\UserGender;
 use Livewire\Component;
 
 class UserGenderTable extends Component

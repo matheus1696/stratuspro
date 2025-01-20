@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Business;
 
-use App\Models\Region\RegionCity;
+use App\Models\Configuration\Region\RegionCity;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

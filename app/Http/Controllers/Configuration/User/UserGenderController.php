@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Configuration\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\User\UserGender;
+use App\Models\Configuration\User\UserGender;
 use Illuminate\Http\Request;
 
 class UserGenderController extends Controller

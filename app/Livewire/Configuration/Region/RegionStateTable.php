@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Configuration\Region;
 
-use App\Models\Region\RegionState;
+use App\Models\Configuration\Region\RegionState;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
