@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use Database\Seeders\Configuration\Company\CompanyEstablishmentSeeder;
+use Database\Seeders\Configuration\Company\CompanyFinancialBlockSeeder;
 use Database\Seeders\Configuration\Measurement\MeasurementUnitSeeder;
 use Database\Seeders\Configuration\Region\RegionCitySeeder;
 use Database\Seeders\Configuration\Region\RegionCountrySeeder;

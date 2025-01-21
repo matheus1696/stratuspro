@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers\Configuration\Company;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Company\CompanyEstablishmentStoreRequest;
-use App\Http\Requests\Company\CompanyEstablishmentUpdateRequest;
-use App\Models\Company\CompanyEstablishment;
+use App\Http\Requests\Configuration\Company\CompanyEstablishmentStoreRequest;
+use App\Http\Requests\Configuration\Company\CompanyEstablishmentUpdateRequest;
+use App\Models\Configuration\Company\CompanyEstablishment;
 
 class CompanyEstablishmentController extends Controller
 {
@@ -15,6 +15,7 @@ class CompanyEstablishmentController extends Controller
     public function index()
     {
         //
+        return view('pages.configuration.company.establishment.establishment-index');
     }
 
     /**

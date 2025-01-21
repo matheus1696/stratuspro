@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Configuration\Company;
 
-use App\Models\Company\CompanyFinancialBlock;
+use App\Models\Configuration\Company\CompanyFinancialBlock;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

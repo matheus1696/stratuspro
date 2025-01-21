@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Configuration\Company;
 
-use App\Models\Company\CompanyEstablishment;
+use App\Models\Configuration\Company\CompanyEstablishment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

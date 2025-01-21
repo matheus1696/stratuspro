@@ -382,6 +382,19 @@ return [
                     ],
                 ],
                 [
+                    'text' => 'Configuração da Empresa',
+                    'icon' => 'fas fa-users-cog pr-1',
+                    'can' => 'configuration_company_establishment',
+                    'submenu' => [
+                        [
+                            'text' => 'Estabelecimentos',
+                            'icon' => 'fas fa-venus-mars pr-1',
+                            'route' => 'establishments.index',
+                            'can' => 'configuration_company_establishment',
+                        ],
+                    ],
+                ],
+                [
                     'text' => 'Configuração de Medidas',
                     'icon' => 'fas fa-users-cog pr-1',
                     'can' => 'configuration_measurement_unit',

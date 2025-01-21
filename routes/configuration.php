@@ -2,6 +2,7 @@
 
 //Rotas de Configuração
 
+use App\Http\Controllers\Configuration\Company\CompanyEstablishmentController;
 use App\Http\Controllers\Configuration\Measurement\MeasurementUnitController;
 use App\Http\Controllers\Configuration\Region\RegionCityController;
 use App\Http\Controllers\Configuration\Region\RegionCountryController;
@@ -43,6 +44,19 @@ Route::prefix('configuration')->group(function () {
             //Rotas dos Países
             Route::get('cities', [RegionCityController::class, 'index'])->name('cities.index');
             Route::put('cities/update/{region_city}', [RegionCityController::class, 'update'])->name('cities.update');
+        });
+    });
+
+    Route::middleware('permission:configuration_company_establishment')->group(function () {
+        Route::prefix('company')->group(function () {
+            //Rotas de Configuração de Unidade de Medidas
+            Route::get('establishments', [CompanyEstablishmentController::class, 'index'])->name('establishments.index');
+            Route::get('establishments/create', [CompanyEstablishmentController::class, 'create'])->name('establishments.create');
+            Route::post('establishments/store', [CompanyEstablishmentController::class, 'store'])->name('establishments.store');
+            Route::get('establishments/{establishment}/show', [CompanyEstablishmentController::class, 'show'])->name('establishments.show');
+            Route::get('establishments/{establishment}/edit', [CompanyEstablishmentController::class, 'edit'])->name('establishments.edit');
+            Route::put('establishments/{establishment}/update', [CompanyEstablishmentController::class, 'update'])->name('establishments.update');
+            Route::put('establishments/{establishment}/is_active', [CompanyEstablishmentController::class, 'is_active'])->name('establishments.is_active');
         });
     });
 });
