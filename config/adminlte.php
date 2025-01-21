@@ -383,12 +383,12 @@ return [
                 ],
                 [
                     'text' => 'Configuração da Empresa',
-                    'icon' => 'fas fa-users-cog pr-1',
+                    'icon' => 'fas fa-cogs pr-1',
                     'can' => 'configuration_company_establishment',
                     'submenu' => [
                         [
                             'text' => 'Estabelecimentos',
-                            'icon' => 'fas fa-venus-mars pr-1',
+                            'icon' => 'fas fa-building pr-1',
                             'route' => 'establishments.index',
                             'can' => 'configuration_company_establishment',
                         ],
@@ -396,12 +396,12 @@ return [
                 ],
                 [
                     'text' => 'Configuração de Medidas',
-                    'icon' => 'fas fa-users-cog pr-1',
+                    'icon' => 'fas fa-ruler pr-1',
                     'can' => 'configuration_measurement_unit',
                     'submenu' => [
                         [
                             'text' => 'Unidade de Medidas',
-                            'icon' => 'fas fa-venus-mars pr-1',
+                            'icon' => 'fas fa-balance-scale pr-1',
                             'route' => 'measurement_units.index',
                             'can' => 'configuration_measurement_unit',
                         ],
