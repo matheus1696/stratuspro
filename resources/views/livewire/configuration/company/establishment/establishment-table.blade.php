@@ -1,7 +1,7 @@
 <div>
     <x-table.table :paginate="$dbEstablishments">
         @slot('search')
-            <div class="flex justify-between gap-2 py-3">
+            <div class="flex justify-between gap-2">
                 <div class="w-44 md:w-32">
                     <x-form.form-select wire:model.live="perPage">
                         <option value="10" selected>10 por página</option>
@@ -37,10 +37,10 @@
                     <x-table.td class="hidden md:table-cell">{{$dbEstablishment->district}}</x-table.td>
                     <x-table.td class="hidden md:table-cell">{{$dbEstablishment->FinancialBlock->title}}</x-table.td>
                     <x-table.td>
-                        <x-button.btn-status condition="{{$dbEstablishment->is_active}}" route="{{route('establishments.is_active',['establishment'=>$dbEstablishment->id])}}" />
+                        <x-button.btn-status condition="{{ $dbEstablishment->is_active }}" route="{{ route('establishments.is_active', $dbEstablishment->id)}}" />
                     </x-table.td>
                     <x-table.td>
-                        <x-table.button.btn-show href="{{route('establishments.show',['establishment'=>$dbEstablishment->id])}}" />
+                        <x-table.button.btn-show href="{{ route('establishments.show', $dbEstablishment->id) }}" />
                     </x-table.td>
                 </x-table.tr>
             @endforeach

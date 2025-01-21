@@ -23,7 +23,7 @@ class RegionCountryController extends Controller
     public function update(Request $request, RegionCountry $regionCountry)
     {
         //
-        $regionCountry->update($request->all());
+        $regionCountry->update($request->only('is_active'));
         return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

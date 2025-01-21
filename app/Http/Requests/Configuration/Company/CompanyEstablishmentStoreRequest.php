@@ -11,7 +11,7 @@ class CompanyEstablishmentStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class CompanyEstablishmentStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'code' => 'required|min:6|unique:company_establishments',
+            'title' => 'required|unique:company_establishments',
+            'address' => 'required',
+            'number' => 'required',
+            'district' => 'required',
+            'city_id' => 'required',
+            'state_id' => 'required',
+            'country_id' => 'required',
+            'financial_block_id' => 'required',
         ];
     }
 }

@@ -53,10 +53,10 @@ Route::prefix('configuration')->group(function () {
             Route::get('establishments', [CompanyEstablishmentController::class, 'index'])->name('establishments.index');
             Route::get('establishments/create', [CompanyEstablishmentController::class, 'create'])->name('establishments.create');
             Route::post('establishments/store', [CompanyEstablishmentController::class, 'store'])->name('establishments.store');
-            Route::get('establishments/{establishment}/show', [CompanyEstablishmentController::class, 'show'])->name('establishments.show');
-            Route::get('establishments/{establishment}/edit', [CompanyEstablishmentController::class, 'edit'])->name('establishments.edit');
-            Route::put('establishments/{establishment}/update', [CompanyEstablishmentController::class, 'update'])->name('establishments.update');
-            Route::put('establishments/{establishment}/is_active', [CompanyEstablishmentController::class, 'is_active'])->name('establishments.is_active');
+            Route::get('establishments/{company_establishment}/show', [CompanyEstablishmentController::class, 'show'])->name('establishments.show');
+            Route::get('establishments/{company_establishment}/edit', [CompanyEstablishmentController::class, 'edit'])->name('establishments.edit');
+            Route::put('establishments/{company_establishment}/update', [CompanyEstablishmentController::class, 'update'])->name('establishments.update');
+            Route::put('establishments/{company_establishment}/is_active', [CompanyEstablishmentController::class, 'is_active'])->name('establishments.is_active');
         });
     });
 });

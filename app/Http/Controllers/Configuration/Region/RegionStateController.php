@@ -23,7 +23,7 @@ class RegionStateController extends Controller
     public function update(Request $request, RegionState $regionState)
     {
         //
-        $regionState->update($request->all());
+        $regionState->update($request->only('is_active'));
         return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

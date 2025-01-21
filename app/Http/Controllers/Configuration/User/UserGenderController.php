@@ -31,7 +31,7 @@ class UserGenderController extends Controller
     public function update(Request $request, UserGender $userGender)
     {
         //
-        $userGender->update($request->all());
+        $userGender->update($request->only('is_active'));
         return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

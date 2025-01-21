@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Configuration\Company;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CompanyEstablishmentUpdateRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class CompanyEstablishmentUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,22 @@ class CompanyEstablishmentUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'code' => [
+                'required',
+                'min:6',
+                Rule::unique('company_establishments')->ignore($this->company_establishment),
+            ],
+            'title' => [
+                'required',
+                Rule::unique('company_establishments')->ignore($this->company_establishment),
+            ],
+            'address' => 'required',
+            'number' => 'required',
+            'district' => 'required',
+            'city_id' => 'required',
+            'state_id' => 'required',
+            'country_id' => 'required',
+            'financial_block_id' => 'required',
         ];
     }
 }

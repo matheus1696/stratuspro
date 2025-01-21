@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Configuration\Company\CompanyEstablishmentStoreRequest;
 use App\Http\Requests\Configuration\Company\CompanyEstablishmentUpdateRequest;
 use App\Models\Configuration\Company\CompanyEstablishment;
+use Illuminate\Http\Request;
 
 class CompanyEstablishmentController extends Controller
 {
@@ -24,6 +25,7 @@ class CompanyEstablishmentController extends Controller
     public function create()
     {
         //
+        return view('pages.configuration.company.establishment.establishment-create');
     }
 
     /**
@@ -32,6 +34,10 @@ class CompanyEstablishmentController extends Controller
     public function store(CompanyEstablishmentStoreRequest $request)
     {
         //
+        $request['filter'] = strtolower($request['title']);
+        $dbEstablishment = CompanyEstablishment::create($request->all());
+
+        return redirect(route('establishments.show', $dbEstablishment->id ))->with('success','Estabelecimento criado com sucesso');
     }
 
     /**
@@ -40,6 +46,8 @@ class CompanyEstablishmentController extends Controller
     public function show(CompanyEstablishment $companyEstablishment)
     {
         //
+        $dbEstablishment = $companyEstablishment->id;
+        return view('pages.configuration.company.establishment.establishment-show', compact('dbEstablishment'));
     }
 
     /**
@@ -48,6 +56,8 @@ class CompanyEstablishmentController extends Controller
     public function edit(CompanyEstablishment $companyEstablishment)
     {
         //
+        $dbEstablishment = $companyEstablishment->id;
+        return view('pages.configuration.company.establishment.establishment-edit', compact('dbEstablishment'));
     }
 
     /**
@@ -55,14 +65,22 @@ class CompanyEstablishmentController extends Controller
      */
     public function update(CompanyEstablishmentUpdateRequest $request, CompanyEstablishment $companyEstablishment)
     {
-        //
+        //Dados dos Formulários
+        $request['filter'] = StrtoLower($request['title']);
+
+        //Salvando Dados
+        $companyEstablishment->update($request->all());
+
+        return redirect(route('establishments.show', $companyEstablishment->id ))->with('success','Estabelecimento alterado com sucesso');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CompanyEstablishment $companyEstablishment)
+    public function is_active(Request $request, CompanyEstablishment $companyEstablishment)
     {
         //
+        $companyEstablishment->update($request->only('is_active'));
+        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 }

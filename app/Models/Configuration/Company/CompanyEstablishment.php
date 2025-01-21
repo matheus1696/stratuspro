@@ -44,6 +44,6 @@ class CompanyEstablishment extends Model
     }
 
     public function RegionCountry(){
-        return $this->belongsTo(RegionCountry::class, 'city_id');
+        return $this->belongsTo(RegionCountry::class, 'country_id');
     }
 }

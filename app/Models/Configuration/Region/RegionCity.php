@@ -16,8 +16,7 @@ class RegionCity extends Model
         'is_active',
     ];
 
-    public function RegionState()
-    {
+    public function RegionState(){
         return $this->belongsTo(RegionState::class, 'state_id');
     }
 }
