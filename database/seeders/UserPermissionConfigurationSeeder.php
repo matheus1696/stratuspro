@@ -27,6 +27,6 @@ class UserPermissionConfigurationSeeder extends Seeder
             'description' => 'Permite modificar parâmetros críticos e ajustes que afetam o funcionamento global do sistema.'
         ]);
         
-        $configurations->givePermissionTo(['configuration_users', 'configuration_regions']);
+        $configurations->givePermissionTo(['configuration_users', 'configuration_regions', 'configuration_measurement_unit', 'configuration_company_establishment']);
     }
 }
