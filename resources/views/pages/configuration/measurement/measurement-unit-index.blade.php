@@ -1,6 +1,6 @@
 <x-pages.app>
 
-    @slot('body')  
+    @slot('body')      
         <x-header.header-group>
             <x-header.header-title title="Unidades de Medidas" />
         </x-header.header-group>
