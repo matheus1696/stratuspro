@@ -5,7 +5,7 @@
         <x-header.header-group>
             <x-header.header-title title="Cadastro de Estabelecimento" /> 
             <div>
-                <a href="{{ route('establishments.index') }}" class="text-sm bg-gray-600 hover:bg-gray-700 rounded-full shadown-lg px-2.5 py-1.5 text-white hover:text-white transition-all duration-100">Voltar</a>
+                <x-button.link-secondary href="{{ route('establishments.index') }}" value="Voltar" />
             </div>
         </x-header.header-group>  
     

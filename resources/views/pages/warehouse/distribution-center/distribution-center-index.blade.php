@@ -9,7 +9,7 @@
         </x-header.header-group>
     
         <div>
-            <livewire:warehouse.distribuition-center.distribuition-center-table />
+            <livewire:warehouse.distribution-center.distribution-center-table />
         </div>
 
     @endslot

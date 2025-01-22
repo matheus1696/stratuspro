@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Warehouse;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateWarehouseDistributionCenterRequest extends FormRequest
+class WarehouseStockControlStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,9 @@ class UpdateWarehouseDistributionCenterRequest extends FormRequest
     {
         return [
             //
+            'code' => 'required|min:6|unique:warehouse_stock_controls',
+            'title' => 'required|unique:warehouse_stock_controls',
+            'establishment_id' => 'required',
         ];
     }
 }

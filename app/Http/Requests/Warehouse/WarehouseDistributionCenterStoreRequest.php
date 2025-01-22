@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Warehouse;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreWarehouseDistributionCenterRequest extends FormRequest
+class WarehouseDistributionCenterStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,9 @@ class StoreWarehouseDistributionCenterRequest extends FormRequest
     {
         return [
             //
+            'code' => 'required|min:6|unique:warehouse_distribution_centers',
+            'title' => 'required|unique:warehouse_distribution_centers',
+            'establishment_id' => 'required',
         ];
     }
 }

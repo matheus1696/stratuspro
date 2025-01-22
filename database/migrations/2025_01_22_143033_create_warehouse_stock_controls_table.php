@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('warehouse_distribution_centers', function (Blueprint $table) {
+        Schema::create('warehouse_stock_controls', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
             $table->string('title')->unique();
@@ -23,13 +23,13 @@ return new class extends Migration
             $table->foreign('establishment_id')->references('id')->on('company_establishments');
         });
 
-        Schema::create('warehouse_distribution_center_permissions', function (Blueprint $table) {
+        Schema::create('warehouse_stock_control_permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->unsignedInteger('distribution_center_id');
+            $table->unsignedInteger('stock_control_id');
             $table->timestamps();
 
-            $table->foreign('distribution_center_id')->references('id')->on('warehouse_distribution_centers');
+            $table->foreign('stock_control_id')->references('id')->on('warehouse_stock_controls');
         });
     }
 
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('warehouse_distribution_centers');
+        Schema::dropIfExists('warehouse_stock_controls');
     }
 };
