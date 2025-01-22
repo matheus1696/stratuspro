@@ -16,12 +16,14 @@ Route::get('/', function () { return redirect()->route('login'); });
 //Usuário Autenciados
 Route::middleware('auth')->group(function () {
     
-    require __DIR__.'/profile.php';
+    require __DIR__.'/modules/profile.php';
 
     //Usuários Verificados
     Route::middleware('verified')->group(function () {   
         
-        require __DIR__.'/configuration.php';
+        require __DIR__.'/modules/configuration.php';
+
+        require __DIR__.'/modules/warehouse.php';
     
         //Rota de Página Inicial
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
@@ -62,4 +64,4 @@ Route::middleware('auth')->group(function () {
     
 });
 
-require __DIR__.'/auth.php';
+require __DIR__.'/modules/auth.php';

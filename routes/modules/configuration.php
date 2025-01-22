@@ -21,7 +21,7 @@ Route::prefix('configuration')->group(function () {
         });
     });
 
-    Route::middleware('permission:configuration_measurement_unit')->group(function () {
+    Route::middleware('permission:configuration_measurement_units')->group(function () {
         Route::prefix('measurement')->group(function () {
             //Rotas de Configuração de Unidade de Medidas
             Route::get('units', [MeasurementUnitController::class, 'index'])->name('measurement_units.index');
@@ -47,7 +47,7 @@ Route::prefix('configuration')->group(function () {
         });
     });
 
-    Route::middleware('permission:configuration_company_establishment')->group(function () {
+    Route::middleware('permission:configuration_company_establishments')->group(function () {
         Route::prefix('company')->group(function () {
             //Rotas de Configuração de Unidade de Medidas
             Route::get('establishments', [CompanyEstablishmentController::class, 'index'])->name('establishments.index');

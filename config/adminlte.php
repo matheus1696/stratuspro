@@ -384,26 +384,26 @@ return [
                 [
                     'text' => 'Configuração da Empresa',
                     'icon' => 'fas fa-cogs pr-1',
-                    'can' => 'configuration_company_establishment',
+                    'can' => 'configuration_company_establishments',
                     'submenu' => [
                         [
                             'text' => 'Estabelecimentos',
                             'icon' => 'fas fa-building pr-1',
                             'route' => 'establishments.index',
-                            'can' => 'configuration_company_establishment',
+                            'can' => 'configuration_company_establishments',
                         ],
                     ],
                 ],
                 [
                     'text' => 'Configuração de Medidas',
                     'icon' => 'fas fa-ruler pr-1',
-                    'can' => 'configuration_measurement_unit',
+                    'can' => 'configuration_measurement_units',
                     'submenu' => [
                         [
                             'text' => 'Unidade de Medidas',
                             'icon' => 'fas fa-balance-scale pr-1',
                             'route' => 'measurement_units.index',
-                            'can' => 'configuration_measurement_unit',
+                            'can' => 'configuration_measurement_units',
                         ],
                     ],
                 ],
@@ -431,6 +431,25 @@ return [
                             'can' => 'configuration_regions',
                         ],
 
+                    ],
+                ],
+                [
+                    'text' => 'Configuração de Estoques',
+                    'icon' => 'fas fa-warehouse pr-1',
+                    'can' => 'configuration_distribution_centers',
+                    'submenu' => [
+                        [
+                            'text' => 'Centros de Distribuição',
+                            'icon' => 'fas fa-warehouse pr-1',
+                            'route' => 'distribution_centers.index',
+                            'can' => 'configuration_distribution_centers',
+                        ],
+                        [
+                            'text' => 'Estoques Locais',
+                            'icon' => 'fas fa-warehouse pr-1',
+                            'route' => 'stock_controls.index',
+                            'can' => 'configuration_stock_controls',
+                        ],
                     ],
                 ],
             ],
