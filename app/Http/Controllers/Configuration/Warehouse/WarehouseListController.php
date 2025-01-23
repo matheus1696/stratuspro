@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Configuration\Warehouse\WarehouseListStoreRequest;
 use App\Http\Requests\Configuration\Warehouse\WarehouseListUpdateRequest;
 use App\Models\Configuration\Warehouse\WarehouseList;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class WarehouseListController extends Controller
@@ -78,6 +79,17 @@ class WarehouseListController extends Controller
      * Remove the specified resource from storage.
      */
     public function is_active(Request $request, WarehouseList $warehouseList)
+    {
+        //
+        $warehouseList->update($request->only('is_active'));
+        
+        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function permission(Request $request, WarehouseList $warehouseList)
     {
         //
         $warehouseList->update($request->only('is_active'));

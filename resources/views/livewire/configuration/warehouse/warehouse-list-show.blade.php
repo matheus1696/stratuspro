@@ -18,7 +18,43 @@
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">
-        Permissões
+        
+        <div class="flex flex-col lg:flex-row justify-between items-center gap-2 pb-3 border-b border-gray-300">
+            <h2 class="font-semibold text-lg">Permissões do Usuário</h2>
+            
+            <div class="w-full md:w-80">
+                <!-- Filtros de Pesquisa -->
+                <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Nome do Usuário" />
+            </div>
+        </div>
+
+        <div class="flex items-start gap-2 py-3">
+            <div class="bg-red-100 h-60 max-h-60 w-1/2 overflow-y-auto text-sm">
+                @foreach ($dbUsers as $dbUser)
+                    @foreach ($dbUserPermissions as $dbUserPermission)
+                        @if ($dbUser->id != $dbUserPermission->user_id)
+                            <div class="flex items-center justify-between gap-2 border-b border-red-200">
+                                {{ $dbUser->name }}
+                                <a class="px-2 py-1" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUser->id]) }}">
+                                    <i class="fas fa-chevron-right"></i>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endforeach
+            </div>
+            <div class="bg-green-100 h-60 max-h-60 w-1/2 overflow-y-auto text-sm">
+                @foreach ($dbUserPermissions as $dbUserPermission)
+                    <div class="flex items-center justify-between gap-2 border-b border-green-200">
+                        <a class="px-2 py-1" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUserPermission->user_id]) }}">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        {{ $dbUserPermission->User->name }}
+                    </div>
+                @endforeach
+            </div>
+
+        </div>
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('establishment_id')->references('id')->on('company_establishments');
         });
 
-        Schema::create('warehouse_list_permissions', function (Blueprint $table) {
+        Schema::create('warehouse_permissions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->unsignedInteger('warehouse_id');

@@ -33,7 +33,7 @@
         <!-- Inicio Slot THead -->
         @slot('thead')
             <x-table.th class="w-32">Código</x-table.th>
-            <x-table.th>Almoxarifado</x-table.th>
+            <x-table.th class="w-80">Almoxarifado</x-table.th>
             <x-table.th class="w-32">Tipo</x-table.th>
             <x-table.th class="w-60">Estabelecimento</x-table.th>
             <x-table.th class="w-28">Status</x-table.th>
