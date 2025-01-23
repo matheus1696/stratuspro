@@ -11,6 +11,7 @@ use Database\Seeders\Configuration\Region\RegionCitySeeder;
 use Database\Seeders\Configuration\Region\RegionCountrySeeder;
 use Database\Seeders\Configuration\Region\RegionStateSeeder;
 use Database\Seeders\Configuration\User\UserGenderSeeder;
+use Database\Seeders\Configuration\Warehouse\WarehouseItemSeeder;
 use Database\Seeders\Configuration\Warehouse\WarehouseTypeSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionConfigurationSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionGlobalSeeder;
@@ -34,6 +35,7 @@ class DatabaseSeeder extends Seeder
             UserGenderSeeder::class,
             MeasurementUnitSeeder::class,
             WarehouseTypeSeeder::class,
+            WarehouseItemSeeder::class,
 
             // Spatie Permissions
             UserPermissionUserSeeder::class,

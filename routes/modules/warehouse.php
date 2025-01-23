@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Configuration\Warehouse\WarehouseItemController;
 use App\Http\Controllers\Configuration\Warehouse\WarehouseListController;
 use App\Http\Controllers\Warehouse\WarehouseDistributionCenterController;
 use App\Http\Controllers\Warehouse\WarehouseStockControlController;
@@ -10,14 +11,24 @@ Route::prefix('warehouse')->group(function () {
 
     //Rotas de Configuração do Centro de Distribuição
     Route::middleware('permission:configuration_warehouses')->group(function () {
-        Route::get('warehouses', [WarehouseListController::class, 'index'])->name('warehouses.index');
-        Route::get('warehouses/create', [WarehouseListController::class, 'create'])->name('warehouses.create');
-        Route::post('warehouses/store', [WarehouseListController::class, 'store'])->name('warehouses.store');
-        Route::get('warehouses/{warehouse_list}/show', [WarehouseListController::class, 'show'])->name('warehouses.show');
-        Route::get('warehouses/{warehouse_list}/edit', [WarehouseListController::class, 'edit'])->name('warehouses.edit');
-        Route::put('warehouses/{warehouse_list}/update', [WarehouseListController::class, 'update'])->name('warehouses.update');
-        Route::put('warehouses/{warehouse_list}/is_active', [WarehouseListController::class, 'is_active'])->name('warehouses.is_active');
-        Route::put('warehouses/{warehouse_list}/permission', [WarehouseListController::class, 'permission'])->name('warehouses.permission');
+        Route::get('list', [WarehouseListController::class, 'index'])->name('warehouses.index');
+        Route::get('list/create', [WarehouseListController::class, 'create'])->name('warehouses.create');
+        Route::post('list/store', [WarehouseListController::class, 'store'])->name('warehouses.store');
+        Route::get('list/{warehouse_list}/show', [WarehouseListController::class, 'show'])->name('warehouses.show');
+        Route::get('list/{warehouse_list}/edit', [WarehouseListController::class, 'edit'])->name('warehouses.edit');
+        Route::put('list/{warehouse_list}/update', [WarehouseListController::class, 'update'])->name('warehouses.update');
+        Route::put('list/{warehouse_list}/is_active', [WarehouseListController::class, 'is_active'])->name('warehouses.is_active');
+        Route::put('list/{warehouse_list}/permission', [WarehouseListController::class, 'permission'])->name('warehouses.permission');
+    });
+
+    //Rotas de Configuração do Centro de Distribuição
+    Route::middleware('permission:configuration_warehouses')->group(function () {
+        Route::get('item', [WarehouseItemController::class, 'index'])->name('warehouse_items.index');
+        Route::get('item/create', [WarehouseItemController::class, 'create'])->name('warehouse_items.create');
+        Route::post('item/store', [WarehouseItemController::class, 'store'])->name('warehouse_items.store');
+        Route::get('item/{warehouse_item}/edit', [WarehouseItemController::class, 'edit'])->name('warehouse_items.edit');
+        Route::put('item/{warehouse_item}/update', [WarehouseItemController::class, 'update'])->name('warehouse_items.update');
+        Route::put('item/{warehouse_item}/is_active', [WarehouseItemController::class, 'is_active'])->name('warehouse_items.is_active');
     });
 
     //Rotas do Centro de Distribuição

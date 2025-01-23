@@ -444,6 +444,12 @@ return [
                             'route' => 'warehouses.index',
                             'can' => 'configuration_warehouses',
                         ],
+                        [
+                            'text' => 'Items',
+                            'icon' => 'fas fa-apple-alt pr-1',
+                            'route' => 'warehouse_items.index',
+                            'can' => 'configuration_warehouse_items',
+                        ],
                     ],
                 ],
             ],
