@@ -19,6 +19,7 @@ class UserPermissionConfigurationSeeder extends Seeder
         Permission::create(['name' => 'configuration_regions', 'display_name' => 'Configurações Regiões']);
         Permission::create(['name' => 'configuration_measurement_units', 'display_name' => 'Configurações de Medidas']);
         Permission::create(['name' => 'configuration_company_establishments', 'display_name' => 'Configurações dos Estabelecimentos']);
+        Permission::create(['name' => 'configuration_warehouses', 'display_name' => 'Configurações dos Almoxarifadoss']);
 
         // Criando roles com nomes consistentes
         $configurations = Role::create([
@@ -31,7 +32,8 @@ class UserPermissionConfigurationSeeder extends Seeder
             'configuration_users',
             'configuration_regions',
             'configuration_measurement_units',
-            'configuration_company_establishments'
+            'configuration_company_establishments',
+            'configuration_warehouses'
         ]);
     }
 }

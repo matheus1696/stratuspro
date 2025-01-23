@@ -435,20 +435,14 @@ return [
                 ],
                 [
                     'text' => 'Configuração de Estoques',
-                    'icon' => 'fas fa-warehouse pr-1',
-                    'can' => ['configuration_distribution_centers','configuration_stock_controls'],
+                    'icon' => 'fas fa-pallet pr-1',
+                    'can' => ['configuration_warehouses'],
                     'submenu' => [
                         [
-                            'text' => 'Centros de Distribuição',
+                            'text' => 'Almoxarifados',
                             'icon' => 'fas fa-warehouse pr-1',
-                            'route' => 'distribution_centers.index',
-                            'can' => 'configuration_distribution_centers',
-                        ],
-                        [
-                            'text' => 'Estoques Locais',
-                            'icon' => 'fas fa-warehouse pr-1',
-                            'route' => 'stock_controls.index',
-                            'can' => 'configuration_stock_controls',
+                            'route' => 'warehouses.index',
+                            'can' => 'configuration_warehouses',
                         ],
                     ],
                 ],

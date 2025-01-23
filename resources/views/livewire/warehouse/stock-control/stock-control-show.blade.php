@@ -14,6 +14,10 @@
             <div class="lg:col-span-2"><strong>Latidude:</strong> {{$dbStockControl->latitude}} </div>
             <div class="lg:col-span-2"><strong>Longitude:</strong> {{$dbStockControl->longitude}} </div>
         </div>
+    </x-pages.conteiner>    
+
+    <x-pages.conteiner class="mb-5">
+        Permissões
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">

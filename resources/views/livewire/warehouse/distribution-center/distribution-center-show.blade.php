@@ -17,6 +17,10 @@
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">
+        Permissões
+    </x-pages.conteiner>
+
+    <x-pages.conteiner class="mb-5">
         Itens em estoque
     </x-pages.conteiner>
 
