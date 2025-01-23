@@ -43,6 +43,17 @@ class WarehouseDistributionCenterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(WarehouseDistributionCenter $warehouseDistributionCenter)
+    {
+        //
+        $dbDistributionCenter = $warehouseDistributionCenter->id;
+
+        return view('pages.warehouse.distribution-center.distribution-center-show', compact('dbDistributionCenter'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(WarehouseDistributionCenter $warehouseDistributionCenter)
     {
         //

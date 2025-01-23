@@ -22,6 +22,6 @@ class StockControlForm extends Component
 
         $dbEstablishments = CompanyEstablishment::where('is_active',true)->orderBy('title')->get();
 
-        return view('livewire.warehouse.stock-control.stock-control-form', compact('dbDistributionCenter', 'dbEstablishments'));
+        return view('livewire.warehouse.stock-control.stock-control-form', compact('dbStockControl', 'dbEstablishments'));
     }
 }

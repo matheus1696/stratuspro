@@ -20,7 +20,7 @@
         @endslot
         <!-- Inicio Slot THead -->
         @slot('thead')
-            <x-table.th class="w-24">Código</x-table.th>
+            <x-table.th class="w-28">Código</x-table.th>
             <x-table.th>Estoque</x-table.th>
             <x-table.th class="w-60">Estabelecimento</x-table.th>
             <x-table.th class="w-28">Status</x-table.th>
@@ -35,9 +35,13 @@
                     <x-table.td>{{$dbStockControl->title}}</x-table.td>
                     <x-table.td>{{$dbStockControl->CompanyEstablishment->title}}</x-table.td>
                     <x-table.td>
-                        <x-button.btn-status condition="{{ $dbStockControl->is_active }}" route="{{ route('warehouse_stock_controls.is_active', $dbStockControl->id)}}" />
-                    </x-table.td>                    
-                    <x-table.td></x-table.td>
+                        <x-button.btn-status condition="{{ $dbStockControl->is_active }}" route="{{ route('stock_controls.is_active', $dbStockControl->id)}}" />
+                    </x-table.td>                              
+                    <x-table.td>
+                        <x-table.button.btn-group>
+                            <x-table.button.btn-show href="{{ route('stock_controls.show', $dbStockControl->id)}}" />
+                        </x-table.button.btn-group>
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

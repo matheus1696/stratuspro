@@ -43,6 +43,17 @@ class WarehouseStockControlController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function show(WarehouseStockControl $warehouseStockControl)
+    {
+        //
+        $dbStockControl = $warehouseStockControl->id;
+
+        return view('pages.warehouse.stock-control.stock-control-show', compact('dbStockControl'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
     public function edit(WarehouseStockControl $warehouseStockControl)
     {
         //

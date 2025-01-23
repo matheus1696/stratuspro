@@ -2,7 +2,7 @@
 
     @slot('body')
         <x-header.header-group>
-            <x-header.header-title title="Lista de Estoques Locais" />
+            <x-header.header-title title="Lista de Estoque Local" />
             <div>
                 <x-button.link-primary href="{{ route('stock_controls.create') }}" value="Novo Centro" />
             </div>

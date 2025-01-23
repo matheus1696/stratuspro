@@ -436,7 +436,7 @@ return [
                 [
                     'text' => 'Configuração de Estoques',
                     'icon' => 'fas fa-warehouse pr-1',
-                    'can' => 'configuration_distribution_centers',
+                    'can' => ['configuration_distribution_centers','configuration_stock_controls'],
                     'submenu' => [
                         [
                             'text' => 'Centros de Distribuição',

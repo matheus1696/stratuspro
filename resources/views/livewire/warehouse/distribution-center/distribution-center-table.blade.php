@@ -37,7 +37,11 @@
                     <x-table.td>
                         <x-button.btn-status condition="{{ $dbDistributionCenter->is_active }}" route="{{ route('distribution_centers.is_active', $dbDistributionCenter->id)}}" />
                     </x-table.td>                    
-                    <x-table.td></x-table.td>
+                    <x-table.td>
+                        <x-table.button.btn-group>
+                            <x-table.button.btn-show href="{{ route('distribution_centers.show', $dbDistributionCenter->id)}}" />
+                        </x-table.button.btn-group>
+                    </x-table.td>
                 </x-table.tr>
             @endforeach
         @endslot

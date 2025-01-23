@@ -20,6 +20,6 @@ class WarehouseDistributionCenter extends Model
     ];
 
     public function CompanyEstablishment(){
-        return $this->belongsTo(CompanyEstablishment::class, 'establishment_id');
+        return $this->belongsTo(CompanyEstablishment::class, 'establishment_id', 'id');
     }
 }
