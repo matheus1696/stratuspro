@@ -4,12 +4,12 @@
         <x-header.header-group>
             <x-header.header-title title="Lista de Itens" />
             <div>
-                <x-button.link-primary href="{{ route('warehouse_items.create') }}" value="Novo Item" />
+                <x-button.link-primary href="{{ route('warehouse_products.create') }}" value="Novo Produto" />
             </div>
         </x-header.header-group>
     
         <div>
-            <livewire:configuration.warehouse.warehouse-item-table />
+            <livewire:warehouse.warehouse-product.warehouse-product-table />
         </div>
 
     @endslot

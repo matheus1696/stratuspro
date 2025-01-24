@@ -15,7 +15,8 @@ class UserPermissionWarehouseSeeder extends Seeder
     public function run(): void 
     {
         // Configurações
-        Permission::create(['name' => 'warehouse_storages_configuration', 'display_name' => 'Configurações dos Almoxarifados']);
+        Permission::create(['name' => 'warehouse_storage_configurations', 'display_name' => 'Configurações dos Almoxarifados']);
+        Permission::create(['name' => 'warehouse_product_configurations', 'display_name' => 'Configurações de Produtos']);
 
         // Criando roles com nomes consistentes
         $warehouse = Role::create([
@@ -25,7 +26,8 @@ class UserPermissionWarehouseSeeder extends Seeder
         ]);
         
         $warehouse->givePermissionTo([
-            'warehouse_storages_configuration',
+            'warehouse_storage_configurations',
+            'warehouse_product_configurations'
         ]);
     }
 }

@@ -13,8 +13,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {        
-        User::factory(150)->create();
-
         User::create([
             'name' => 'Super Admin',
             'filter' => 'super admin',
@@ -30,5 +28,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('user'),
             'email_verified_at' => now(),
         ])->assignRole('users');
+        
+        User::factory(150)->create();
     }
 }

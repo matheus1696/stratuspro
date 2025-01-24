@@ -11,12 +11,13 @@ use Database\Seeders\Configuration\Region\RegionCitySeeder;
 use Database\Seeders\Configuration\Region\RegionCountrySeeder;
 use Database\Seeders\Configuration\Region\RegionStateSeeder;
 use Database\Seeders\Configuration\User\UserGenderSeeder;
-use Database\Seeders\Configuration\Warehouse\WarehouseItemSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionConfigurationSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionGlobalSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionManagenmentsSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionUserSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionWarehouseSeeder;
+use Database\Seeders\Warehouse\WarehouseProductCategorySeeder;
+use Database\Seeders\Warehouse\WarehouseProductSeeder;
 use Database\Seeders\Warehouse\WarehouseStorageTypeSeeder;
 use Illuminate\Database\Seeder;
 
@@ -34,7 +35,6 @@ class DatabaseSeeder extends Seeder
             RegionCitySeeder::class,
             UserGenderSeeder::class,
             MeasurementUnitSeeder::class,
-            WarehouseItemSeeder::class,
 
             // Spatie Permissões
             UserPermissionUserSeeder::class,
@@ -45,6 +45,8 @@ class DatabaseSeeder extends Seeder
 
             // Almoxarifado
             WarehouseStorageTypeSeeder::class,
+            WarehouseProductCategorySeeder::class,
+            WarehouseProductSeeder::class,
 
             // Globais
             UserSeeder::class,          

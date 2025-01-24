@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Configuration\Warehouse;
+namespace App\Livewire\Warehouse\WarehouseProduct;
 
-use App\Models\Configuration\Warehouse\WarehouseItem;
+use App\Models\Warehouse\WarehouseProduct;
 use Livewire\Component;
 
-class WarehouseItemTable extends Component
+class WarehouseProductTable extends Component
 {
     public $search = '';
     public $perPage = 10;
@@ -13,15 +13,15 @@ class WarehouseItemTable extends Component
     public function render()
     {
         // Inicia a consulta de usuários
-        $query = WarehouseItem::query();
+        $query = WarehouseProduct::query();
 
         // Aplica os filtros de busca, se existirem
         if (!empty($this->search)) { $query->where('filter', 'like', '%' . strtolower($this->search) . '%'); }
         if (!empty($this->typeId)) { $query->where('type_id', $this->typeId); }
 
         // Paginando os resultados
-        $dbWarehouseItems = $query->orderBy('title')->paginate($this->perPage);
+        $dbWarehouseProducts = $query->orderBy('title')->paginate($this->perPage);
 
-        return view('livewire.configuration.warehouse.warehouse-item-table', compact('dbWarehouseItems'));
+        return view('livewire.warehouse.warehouse-product.warehouse-product-table', compact('dbWarehouseProducts'));
     }
 }
