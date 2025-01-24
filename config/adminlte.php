@@ -436,18 +436,18 @@ return [
                 [
                     'text' => 'Configuração de Estoques',
                     'icon' => 'fas fa-pallet pr-1',
-                    'can' => ['configuration_warehouses'],
+                    'can' => ['warehouse_storages_configuration'],
                     'submenu' => [
                         [
                             'text' => 'Almoxarifados',
                             'icon' => 'fas fa-warehouse pr-1',
-                            'route' => 'warehouses.index',
-                            'can' => 'configuration_warehouses',
+                            'route' => 'warehouse_storages.index',
+                            'can' => 'warehouse_storages_configuration',
                         ],
                         [
                             'text' => 'Items',
                             'icon' => 'fas fa-apple-alt pr-1',
-                            'route' => 'warehouse_items.index',
+                            //'route' => 'warehouse_items.index',
                             'can' => 'configuration_warehouse_items',
                         ],
                     ],
