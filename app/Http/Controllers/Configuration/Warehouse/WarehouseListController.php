@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Configuration\Warehouse\WarehouseListStoreRequest;
 use App\Http\Requests\Configuration\Warehouse\WarehouseListUpdateRequest;
 use App\Models\Configuration\Warehouse\WarehouseList;
+use App\Models\Configuration\Warehouse\WarehousePermission;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -89,11 +90,14 @@ class WarehouseListController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function permission(Request $request, WarehouseList $warehouseList)
+    public function permission(Request $request, WarehouseList $warehouseList, User $user)
     {
         //
-        $warehouseList->update($request->only('is_active'));
+        WarehousePermission::create([
+            'warehouse_id' => $warehouseList->id,
+            'user_id' => $user->id,
+        ]);
         
-        return redirect()->back()->with('success', 'Status atualizado com sucesso!');
+        return redirect()->back()->with('success', 'Permissão atribuida com sucesso!');
     }
 }

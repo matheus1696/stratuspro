@@ -8,53 +8,53 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-6 gap-5">
             <div><strong>Código</strong> {{$dbWarehouse->code}}</div>
-            <div class="lg:col-span-5"><strong>Título:</strong> {{$dbWarehouse->title}}</div>
-            <div class="lg:col-span-3"><strong>Unidade Vinculada:</strong> {{$dbWarehouse->CompanyEstablishment->title}} </div>
-            <div class="lg:col-span-3"><strong>Endereço:</strong> {{$dbWarehouse->CompanyEstablishment->address}}, {{$dbWarehouse->CompanyEstablishment->number}}, {{$dbWarehouse->CompanyEstablishment->district}}, {{$dbWarehouse->CompanyEstablishment->RegionCity->title}}-{{$dbWarehouse->CompanyEstablishment->RegionState->acronym}}, {{$dbWarehouse->CompanyEstablishment->RegionCountry->title}}</div>
+            <div class="lg:col-span-3"><strong>Título:</strong> {{$dbWarehouse->title}}</div>
+            <div class="lg:col-span-2"><strong>Tipo:</strong> {{$dbWarehouse->WarehouseType->title}} </div>
+            <div class="lg:col-span-6"><strong>Endereço:</strong> {{$dbWarehouse->CompanyEstablishment->address}}, {{$dbWarehouse->CompanyEstablishment->number}}, {{$dbWarehouse->CompanyEstablishment->district}}, {{$dbWarehouse->CompanyEstablishment->RegionCity->title}}-{{$dbWarehouse->CompanyEstablishment->RegionState->acronym}}, {{$dbWarehouse->CompanyEstablishment->RegionCountry->title}}</div>
             <div class="lg:col-span-2"><strong>Latidude:</strong> {{$dbWarehouse->latitude}} </div>
             <div class="lg:col-span-2"><strong>Longitude:</strong> {{$dbWarehouse->longitude}} </div>
-            <div class="lg:col-span-2"><strong>Tipo:</strong> {{$dbWarehouse->type}} </div>
+            <div class="lg:col-span-6"><strong>Unidade Vinculada:</strong> {{$dbWarehouse->CompanyEstablishment->title}} </div>
         </div>
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">
         
         <div class="flex flex-col lg:flex-row justify-between items-center gap-2 pb-3 border-b border-gray-300">
-            <h2 class="font-semibold text-lg">Permissões do Usuário</h2>
+            <h2 class="font-semibold text-lg">Permissões de Acesso</h2>
             
             <div class="w-full md:w-80">
                 <!-- Filtros de Pesquisa -->
-                <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Nome do Usuário" />
+                <x-form.form-input type="text" wire:model.live.debounce.300ms="search" placeholder="Nome do Usuário sem Acesso" />
             </div>
         </div>
 
         <div class="flex items-start gap-2 py-3">
-            <div class="bg-red-100 h-60 max-h-60 w-1/2 overflow-y-auto text-sm">
-                @foreach ($dbUsers as $dbUser)
-                    @foreach ($dbUserPermissions as $dbUserPermission)
-                        @if ($dbUser->id != $dbUserPermission->user_id)
-                            <div class="flex items-center justify-between gap-2 border-b border-red-200">
-                                {{ $dbUser->name }}
-                                <a class="px-2 py-1" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUser->id]) }}">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </div>
-                        @endif
+            <div class="w-1/2 bg-red-100 rounded-lg shadow overflow-hidden">
+                <div class="h-60 w-full overflow-y-auto text-sm ">
+                    @foreach ($dbUsers as $dbUser)
+                        <div class="flex items-center justify-between gap-2 border-b border-red-200 hover:bg-red-200 ">
+                            <span class="px-3.5">{{ $dbUser->name }}</span>
+                            <a class="px-3.5 py-2 hover:text-white" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUser->id]) }}">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </div>
                     @endforeach
-                @endforeach
+                </div>
             </div>
-            <div class="bg-green-100 h-60 max-h-60 w-1/2 overflow-y-auto text-sm">
-                @foreach ($dbUserPermissions as $dbUserPermission)
-                    <div class="flex items-center justify-between gap-2 border-b border-green-200">
-                        <a class="px-2 py-1" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUserPermission->user_id]) }}">
-                            <i class="fas fa-chevron-left"></i>
-                        </a>
-                        {{ $dbUserPermission->User->name }}
-                    </div>
-                @endforeach
+            <div class="w-1/2 bg-green-100 rounded-lg shadow overflow-hidden">
+                <div class="h-60 w-full overflow-y-auto text-sm">
+                    @foreach ($dbUserPermissions as $dbUserPermission)
+                        <div class="flex items-center justify-between gap-2 border-b border-green-200 hover:bg-green-200">
+                            <a class="px-3.5 py-2 hover:text-white" href="{{ route('warehouses.permission',['warehouse_list'=>$dbWarehouse->id, 'user'=>$dbUserPermission->user_id]) }}">
+                                <i class="fas fa-chevron-left"></i>
+                            </a>
+                            <span class="px-3.5 py-2">{{ $dbUserPermission->User->name }}</span>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-
         </div>
+
     </x-pages.conteiner>
 
     <x-pages.conteiner class="mb-5">

@@ -18,7 +18,7 @@ Route::prefix('warehouse')->group(function () {
         Route::get('list/{warehouse_list}/edit', [WarehouseListController::class, 'edit'])->name('warehouses.edit');
         Route::put('list/{warehouse_list}/update', [WarehouseListController::class, 'update'])->name('warehouses.update');
         Route::put('list/{warehouse_list}/is_active', [WarehouseListController::class, 'is_active'])->name('warehouses.is_active');
-        Route::put('list/{warehouse_list}/permission/{user}', [WarehouseListController::class, 'permission'])->name('warehouses.permission');
+        Route::get('list/{warehouse_list}/permission/{user}', [WarehouseListController::class, 'permission'])->name('warehouses.permission');
     });
 
     //Rotas de Configuração do Centro de Distribuição
