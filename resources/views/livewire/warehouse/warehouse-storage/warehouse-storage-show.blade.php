@@ -45,7 +45,7 @@
                 <div class="h-60 w-full overflow-y-auto text-sm">
                     @foreach ($dbUserPermissions as $dbUserPermission)
                         <div class="flex items-center justify-between gap-2 border-b border-green-200 hover:bg-green-200">
-                            <a class="px-3.5 py-2 hover:text-white" href="{{ route('warehouse_storages.permission',['warehouse_storage'=>$dbWarehouseStorage->id, 'user'=>$dbUserPermission->user_id]) }}">
+                            <a class="px-3.5 py-2 hover:text-white" href="{{ route('warehouse_storages.revoke',['warehouse_storage'=>$dbWarehouseStorage->id, 'user'=>$dbUserPermission->user_id]) }}">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
                             <span class="px-3.5 py-2">{{ $dbUserPermission->User->name }}</span>

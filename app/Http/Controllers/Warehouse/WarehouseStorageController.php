@@ -83,7 +83,7 @@ class WarehouseStorageController extends Controller
     {
         //
         $warehouseStorage->update($request->only('is_active'));
-        
+
         return redirect()->back()->with('success', 'Status atualizado com sucesso!');
     }
 
@@ -97,7 +97,27 @@ class WarehouseStorageController extends Controller
             'warehouse_id' => $warehouseStorage->id,
             'user_id' => $user->id,
         ]);
-        
+
         return redirect()->back()->with('success', 'Permissão atribuida com sucesso!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function revoke(WarehouseStorage $warehouseStorage, User $user)
+    {
+        // Encontra a permissão correspondente
+        $dbWarehousePermission = WarehousePermission::where('user_id', $user->id)
+            ->where('warehouse_id', $warehouseStorage->id)
+            ->first();
+
+        // Verifica se a permissão existe antes de tentar deletá-la
+        if ($dbWarehousePermission) {
+            $dbWarehousePermission->delete();
+            return redirect()->back()->with('success', 'Permissão revogada com sucesso!');
+        }
+
+        // Retorna erro se a permissão não foi encontrada
+        return redirect()->back()->with('error', 'Permissão não encontrada!');
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Warehouse\WarehouseInventoryController;
 use App\Http\Controllers\Warehouse\WarehouseStorageController;
 use App\Http\Controllers\Warehouse\WarehouseProductController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::prefix('warehouse')->group(function () {
         Route::put('storage/{warehouse_storage}/update', [WarehouseStorageController::class, 'update'])->name('warehouse_storages.update');
         Route::put('storage/{warehouse_storage}/is_active', [WarehouseStorageController::class, 'is_active'])->name('warehouse_storages.is_active');
         Route::get('storage/{warehouse_storage}/permission/{user}', [WarehouseStorageController::class, 'permission'])->name('warehouse_storages.permission');
+        Route::get('storage/{warehouse_storage}/revoke/{user}', [WarehouseStorageController::class, 'revoke'])->name('warehouse_storages.revoke');
     });
 
     //Rotas de Configuração do Centro de Distribuição
@@ -27,5 +29,11 @@ Route::prefix('warehouse')->group(function () {
         Route::get('product/{warehouse_product}/edit', [WarehouseProductController::class, 'edit'])->name('warehouse_products.edit');
         Route::put('product/{warehouse_product}/update', [WarehouseProductController::class, 'update'])->name('warehouse_products.update');
         Route::put('product/{warehouse_product}/is_active', [WarehouseProductController::class, 'is_active'])->name('warehouse_products.is_active');
+    });
+
+    //Rotas de Configuração do Centro de Distribuição
+    Route::middleware('permission:warehouse_inventory_managenment')->group(function () {
+        Route::get('inventory', [WarehouseInventoryController::class, 'index'])->name('warehouse_inventories.index');
+        Route::get('inventory/{warehouse_inventory}/show', [WarehouseInventoryController::class, 'show'])->name('warehouse_inventories.show');
     });
 });

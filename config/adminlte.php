@@ -350,6 +350,13 @@ return [
         ],
 
         [
+            'text' => 'Almoxarifado',
+            'icon' => 'fas fa-boxes pr-1',
+            'route' => 'warehouse_inventories.index',
+            'can' => 'warehouse_inventory_managenment',
+        ],
+
+        [
             'text' => 'Gerenciamento de Perfis',
             'icon' => 'fas fa-users pr-1',
             'route' => 'users.index',
