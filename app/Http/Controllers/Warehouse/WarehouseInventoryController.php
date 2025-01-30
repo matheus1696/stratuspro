@@ -15,7 +15,25 @@ class WarehouseInventoryController extends Controller
     {
         //
         return view('pages.warehouse.inventory.inventory-index');
+    }    
+
+    /**
+     * Display the specified resource.
+     */
+    public function create(WarehouseStorage $warehouseStorage)
+    {
+        //
+        return view('pages.warehouse.inventory.inventory-create', compact('warehouseStorage'));
     }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(WarehouseStorage $warehouseStorage)
+    {
+        //
+        return view('pages.warehouse.inventory.inventory-show', compact('warehouseStorage'));
+    }  
     
     /**
      * Store a newly created resource in storage.
@@ -29,14 +47,6 @@ class WarehouseInventoryController extends Controller
      * Store a newly created resource in storage.
      */
     public function entryStore(WarehouseMovimentEntryStoreRequest $request, WarehouseStorage $warehouseStorage)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(WarehouseStorage $warehouseStorage)
     {
         //
     }

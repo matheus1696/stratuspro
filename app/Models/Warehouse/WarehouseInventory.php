@@ -9,4 +9,13 @@ class WarehouseInventory extends Model
 {
     /** @use HasFactory<\Database\Factories\Warehouse\WarehouseInventoryFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'product_id',
+        'warehouse_id'
+    ];
+
+    public function WarehouseProduct(){
+        return $this->belongsTo(WarehouseProduct::class, 'product_id', 'id');
+    }
 }
