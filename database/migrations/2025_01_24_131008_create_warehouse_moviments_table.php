@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('warehouse_moviments', function (Blueprint $table) {
             $table->id();
-            $table->string('supplier')->nullable();
-            $table->string('invoice_number')->nullable();
-            $table->string('supplier_number')->nullable();
-            $table->integer('quantity');
-            $table->string('type_moviment');
+            $table->string('invoice_number')->nullable(); // Número da Nota Fiscal
+            $table->string('supplier_order_number')->nullable(); // Número da Ordem do Fornecedor
+            $table->foreignId('supplier_id')->constrained('business_contract_suppliers');
             $table->foreignId('product_id')->constrained('warehouse_products');
-            $table->foreignId('warehouse_id')->constrained('warehouse_storages');
-            $table->foreignId('financial_block_id')->constrained('company_financial_blocks');
+            $table->integer('quantity');
+            $table->decimal('price', 10, 2); // Valor unitário do produto
+            $table->decimal('total_value', 12, 2); // Valor total do movimento
+            $table->enum('movement_type', ['entrada', 'saida']); // Tipo de movimentação (Entrada ou Saída)
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('financial_block_id')->constrained('company_financial_blocks');
+            $table->foreignId('warehouse_id')->constrained('warehouse_storages');
             $table->timestamps();
         });
     }

@@ -1,18 +1,18 @@
 <div>
     <x-form.form-group>     
         <div class="col-span-12 md:col-span-2">
-            <x-form.form-label for="invoice" value="Nota Fiscal"/>
-            <x-form.form-input name="invoice" value="{{ old('invoice') ?? $dbWarehouseInventory->invoice ?? ''}}" placeholder="000.000" required />
-            <x-form.form-error for="invoice" />
+            <x-form.form-label for="invoice_number" value="Nota Fiscal"/>
+            <x-form.form-input name="invoice_number" value="{{ old('invoice_number') ?? $dbWarehouseInventory->invoice_number ?? ''}}" placeholder="000.000" required />
+            <x-form.form-error for="invoice_number" />
         </div>
 
         <div class="col-span-12 md:col-span-2">
-            <x-form.form-label for="number_supplier" value="O.F."/>
-            <x-form.form-input name="number_supplier" value="{{ old('number_supplier') ?? $dbWarehouseInventory->number_supplier ?? ''}}" placeholder="0000.0000" required />
-            <x-form.form-error for="number_supplier" />
+            <x-form.form-label for="supplier_order_number" value="O.F."/>
+            <x-form.form-input name="supplier_order_number" value="{{ old('supplier_order_number') ?? $dbWarehouseInventory->supplier_order_number ?? ''}}" placeholder="0000.0000" required />
+            <x-form.form-error for="supplier_order_number" />
         </div>
 
-        <div class="col-span-12 md:col-span-8">
+        <div class="col-span-12 md:col-span-5">
             <x-form.form-label for="supplier_id" value="Fornecedor"/>
             <x-form.form-select name="supplier_id" id="supplier_id">
                 @foreach ($dbBusinessSuppliers as $dbBusinessSupplier)
@@ -23,6 +23,19 @@
                 @endforeach
             </x-form.form-select>
             <x-form.form-error for="supplier_id" />
+        </div>
+
+        <div class="col-span-12 md:col-span-3">
+            <x-form.form-label for="financial_block_id" value="Bloco de Financiamento"/>
+            <x-form.form-select name="financial_block_id" id="financial_block_id">
+                @foreach ($dbCompanyFinancialBlocks as $dbCompanyFinancialBlock)
+                    <option value="{{ $dbCompanyFinancialBlock->id }}" {{ old('financial_block_id', $dbWarehouseInventory->financial_block_id ?? '') == $dbCompanyFinancialBlock->id ? 'selected' : '' }}
+                    >
+                        {{ $dbCompanyFinancialBlock->title }}
+                    </option>
+                @endforeach
+            </x-form.form-select>
+            <x-form.form-error for="financial_block_id" />
         </div>
         
         <div class="col-span-12 md:col-span-8">

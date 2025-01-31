@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('warehouse_inventories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('warehouse_products');
+            $table->unsignedInteger('quantity'); // Quantidade sempre positiva
+            $table->decimal('average_price', 10, 2); // Preço médio como decimal
             $table->foreignId('warehouse_id')->constrained('warehouse_storages');
-            $table->integer('quantity');
             $table->timestamps();
         });
     }
