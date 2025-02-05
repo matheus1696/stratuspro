@@ -14,7 +14,6 @@ class WarehouseInventoryItemTable extends Component
 
     public function render()
     {
-
         // Inicia a query do inventário filtrando pelo almoxarifado selecionado
         $query = WarehouseInventory::where('warehouse_id', $this->dbWarehouseStorageId);
 

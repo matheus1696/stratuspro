@@ -2,6 +2,7 @@
 
 namespace App\Models\Warehouse;
 
+use App\Models\Business\BusinessContractSupplier;
 use App\Models\Configuration\Company\CompanyFinancialBlock;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,6 +26,10 @@ class WarehouseMoviment extends Model
         'financial_block_id',
         'warehouse_id',
     ];
+
+    public function BusinessContractSupplier(){
+        return $this->belongsTo(BusinessContractSupplier::class, 'supplier_id', 'id');
+    }
 
     public function WarehouseProduct(){
         return $this->belongsTo(WarehouseProduct::class, 'product_id', 'id');

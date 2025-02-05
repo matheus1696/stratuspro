@@ -328,6 +328,7 @@ return [
                     'text'    => 'Dados dos Usuários',
                     'route'   => 'profiles.editPersonal',
                     'icon'    => 'fas fa-user pr-1',
+                    'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
 
@@ -336,6 +337,7 @@ return [
                     'text'    => 'Dados dos Profissionais',
                     'route'   => 'profiles.editProfessional',
                     'icon'    => 'fas fa-id-badge pr-1',
+                    'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
 
@@ -344,6 +346,7 @@ return [
                     'text'    => 'Alterar Senha',
                     'route'   => 'profiles.editPassword',
                     'icon'    => 'fas fa-key pr-1',
+                    'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
             ]
@@ -351,39 +354,41 @@ return [
 
         [
             'text' => 'Almoxarifado',
-            'icon' => 'fas fa-boxes pr-1',
             'route' => 'warehouse_inventories.index',
+            'icon' => 'fas fa-boxes pr-1',
             'can' => 'warehouse_inventory_managenment',
         ],
 
         [
-            'text' => 'Gerenciamento de Perfis',
-            'icon' => 'fas fa-users pr-1',
-            'route' => 'users.index',
-            'can' => 'managenment_users',
-        ],
+            'text' => 'Contratos',
+            'route' => 'contracts.index',
+            'icon' => 'fas fa-file-contract pr-1',
+            'can' => 'managenment_contracts',
+        ],        
 
         [
-            'text' => 'Gerenciamento de Contratos',
+            'text' => 'Usuários',
+            'route' => 'users.index',
             'icon' => 'fas fa-users pr-1',
-            'route' => 'contracts.index',
-            'can' => 'managenment_contracts',
+            'can' => 'managenment_users',
         ],
         
         [
             'text' => 'Configurações do Sistema',
             'icon' => 'fas fa-cogs pr-1',
-            'can'     => ['configuration_users','configuration_regions', 'configuration_measurement_unit'],
+            'can'     => ['configuration_users','configuration_regions', 'configuration_measurement_unit', 'configuration_company_establishments', 'warehouse_storage_configurations', 'warehouse_product_configurations'],
             'submenu' => [
                 [
                     'text' => 'Configuração de Usuários',
                     'icon' => 'fas fa-users-cog pr-1',
+                    'icon_color' => 'primary',
                     'can' => 'configuration_users',
                     'submenu' => [
                         [
                             'text' => 'Gêneros',
-                            'icon' => 'fas fa-venus-mars pr-1',
                             'route' => 'genders.index',
+                            'icon' => 'fas fa-venus-mars pr-1',
+                            'icon_color' => 'teal',
                             'can' => 'configuration_users',
                         ],
                     ],
@@ -391,72 +396,77 @@ return [
                 [
                     'text' => 'Configuração da Empresa',
                     'icon' => 'fas fa-cogs pr-1',
-                    'can' => 'configuration_company_establishments',
+                    'icon_color' => 'primary',
+                    'can' => ['configuration_company_establishments', 'warehouse_storage_configurations', 'warehouse_product_configurations', 'configuration_measurement_units'], 
                     'submenu' => [
                         [
                             'text' => 'Estabelecimentos',
-                            'icon' => 'fas fa-building pr-1',
                             'route' => 'establishments.index',
+                            'icon' => 'fas fa-building pr-1',
+                            'icon_color' => 'teal',
                             'can' => 'configuration_company_establishments',
                         ],
-                    ],
-                ],
-                [
-                    'text' => 'Configuração de Medidas',
-                    'icon' => 'fas fa-ruler pr-1',
-                    'can' => 'configuration_measurement_units',
-                    'submenu' => [
+                        
                         [
-                            'text' => 'Unidade de Medidas',
-                            'icon' => 'fas fa-balance-scale pr-1',
-                            'route' => 'measurement_units.index',
-                            'can' => 'configuration_measurement_units',
+                            'text' => 'Configuração de Estoques',
+                            'icon' => 'fas fa-pallet pr-1',
+                            'icon_color' => 'teal',
+                            'can' => ['warehouse_storage_configurations', 'warehouse_product_configurations', 'configuration_measurement_units'],
+                            'submenu' => [
+                                [
+                                    'text' => 'Almoxarifados',
+                                    'route' => 'warehouse_storages.index',
+                                    'icon' => 'fas fa-warehouse pr-1',
+                                    'icon_color' => 'info',
+                                    'can' => 'warehouse_storage_configurations',
+                                ],
+                                [
+                                    'text' => 'Produtos',
+                                    'route' => 'warehouse_products.index',
+                                    'icon' => 'fas fa-apple-alt pr-1',
+                                    'icon_color' => 'info',
+                                    'can' => 'warehouse_product_configurations',
+                                ],
+                                
+                                [
+                                    'text' => 'Unidade de Medidas',
+                                    'route' => 'measurement_units.index',
+                                    'icon' => 'fas fa-balance-scale pr-1',
+                                    'icon_color' => 'info',
+                                    'can' => 'configuration_measurement_units',
+                                ],
+                            ],
                         ],
                     ],
                 ],
                 [
                     'text' => 'Configuração de Regiões',
                     'icon' => 'fas fa-globe-americas pr-1',
+                    'icon_color' => 'primary',
                     'can' => 'configuration_regions',
                     'submenu' => [
                         [
                             'text' => 'Paises',
-                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'countries.index',
+                            'icon' => 'fas fa-flag pr-1',
+                            'icon_color' => 'primary',
                             'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Estados',
-                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'states.index',
+                            'icon' => 'fas fa-flag pr-1',
+                            'icon_color' => 'primary',
                             'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Cidades',
-                            'icon' => 'fas fa-flag pr-1',
                             'route' => 'cities.index',
+                            'icon' => 'fas fa-flag pr-1',
+                            'icon_color' => 'primary',
                             'can' => 'configuration_regions',
                         ],
 
-                    ],
-                ],
-                [
-                    'text' => 'Configuração de Estoques',
-                    'icon' => 'fas fa-pallet pr-1',
-                    'can' => ['warehouse_storage_configurations', 'warehouse_product_configurations'],
-                    'submenu' => [
-                        [
-                            'text' => 'Almoxarifados',
-                            'icon' => 'fas fa-warehouse pr-1',
-                            'route' => 'warehouse_storages.index',
-                            'can' => 'warehouse_storage_configurations',
-                        ],
-                        [
-                            'text' => 'Produtos',
-                            'icon' => 'fas fa-apple-alt pr-1',
-                            'route' => 'warehouse_products.index',
-                            'can' => 'warehouse_product_configurations',
-                        ],
                     ],
                 ],
             ],

@@ -3,8 +3,9 @@
     @slot('body')
         <x-header.header-group>
             <x-header.header-title title="{{ $warehouseStorage->title }}" />
-            <div>
+            <div class="flex gap-2">
                 <x-button.link-primary href="{{ route('warehouse_inventories.entryCreate', $warehouseStorage->id) }}" value="Entrada" />
+                <x-button.link-secondary href="{{ route('warehouse_inventories.entryCreate', $warehouseStorage->id) }}" value="Saída" class="bg-red-600 hover:bg-red-700"/>
             </div>
         </x-header.header-group>
     
