@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Warehouse\WarehouseInventoryController;
+use App\Http\Controllers\Warehouse\WarehouseProcessingController;
 use App\Http\Controllers\Warehouse\WarehouseStorageController;
 use App\Http\Controllers\Warehouse\WarehouseProductController;
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,12 @@ Route::prefix('warehouse')->group(function () {
         Route::get('inventory/show/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'show'])->name('warehouse_inventories.show');
         Route::get('inventory/entry/create/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'entryCreate'])->name('warehouse_inventories.entryCreate');
         Route::post('inventory/entry/store/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'entryStore'])->name('warehouse_inventories.entryStore');
+    });
+
+    //Rotas de Configuração do Centro de Distribuição
+    Route::middleware('permission:warehouse_inventory_managenment')->group(function () {
+        Route::get('processing/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'index'])->name('warehouse_processings.index');
+        Route::get('processing/create/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'create'])->name('warehouse_processings.create');
+        Route::get('processing/show/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'show'])->name('warehouse_processings.show');
     });
 });
