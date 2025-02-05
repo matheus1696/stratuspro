@@ -22,12 +22,13 @@ class WarehouseMovimentEntryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'supplier' => 'required|string|max:255',
-            'invoice_number' => 'required|string|max:255',
-            'supplier_number' => 'required|string|max:255',
-            'quantity' => 'required|integer|min:1',
-            'product_id' => 'required|exists:warehouse_products,id',
+            'invoice_number' => 'required|string|max:10',
+            'supplier_order_number' => 'required|string|max:9',
+            'supplier_id' => 'required',
             'financial_block_id' => 'required|exists:company_financial_blocks,id',
+            'product_id' => 'required|exists:warehouse_products,id',
+            'quantity' => 'required|integer|min:1',
+            'price' => 'required|decimal:2,6|min:0',
         ];
     }
 }

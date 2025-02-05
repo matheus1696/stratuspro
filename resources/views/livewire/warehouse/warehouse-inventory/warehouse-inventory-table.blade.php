@@ -2,7 +2,9 @@
 
     <div>
         @if (count($dbWarehouseStorages) < 1)
-            ERRO
+            <div class="h-96 w-full flex justify-center items-center">
+                <p class="text-lg font-bold">Solicite seu acesso ao almoxarifado de sua unidade</p>
+            </div>
         @else
         
             <x-table.table>

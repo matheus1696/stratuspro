@@ -12,16 +12,18 @@ class WarehouseMoviment extends Model
     /** @use HasFactory<\Database\Factories\Warehouse\WarehouseMovimentFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'supplier',
+    protected $fillable = [        
         'invoice_number',
-        'supplier_number',
-        'quantity',
-        'type_moviment',
+        'supplier_order_number',
+        'supplier_id',
         'product_id',
-        'warehouse_id',
-        'financial_block_id',
+        'quantity',
+        'price',
+        'total_value',
+        'movement_type',
         'user_id',
+        'financial_block_id',
+        'warehouse_id',
     ];
 
     public function WarehouseProduct(){

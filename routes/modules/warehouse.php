@@ -34,7 +34,8 @@ Route::prefix('warehouse')->group(function () {
     //Rotas de Configuração do Centro de Distribuição
     Route::middleware('permission:warehouse_inventory_managenment')->group(function () {
         Route::get('inventory', [WarehouseInventoryController::class, 'index'])->name('warehouse_inventories.index');
-        Route::get('inventory/create/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'create'])->name('warehouse_inventories.create');
         Route::get('inventory/show/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'show'])->name('warehouse_inventories.show');
+        Route::get('inventory/entry/create/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'entryCreate'])->name('warehouse_inventories.entryCreate');
+        Route::post('inventory/entry/store/storage/{warehouse_storage}', [WarehouseInventoryController::class, 'entryStore'])->name('warehouse_inventories.entryStore');
     });
 });

@@ -11,6 +11,8 @@ class WarehouseInventory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'quantity',
+        'average_price',
         'product_id',
         'warehouse_id'
     ];

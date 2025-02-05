@@ -8,7 +8,7 @@
 
         <div class="col-span-12 md:col-span-2">
             <x-form.form-label for="supplier_order_number" value="O.F."/>
-            <x-form.form-input name="supplier_order_number" value="{{ old('supplier_order_number') ?? $dbWarehouseInventory->supplier_order_number ?? ''}}" placeholder="0000.0000" required />
+            <x-form.form-input name="supplier_order_number" value="{{ old('supplier_order_number') ?? $dbWarehouseInventory->supplier_order_number ?? ''}}" placeholder="0000.0000" onkeyup="handleContract(event)" maxlength="9" required />
             <x-form.form-error for="supplier_order_number" />
         </div>
 
@@ -53,13 +53,13 @@
 
         <div class="col-span-12 md:col-span-2">
             <x-form.form-label for="quantity" value="Quantidade"/>
-            <x-form.form-input type="number" name="quantity" value="{{ old('quantity') ?? $dbWarehouseInventory->quantity ?? ''}}" min="0" required />
+            <x-form.form-input type="number" name="quantity" value="{{ old('quantity') ?? $dbWarehouseInventory->quantity ?? ''}}" min="0" placeholder="0" required />
             <x-form.form-error for="quantity" />
         </div>
 
         <div class="col-span-12 md:col-span-2">
-            <x-form.form-label for="price" value="Valor UND"/>
-            <x-form.form-input type="number" step="0.01" name="price" value="{{ old('price') ?? $dbWarehouseInventory->price ?? ''}}" min="0" required />
+            <x-form.form-label for="price" value="Preço"/>
+            <x-form.form-input type="number" step="0.0001" name="price" value="{{ old('price') ?? $dbWarehouseInventory->price ?? ''}}" min="0" placeholder="0.01" required />
             <x-form.form-error for="price" />
         </div>
 

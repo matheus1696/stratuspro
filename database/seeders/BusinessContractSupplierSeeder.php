@@ -13,6 +13,6 @@ class BusinessContractSupplierSeeder extends Seeder
      */
     public function run(): void
     {
-        //BusinessContractSupplier::factory(100)->create();
+        BusinessContractSupplier::factory(100)->create();
     }
 }

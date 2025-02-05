@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('quantity');
             $table->decimal('price', 10, 2); // Valor unitário do produto
             $table->decimal('total_value', 12, 2); // Valor total do movimento
-            $table->enum('movement_type', ['entrada', 'saida']); // Tipo de movimentação (Entrada ou Saída)
+            $table->enum('movement_type', ['Entrada', 'Saida']); // Tipo de movimentação (Entrada ou Saída)
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('financial_block_id')->constrained('company_financial_blocks');
             $table->foreignId('warehouse_id')->constrained('warehouse_storages');

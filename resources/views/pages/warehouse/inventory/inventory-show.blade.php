@@ -4,7 +4,7 @@
         <x-header.header-group>
             <x-header.header-title title="{{ $warehouseStorage->title }}" />
             <div>
-                <x-button.link-primary href="{{ route('warehouse_inventories.create', $warehouseStorage->id) }}" value="Entrada" />
+                <x-button.link-primary href="{{ route('warehouse_inventories.entryCreate', $warehouseStorage->id) }}" value="Entrada" />
             </div>
         </x-header.header-group>
     
