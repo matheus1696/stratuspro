@@ -108,4 +108,15 @@ class WarehouseProcessingController extends Controller
 
         return redirect()->route('warehouse_processings.show', $warehouseProcessing->id);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function itemDestroy(WarehouseProcessingItem $warehouseProcessing)
+    {
+        //
+        $warehouseProcessing->delete();
+
+        return redirect()->back()->with('success','Produto excluido com sucesso');
+    }
 }

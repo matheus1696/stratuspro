@@ -3,7 +3,7 @@
     @slot('body')
         <x-header.header-group>
             <x-header.header-title title="Abertura de Solicitação" />
-            <div>
+            <div class="flex gap-2">
                 <x-button.link-secondary href="{{ route('warehouse_processings.index', $warehouseStorage->id) }}" value="Voltar" />
             </div>
         </x-header.header-group>

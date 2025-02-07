@@ -47,5 +47,6 @@ Route::prefix('warehouse')->group(function () {
         Route::post('processing/store/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'store'])->name('warehouse_processings.store');
         Route::get('processing/show/storage/{warehouse_processing}', [WarehouseProcessingController::class, 'show'])->name('warehouse_processings.show');
         Route::post('processing/{warehouse_processing}/store/item', [WarehouseProcessingController::class, 'itemStore'])->name('warehouse_processing_items.store');
+        Route::delete('processing/{warehouse_processing}/destroy/item', [WarehouseProcessingController::class, 'itemDestroy'])->name('warehouse_processing_items.itemDestroy');
     });
 });

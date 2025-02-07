@@ -4,7 +4,7 @@
     
         <x-header.header-group>
             <x-header.header-title title="Lista de Almoxarifado" />
-            <div>
+            <div class="flex gap-2">
                 <x-button.link-secondary href="{{ route('warehouse_storages.index') }}" value="Voltar" />
             </div>
         </x-header.header-group>  

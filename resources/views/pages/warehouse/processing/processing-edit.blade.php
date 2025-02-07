@@ -2,8 +2,8 @@
 
     @slot('body')
         <x-header.header-group>
-            <x-header.header-title title="Alterar Almoxarifado" />
-            <div>
+            <x-header.header-title title="Solicitação de Suprimento" />
+            <div class="flex gap-2">
                 <x-button.link-secondary href="{{ route('warehouse_storages.show', $dbWarehouseStorage) }}" value="Voltar" />
             </div>
         </x-header.header-group>

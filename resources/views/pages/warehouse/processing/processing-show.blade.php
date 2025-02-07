@@ -4,7 +4,7 @@
     
         <x-header.header-group>
             <x-header.header-title title="Solicitação Nº {{ $warehouseProcessing->ticket }}" />
-            <div>
+            <div class="flex gap-2">
             </div>
         </x-header.header-group>  
 

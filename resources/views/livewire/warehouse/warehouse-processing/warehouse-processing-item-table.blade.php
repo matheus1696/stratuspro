@@ -13,7 +13,10 @@
                 <x-table.tr>
                     <x-table.td>{{ $dbWarehouseProcessingItem->WarehouseProduct->title }}</x-table.td>
                     <x-table.td>{{ $dbWarehouseProcessingItem->quantity }}</x-table.td>
-                    <x-table.td>
+                    <x-table.td>                        
+                        <x-table.button.btn-group>
+                            <x-table.button.btn-destroy href="{{ route('warehouse_processing_items.itemDestroy', $dbWarehouseProcessingItem->id) }}" />
+                        </x-table.button.btn-group>
                     </x-table.td>
                 </x-table.tr>
             @endforeach

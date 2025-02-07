@@ -3,7 +3,7 @@
     @slot('body')
         <x-header.header-group>
             <x-header.header-title title="Cadastrar Produto" />
-            <div>
+            <div class="flex gap-2">
                 <x-button.link-secondary href="{{ route('warehouse_products.index') }}" value="Voltar" />
             </div>
         </x-header.header-group>
