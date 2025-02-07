@@ -2,14 +2,14 @@
 
     @slot('body')
         <x-header.header-group>
-            <x-header.header-title title="Processamento" />
+            <x-header.header-title title="Processamento para Envio" />
             <div>
-                <x-button.link-primary href="{{ route('warehouse_storages.create') }}" value="Abrir Solicitação" />
+                <x-button.link-primary href="{{ route('warehouse_processings.create', $warehouseStorage->id) }}" value="Abrir Solicitação" />
             </div>
         </x-header.header-group>
     
         <div>
-            <livewire:warehouse.warehouse-storage.warehouse-storage-table />
+            <livewire:warehouse.warehouse-processing.warehouse-processing-table :warehouseStorageId="$warehouseStorage->id"/>
         </div>
 
     @endslot

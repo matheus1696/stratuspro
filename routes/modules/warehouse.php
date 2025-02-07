@@ -44,6 +44,8 @@ Route::prefix('warehouse')->group(function () {
     Route::middleware('permission:warehouse_inventory_managenment')->group(function () {
         Route::get('processing/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'index'])->name('warehouse_processings.index');
         Route::get('processing/create/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'create'])->name('warehouse_processings.create');
-        Route::get('processing/show/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'show'])->name('warehouse_processings.show');
+        Route::post('processing/store/storage/{warehouse_storage}', [WarehouseProcessingController::class, 'store'])->name('warehouse_processings.store');
+        Route::get('processing/show/storage/{warehouse_processing}', [WarehouseProcessingController::class, 'show'])->name('warehouse_processings.show');
+        Route::post('processing/{warehouse_processing}/store/item', [WarehouseProcessingController::class, 'itemStore'])->name('warehouse_processing_items.store');
     });
 });

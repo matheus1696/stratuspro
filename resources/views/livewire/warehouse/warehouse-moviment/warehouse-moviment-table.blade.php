@@ -24,7 +24,7 @@
                             {{$dbWarehouseMoviment->movement_type}}
                         </div>
                     </x-table.td>
-                    <x-table.td>{{ date('d/m/Y H:i', strtotime($dbWarehouseMoviment->created_at));}}</x-table.td>
+                    <x-table.td>{{ date('d/m/Y H:i', strtotime($dbWarehouseMoviment->created_at)) }}</x-table.td>
                     <x-table.td>{{$dbWarehouseMoviment->CompanyFinancialBlock->acronym}}</x-table.td>
                     <x-table.td>{{$dbWarehouseMoviment->invoice_number}}</x-table.td>
                     <x-table.td>{{$dbWarehouseMoviment->supplier_order_number}}</x-table.td>

@@ -15,16 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('ticket');
             $table->foreignId('establishment_id')->constrained('company_establishments');
+            $table->foreignId('warehouse_id')->constrained('warehouse_storages');
+            $table->enum('action', [ 'created', 'edited', 'preparation', 'separation', 'shipping', 'receiving', 'canceled', 'returned' ])->default('created');
             $table->timestamps();
         });
 
         Schema::create('warehouse_processing_users', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); // Exemplo: Preparação, Separação, Envio, Recebimento
+            $table->enum('action', [ 'created', 'edited', 'preparation', 'separation', 'shipping', 'receiving', 'canceled', 'returned' ]);
             $table->foreignId('processing_id')->constrained('warehouse_processings');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
-        });
+        });        
 
         Schema::create('warehouse_processing_items', function (Blueprint $table) {
             $table->id();
