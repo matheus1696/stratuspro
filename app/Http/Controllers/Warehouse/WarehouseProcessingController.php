@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Warehouse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Warehouse\WarehouseProcessingStoreRequest;
 use App\Http\Requests\Warehouse\WarehouseProcessingUpdateRequest;
+use App\Models\Warehouse\WarehouseInventory;
 use App\Models\Warehouse\WarehouseProcessing;
+use App\Models\Warehouse\WarehouseProcessingCategory;
 use App\Models\Warehouse\WarehouseProcessingItem;
 use App\Models\Warehouse\WarehouseProcessingUser;
 use App\Models\Warehouse\WarehouseStorage;
@@ -37,21 +39,26 @@ class WarehouseProcessingController extends Controller
      */
     public function store(WarehouseProcessingStoreRequest $request, WarehouseStorage $warehouseStorage)
     {
-        //
+        //Quantidade de Registros
         $count = WarehouseProcessing::count();
 
+        //Categoria Padrão
+        $processingCategory = WarehouseProcessingCategory::where('is_default', TRUE)->first();
+
+        //Ajuste para Cadastros
         $request['ticket'] = now()->format('Ymd') . str_pad($count, 6, '0', STR_PAD_LEFT);
         $request['warehouse_id'] = $warehouseStorage->id;
+        $request['processing_category_id'] = $processingCategory->id;
 
         $dbWarehouseProcessing = WarehouseProcessing::create($request->all());
 
         WarehouseProcessingUser::create([
-            'action' => 'created',
+            'processing_category_id' => $processingCategory->id,
             'processing_id' => $dbWarehouseProcessing->id,
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect()->route('warehouse_processings.index', $warehouseStorage->id);
+        return redirect()->route('warehouse_processings.show', $dbWarehouseProcessing->id);
     }
 
     /**
@@ -92,7 +99,7 @@ class WarehouseProcessingController extends Controller
      */
     public function itemStore(Request $request, WarehouseProcessing $warehouseProcessing)
     {
-        //
+        //Verifica se produto está cadastrado na solicitação
         $dbProduct = WarehouseProcessingItem::where('processing_id', $warehouseProcessing->id)
             ->where('product_id', $request['product_id'])
             ->count();
@@ -101,6 +108,14 @@ class WarehouseProcessingController extends Controller
             return redirect()->route('warehouse_processings.show', $warehouseProcessing->id)->with('error','Produto já cadastrado na solicitação');
         }
 
+        //Verifica se produto informado está com mais de zero item no estoque
+        $dbInventory = WarehouseInventory::where('warehouse_id', $warehouseProcessing->warehouse_id)
+            ->where('product_id', $request['product_id'])
+            ->first();
+
+        if ($dbInventory == NULL || $dbInventory->quantity < 1) {        
+            return redirect()->route('warehouse_processings.show', $warehouseProcessing->id)->with('error','Produto sem estoque no momento');
+        }
 
         $request['processing_id'] = $warehouseProcessing->id;
 

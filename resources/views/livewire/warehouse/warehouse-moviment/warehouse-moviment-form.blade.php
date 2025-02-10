@@ -2,7 +2,7 @@
     <x-form.form-group>     
         <div class="col-span-12 md:col-span-2">
             <x-form.form-label for="invoice_number" value="Nota Fiscal"/>
-            <x-form.form-input name="invoice_number" value="{{ old('invoice_number') ?? $dbWarehouseInventory->invoice_number ?? ''}}" placeholder="000.000" required />
+            <x-form.form-input name="invoice_number" value="{{ old('invoice_number') ?? $dbWarehouseInventory->invoice_number ?? ''}}" placeholder="000.000" required autofocus/>
             <x-form.form-error for="invoice_number" />
         </div>
 

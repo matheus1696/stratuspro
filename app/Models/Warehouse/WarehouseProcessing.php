@@ -15,6 +15,7 @@ class WarehouseProcessing extends Model
         'ticket',
         'establishment_id',
         'warehouse_id',
+        'processing_category_id'
     ];
 
     public function CompanyEstablishment(){

@@ -16,6 +16,7 @@ use Database\Seeders\SpatiePermissions\UserPermissionGlobalSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionManagenmentsSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionUserSeeder;
 use Database\Seeders\SpatiePermissions\UserPermissionWarehouseSeeder;
+use Database\Seeders\Warehouse\WarehouseProcessingCategorySeeder;
 use Database\Seeders\Warehouse\WarehouseProductCategorySeeder;
 use Database\Seeders\Warehouse\WarehouseProductSeeder;
 use Database\Seeders\Warehouse\WarehouseStorageTypeSeeder;
@@ -47,6 +48,7 @@ class DatabaseSeeder extends Seeder
             WarehouseStorageTypeSeeder::class,
             WarehouseProductCategorySeeder::class,
             WarehouseProductSeeder::class,
+            WarehouseProcessingCategorySeeder::class,
 
             // Globais
             UserSeeder::class,          

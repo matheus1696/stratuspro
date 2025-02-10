@@ -5,8 +5,9 @@
         <x-header.header-group>
             <x-header.header-title title="Solicitação Nº {{ $warehouseProcessing->ticket }}" />
             <div class="flex gap-2">
+                <x-button.link-secondary href="{{ route('warehouse_processings.index', $warehouseProcessing->warehouse_id) }}" value="Voltar" />
             </div>
-        </x-header.header-group>  
+        </x-header.header-group>
 
         <x-pages.conteiner class="text-sm pt-2 mb-5">
             <div>

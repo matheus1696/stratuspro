@@ -4,9 +4,9 @@
         @slot('thead')
             <x-table.th class="w-24">Movimento</x-table.th>
             <x-table.th class="w-32">Data</x-table.th>
-            <x-table.th class="w-20">B.F.</x-table.th>
-            <x-table.th class="w-20">NF</x-table.th>
-            <x-table.th class="w-20">O.F.</x-table.th>
+            <x-table.th class="w-16">B.F.</x-table.th>
+            <x-table.th class="w-16">NF</x-table.th>
+            <x-table.th class="w-24">O.F.</x-table.th>
             <x-table.th class="w-40">Fornecedor</x-table.th>
             <x-table.th class="w-40">Produto</x-table.th>
             <x-table.th class="w-20">Quant.</x-table.th>

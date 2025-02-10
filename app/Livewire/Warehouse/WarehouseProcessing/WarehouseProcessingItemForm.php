@@ -13,8 +13,8 @@ class WarehouseProcessingItemForm extends Component
     public function render()
     {
         $dbWarehouseProcessing = WarehouseProcessing::find($this->dbWarehouseProcessingId);
-        $dbProducts = WarehouseInventory::where('warehouse_id', $dbWarehouseProcessing->warehouse_id)->get();
+        $dbWarehouseInventories = WarehouseInventory::where('warehouse_id', $dbWarehouseProcessing->warehouse_id)->get();
 
-        return view('livewire.warehouse.warehouse-processing.warehouse-processing-item-form', compact('dbProducts'));
+        return view('livewire.warehouse.warehouse-processing.warehouse-processing-item-form', compact('dbWarehouseInventories'));
     }
 }

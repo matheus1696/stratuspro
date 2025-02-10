@@ -4,10 +4,10 @@
         <div class="col-span-12 md:col-span-10">
             <x-form.form-label for="product_id" value="Estabelecimento"/>
             <x-form.form-select name="product_id" id="product_id">
-                @foreach ($dbProducts as $dbProduct)
-                    <option value="{{ $dbProduct->id }}" {{ old('product_id') == $dbProduct->id ? 'selected' : '' }}
+                @foreach ($dbWarehouseInventories as $dbWarehouseInventory)
+                    <option value="{{ $dbWarehouseInventory->WarehouseProduct->id }}" {{ old('product_id') == $dbWarehouseInventory->WarehouseProduct->id ? 'selected' : '' }}
                     >
-                        {{ $dbProduct->WarehouseProduct->title }}
+                        {{ $dbWarehouseInventory->WarehouseProduct->title }}
                     </option>
                 @endforeach
             </x-form.form-select>

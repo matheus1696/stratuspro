@@ -9,7 +9,7 @@ class WarehouseProcessingUser extends Model
 {
     //
     protected $fillable = [
-        'action',
+        'processing_category_id',
         'processing_id',
         'user_id',
     ];
