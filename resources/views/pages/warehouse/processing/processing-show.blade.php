@@ -5,7 +5,7 @@
         <x-header.header-group>
             <x-header.header-title title="Solicitação Nº {{ $warehouseProcessing->ticket }}" />
             <div class="flex gap-2">
-                @if ($warehouseProcessing->WarehouseProcessingCategory->title === 'Preparação')
+                @if ($warehouseProcessing->processing_category_id === 1)
                     <x-button.link-primary href="{{ route('warehouse_processings.separation', $warehouseProcessing->id) }}" value="Separação" />
                 @endif
                 <x-button.link-secondary href="{{ route('warehouse_processings.index', $warehouseProcessing->warehouse_id) }}" value="Voltar" />
