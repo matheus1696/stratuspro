@@ -30,13 +30,13 @@
                     </div>                    
                     <!-- Filtros de Pesquisa -->
                     <div class="col-span-12 md:col-span-3">
-                        <x-form.form-label for="action" value="Processamento" />
-                        <x-form.form-select id="action" defaultOption="Todos" wire:model.live.debounce.300ms="action">
-                            <option value="created"> Criação </option>
-                            <option value="separation"> Separação </option>
-                            <option value="shipping"> Rota de Entrega </option>
-                            <option value="receiving"> Recebido </option>
-                            <option value="canceled"> Cancelado </option>
+                        <x-form.form-label for="procesing" value="Processamento" />
+                        <x-form.form-select id="procesing" defaultOption="Todos" wire:model.live.debounce.300ms="procesing">
+                            @foreach ($dbWarehouseProcessingCategories as $dbWarehouseProcessingCategory)
+                                <option value="{{ $dbWarehouseProcessingCategory->id }}">
+                                    {{ $dbWarehouseProcessingCategory->title }}
+                                </option>
+                            @endforeach
                         </x-form.form-select>
                     </div>
                 </div>
@@ -60,11 +60,9 @@
                     <x-table.td>{{ $dbWarehouseProcessing->ticket }}</x-table.td>
                     <x-table.td>{{ $dbWarehouseProcessing->CompanyEstablishment->title }}</x-table.td>
                     <x-table.td>
-                        @if ( $dbWarehouseProcessing->action === 'created')
-                        <div class="flex items-center justify-center gap-1.5 bg-green-300 rounded-full shadow-sm text-xs text-green-700 py-1">
-                            {{ $dbWarehouseProcessing->action }}
-                        </div>    
-                        @endif
+                        <div class="flex items-center justify-center gap-1.5 rounded-full shadow-sm text-xs text-gray-800 py-1 {{ $dbWarehouseProcessing->WarehouseProcessingCategory->color }}">
+                            {{ $dbWarehouseProcessing->WarehouseProcessingCategory->title }}
+                        </div>
                     </x-table.td>
                     <x-table.td>
                         <x-table.button.btn-group>

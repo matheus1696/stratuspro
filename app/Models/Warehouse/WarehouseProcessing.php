@@ -20,5 +20,9 @@ class WarehouseProcessing extends Model
 
     public function CompanyEstablishment(){
         return $this->belongsTo(CompanyEstablishment::class, 'establishment_id', 'id');
+    }    
+
+    public function WarehouseProcessingCategory(){
+        return $this->belongsTo(WarehouseProcessingCategory::class, 'processing_category_id', 'id');
     }
 }

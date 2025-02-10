@@ -73,9 +73,14 @@ class WarehouseProcessingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(WarehouseProcessing $warehouseProcessing)
+    public function separation(WarehouseProcessing $warehouseProcessing)
     {
         //
+        $warehouseProcessing->update([
+            'processing_category_id' => 2
+        ]);
+
+        return redirect()->back()->with('success','Solicitação Encaminhada para Separação');
     }
 
     /**

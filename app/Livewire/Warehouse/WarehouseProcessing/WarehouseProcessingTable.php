@@ -5,6 +5,7 @@ namespace App\Livewire\Warehouse\WarehouseProcessing;
 use App\Models\Configuration\Company\CompanyEstablishment;
 use App\Models\Warehouse\WarehouseInventory;
 use App\Models\Warehouse\WarehouseProcessing;
+use App\Models\Warehouse\WarehouseProcessingCategory;
 use Livewire\Component;
 
 class WarehouseProcessingTable extends Component
@@ -12,7 +13,7 @@ class WarehouseProcessingTable extends Component
     public $date;
     public $ticket;
     public $establishment = "";
-    public $action = "";
+    public $procesing = "";
     public $warehouseStorageId;
 
     public function render()
@@ -30,14 +31,15 @@ class WarehouseProcessingTable extends Component
         if (!empty($this->establishment)) { $query->where('establishment_id', $this->establishment ); }
 
         // Filtro por ação
-        if (!empty($this->action)) { $query->where('action', $this->action); }
+        if (!empty($this->procesing)) { $query->where('processing_category_id', $this->procesing); }
 
         //
         $dbWarehouseProcessings = $query->orderBy('ticket')->get();
 
         $dbWarehouseInventories = WarehouseInventory::where('warehouse_id', $this->warehouseStorageId)->get();
         $dbEstablishments = CompanyEstablishment::orderBy('title')->get();
+        $dbWarehouseProcessingCategories = WarehouseProcessingCategory::all();
 
-        return view('livewire.warehouse.warehouse-processing.warehouse-processing-table', compact('dbWarehouseProcessings','dbWarehouseInventories','dbEstablishments'));
+        return view('livewire.warehouse.warehouse-processing.warehouse-processing-table', compact('dbWarehouseProcessings','dbWarehouseInventories','dbEstablishments','dbWarehouseProcessingCategories'));
     }
 }
