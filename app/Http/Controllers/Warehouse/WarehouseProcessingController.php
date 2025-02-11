@@ -21,7 +21,6 @@ class WarehouseProcessingController extends Controller
      */
     public function index(WarehouseStorage $warehouseStorage)
     {
-        //
         return view('pages.warehouse.processing.processing-index', compact('warehouseStorage'));
     }
 
@@ -30,7 +29,6 @@ class WarehouseProcessingController extends Controller
      */
     public function create(WarehouseStorage $warehouseStorage)
     {
-        //
         return view('pages.warehouse.processing.processing-create', compact('warehouseStorage'));
     }
 
@@ -155,10 +153,16 @@ class WarehouseProcessingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function itemDestroy(WarehouseProcessingItem $warehouseProcessing)
+    public function itemDestroy(WarehouseProcessingItem $warehouseProcessingItem)
     {
         //
-        $warehouseProcessing->delete();
+        $warehouseProcessingItem->delete();
+
+        WarehouseProcessingLog::create([
+            'description' => 'Produto ' . $warehouseProcessingItem->WarehouseProduct->title . ' retirado da solicitação por ' .  Auth::user()->name,
+            'processing_id' => $warehouseProcessingItem->id,
+            'user_id' => Auth::user()->id,
+        ]);
 
         return redirect()->back()->with('success','Produto excluido com sucesso');
     }

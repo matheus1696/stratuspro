@@ -13,7 +13,7 @@ class WarehouseProcessingTable extends Component
     public $date;
     public $ticket;
     public $establishment = "";
-    public $procesing = "";
+    public $processing = "";
     public $warehouseStorageId;
 
     public function render()
@@ -31,7 +31,7 @@ class WarehouseProcessingTable extends Component
         if (!empty($this->establishment)) { $query->where('establishment_id', $this->establishment ); }
 
         // Filtro por ação
-        if (!empty($this->procesing)) { $query->where('processing_category_id', $this->procesing); }
+        if (!empty($this->processing)) { $query->where('processing_category_id', $this->processing); }
 
         //
         $dbWarehouseProcessings = $query->orderBy('ticket')->get();

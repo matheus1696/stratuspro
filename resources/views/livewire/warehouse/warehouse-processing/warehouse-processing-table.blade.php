@@ -1,23 +1,27 @@
 <div>
     <x-table.table>
 
-        <!-- Inicio Slot Search -->
+        <!-- Início do Slot de Filtros -->
         @slot('search')
-            <x-pages.conteiner class="px-3 py-3">
-                <p class="font-bold uppercase text-sm pl-1 text-gray-400"> <i class="fas fa-filter text-xs"></i> Filtros:</p>
+            <x-pages.container class="px-3 py-3">
+                <p class="font-bold uppercase text-sm pl-1 text-gray-400">
+                    <i class="fas fa-filter text-xs"></i> Filtros:
+                </p>
                 <div class="grid grid-cols-12 gap-3">
 
-                    <!-- Filtros de Pesquisa -->
+                    <!-- Filtro de Data de Criação -->
                     <div class="col-span-12 md:col-span-2">
                         <x-form.form-label for="date" value="Data de Criação" />
                         <x-form.form-input type="date" id="date" wire:model.live.debounce.300ms="date" />
                     </div>
-                    <!-- Filtros de Pesquisa -->
+
+                    <!-- Filtro de Ticket -->
                     <div class="col-span-12 md:col-span-2">
                         <x-form.form-label for="ticket" value="Ticket" />
                         <x-form.form-input id="ticket" wire:model.live.debounce.300ms="ticket" placeholder="{{ now()->format('Ymd') }}000001" />
                     </div>
-                    <!-- Filtros de Pesquisa -->
+
+                    <!-- Filtro de Unidade -->
                     <div class="col-span-12 md:col-span-5">
                         <x-form.form-label for="establishment" value="Unidade" />
                         <x-form.form-select id="establishment" defaultOption="Todos" wire:model.live.debounce.300ms="establishment">
@@ -27,11 +31,12 @@
                                 </option>
                             @endforeach
                         </x-form.form-select>
-                    </div>                    
-                    <!-- Filtros de Pesquisa -->
+                    </div>
+
+                    <!-- Filtro de Processamento -->
                     <div class="col-span-12 md:col-span-3">
-                        <x-form.form-label for="procesing" value="Processamento" />
-                        <x-form.form-select id="procesing" defaultOption="Todos" wire:model.live.debounce.300ms="procesing">
+                        <x-form.form-label for="processing" value="Processamento" />
+                        <x-form.form-select id="processing" defaultOption="Todos" wire:model.live.debounce.300ms="processing">
                             @foreach ($dbWarehouseProcessingCategories as $dbWarehouseProcessingCategory)
                                 <option value="{{ $dbWarehouseProcessingCategory->id }}">
                                     {{ $dbWarehouseProcessingCategory->title }}
@@ -39,11 +44,12 @@
                             @endforeach
                         </x-form.form-select>
                     </div>
+
                 </div>
-            </x-pages.conteiner>
+            </x-pages.container>
         @endslot
 
-        <!-- Inicio Slot THead -->
+        <!-- Início do Slot de Cabeçalho da Tabela -->
         @slot('thead')
             <x-table.th class="w-24">Data</x-table.th>
             <x-table.th class="w-24">Ticket</x-table.th>
@@ -52,7 +58,7 @@
             <x-table.th class="w-10"></x-table.th>
         @endslot
 
-        <!-- Inicio Slot TBody -->
+        <!-- Início do Slot de Corpo da Tabela -->
         @slot('tbody')
             @foreach ($dbWarehouseProcessings as $dbWarehouseProcessing)
                 <x-table.tr>
@@ -66,7 +72,7 @@
                     </x-table.td>
                     <x-table.td>
                         <x-table.button.btn-group>
-                            <x-table.button.btn-show href=" {{ route('warehouse_processings.show', $dbWarehouseProcessing->id) }}" />
+                            <x-table.button.btn-show href="{{ route('warehouse_processings.show', $dbWarehouseProcessing->id) }}" />
                         </x-table.button.btn-group>
                     </x-table.td>
                 </x-table.tr>
