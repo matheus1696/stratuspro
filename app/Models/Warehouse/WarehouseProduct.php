@@ -20,7 +20,7 @@ class WarehouseProduct extends Model
         'category_id',
     ];
 
-    public function ProductCategory(){
+    public function WarehouseProductCategory(){
         return $this->belongsTo(WarehouseProductCategory::class, 'category_id', 'id');
     }
 }

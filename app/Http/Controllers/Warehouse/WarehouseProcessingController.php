@@ -141,10 +141,10 @@ class WarehouseProcessingController extends Controller
 
         $request['processing_id'] = $warehouseProcessing->id;
 
-        $dbProduct = WarehouseProcessingItem::create($request->all());
+        $WarehouseProcessingItem = WarehouseProcessingItem::create($request->all());
 
         WarehouseProcessingLog::create([
-            'description' => 'Produto ' . $dbProduct->title . ' adicionado na solicitação por ' .  Auth::user()->name,
+            'description' => 'Produto ' . $WarehouseProcessingItem->WarehouseProduct->title . ' adicionado na solicitação por ' .  Auth::user()->name,
             'processing_id' => $warehouseProcessing->id,
             'user_id' => Auth::user()->id,
         ]);
