@@ -9,7 +9,7 @@
     @if (isset($defaultOption))
         <option selected value="">{{ $defaultOption }}</option>
     @else
-        <option selected disabled>Selecione</option>
+        <option selected disabled value="">Selecione</option>
     @endif
     {{$slot}}
 </select>
