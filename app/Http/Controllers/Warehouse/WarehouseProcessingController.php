@@ -9,7 +9,7 @@ use App\Models\Warehouse\WarehouseInventory;
 use App\Models\Warehouse\WarehouseProcessing;
 use App\Models\Warehouse\WarehouseProcessingCategory;
 use App\Models\Warehouse\WarehouseProcessingItem;
-use App\Models\Warehouse\WarehouseProcessingUser;
+use App\Models\Warehouse\WarehouseProcessingLog;
 use App\Models\Warehouse\WarehouseStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,8 +52,8 @@ class WarehouseProcessingController extends Controller
 
         $dbWarehouseProcessing = WarehouseProcessing::create($request->all());
 
-        WarehouseProcessingUser::create([
-            'processing_category_id' => $processingCategory->id,
+        WarehouseProcessingLog::create([
+            'description' => 'Solicitação criada por ' .  Auth::user()->name,
             'processing_id' => $dbWarehouseProcessing->id,
             'user_id' => Auth::user()->id,
         ]);
@@ -76,8 +76,25 @@ class WarehouseProcessingController extends Controller
     public function separation(WarehouseProcessing $warehouseProcessing)
     {
         //
+        $dbWarehouseProcessingItems = WarehouseProcessingItem::where('processing_id', $warehouseProcessing->id)->get();
+
+        foreach ($dbWarehouseProcessingItems as $value) {
+            $dbInventory = WarehouseInventory::where('warehouse_id', $warehouseProcessing->warehouse_id)
+                ->where('product_id', $value->product_id)->first();
+
+            $dbInventory->update([
+                'quantity' => $dbInventory->quantity - $value->quantity,
+            ]);
+        }
+
         $warehouseProcessing->update([
             'processing_category_id' => 2
+        ]);
+
+        WarehouseProcessingLog::create([
+            'description' => 'Solicitação encaminhada para separação por ' .  Auth::user()->name,
+            'processing_id' => $warehouseProcessing->id,
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect()->back()->with('success','Solicitação Encaminhada para Separação');
@@ -118,13 +135,19 @@ class WarehouseProcessingController extends Controller
             ->where('product_id', $request['product_id'])
             ->first();
 
-        if ($dbInventory == NULL || $dbInventory->quantity < 1) {        
-            return redirect()->route('warehouse_processings.show', $warehouseProcessing->id)->with('error','Produto sem estoque no momento');
+        if ($dbInventory->quantity < $request['quantity']) {        
+            return redirect()->route('warehouse_processings.show', $warehouseProcessing->id)->with('error','Quantitativo informado do Produto menor que o valor do estoque atual');
         }
 
         $request['processing_id'] = $warehouseProcessing->id;
 
-        WarehouseProcessingItem::create($request->all());
+        $dbProduct = WarehouseProcessingItem::create($request->all());
+
+        WarehouseProcessingLog::create([
+            'description' => 'Produto ' . $dbProduct->title . ' adicionado na solicitação por ' .  Auth::user()->name,
+            'processing_id' => $warehouseProcessing->id,
+            'user_id' => Auth::user()->id,
+        ]);
 
         return redirect()->route('warehouse_processings.show', $warehouseProcessing->id);
     }

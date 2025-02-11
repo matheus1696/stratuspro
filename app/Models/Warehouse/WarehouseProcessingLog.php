@@ -5,11 +5,11 @@ namespace App\Models\Warehouse;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
-class WarehouseProcessingUser extends Model
+class WarehouseProcessingLog extends Model
 {
     //
     protected $fillable = [
-        'processing_category_id',
+        'description',
         'processing_id',
         'user_id',
     ];

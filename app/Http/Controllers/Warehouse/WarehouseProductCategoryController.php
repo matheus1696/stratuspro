@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Warehouse\WarehouseProductCategory;
-use App\Http\Requests\StoreWarehouseProductCategoryRequest;
-use App\Http\Requests\UpdateWarehouseProductCategoryRequest;
 use App\Http\Requests\Warehouse\WarehouseProductCategoryStoreRequest;
 use App\Http\Requests\Warehouse\WarehouseProductCategoryUpdateRequest;
 

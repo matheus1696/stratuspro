@@ -20,9 +20,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('warehouse_processing_users', function (Blueprint $table) {
+        Schema::create('warehouse_processing_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('processing_category_id')->constrained('warehouse_processing_categories');
+            $table->string('description');
             $table->foreignId('processing_id')->constrained('warehouse_processings');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
