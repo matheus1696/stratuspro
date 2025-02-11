@@ -23,7 +23,7 @@
         @slot('thead')
             <x-table.th class="w-28">Código</x-table.th>
             <x-table.th class="w-60">Item</x-table.th>
-            <x-table.th class="w-32">Categoria</x-table.th>
+            <x-table.th class="w-20">Categoria</x-table.th>
             <x-table.th class="w-20">Status</x-table.th>
             <x-table.th class="w-16"></x-table.th>
         @endslot
@@ -34,7 +34,7 @@
                 <x-table.tr>
                     <x-table.td>{{$dbWarehouseProduct->barcode}}</x-table.td>
                     <x-table.td>{{$dbWarehouseProduct->title}}</x-table.td>
-                    <x-table.td>{{$dbWarehouseProduct->ProductCategory->title}}</x-table.td>
+                    <x-table.td>{{$dbWarehouseProduct->WarehouseProductCategory->title}}</x-table.td>
                     <x-table.td>
                         <x-button.btn-status condition="{{ $dbWarehouseProduct->is_active }}" route="{{ route('warehouse_products.is_active', $dbWarehouseProduct->id)}}" />
                     </x-table.td>                    

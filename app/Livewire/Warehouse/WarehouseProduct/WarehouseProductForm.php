@@ -12,16 +12,18 @@ class WarehouseProductForm extends Component
 
     public function render()
     {
-        //Listagem de Dados
-        $dbWarehouseProduct = NULL; 
-        
-        // Aplica as informações do estabelecimento caso existam.
-        if ($this->warehouseProductId != NULL) {
+        // Inicializa a variável para armazenar o produto
+        $dbWarehouseProduct = null;
+
+        // Caso exista um ID de produto, carrega os dados do produto
+        if ($this->warehouseProductId) {
             $dbWarehouseProduct = WarehouseProduct::find($this->warehouseProductId);
         }
 
+        // Carrega todas as categorias de produtos, ordenadas pelo título
         $dbProductCategories = WarehouseProductCategory::orderBy('title')->get();
 
+        // Retorna a view com os dados do produto e as categorias
         return view('livewire.warehouse.warehouse-product.warehouse-product-form', compact('dbWarehouseProduct', 'dbProductCategories'));
     }
 }
