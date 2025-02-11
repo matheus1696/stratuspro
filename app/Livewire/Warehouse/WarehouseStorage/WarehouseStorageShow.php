@@ -10,31 +10,39 @@ use Livewire\Component;
 class WarehouseStorageShow extends Component
 {
     public $warehouseStorageId;
-    public $search;
+    public $search = '';
 
     public function render()
     {
-        $dbWarehouseStorage = WarehouseStorage::find($this->warehouseStorageId);
+        // Obtém o almoxarifado pelo ID
+        $dbWarehouseStorage = WarehouseStorage::findOrFail($this->warehouseStorageId);
 
-        // Obtém as permissões associadas ao almoxarifado
+        // Obtém as permissões associadas ao almoxarifado, ordenadas por nome de usuário
         $dbUserPermissions = WarehousePermission::with('user')
             ->join('users', 'warehouse_permissions.user_id', '=', 'users.id')
-            ->orderBy('users.name')
             ->where('warehouse_id', $this->warehouseStorageId)
+            ->orderBy('users.name')
             ->get();
 
-        // Obtém usuários sem permissões do almoxarifado
-        // IDs dos usuários que já possuem permissão
+        // IDs dos usuários com permissão para este almoxarifado
         $excludedUserIds = $dbUserPermissions->pluck('user_id');
-        
-        // Inicia a consulta de usuários
-        $dbUsersQuery = User::query()->whereNotIn('id', $excludedUserIds);
 
-        //Filtro de Busca
-        if (!empty($this->search)) { $dbUsersQuery->where('filter', 'like', '%' . strtolower($this->search) . '%'); }
+        // Consulta os usuários que não têm permissão para este almoxarifado
+        $dbUsersQuery = User::whereNotIn('id', $excludedUserIds);
 
-        //Retorno de Usuários sem Permissão
+        // Aplica filtro de busca se houver
+        if ($this->search) {
+            $dbUsersQuery->where('filter', 'like', '%' . strtolower($this->search) . '%');
+        }
+
+        // Obtém os usuários restantes, ordenados por nome
         $dbUsers = $dbUsersQuery->orderBy('name')->get();
-        return view('livewire.warehouse.warehouse-storage.warehouse-storage-show', compact('dbWarehouseStorage', 'dbUsers', 'dbUserPermissions'));
+
+        // Retorna a view com as variáveis necessárias
+        return view('livewire.warehouse.warehouse-storage.warehouse-storage-show', [
+            'dbWarehouseStorage' => $dbWarehouseStorage,
+            'dbUsers' => $dbUsers,
+            'dbUserPermissions' => $dbUserPermissions,
+        ]);
     }
 }

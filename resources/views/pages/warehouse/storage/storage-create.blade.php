@@ -2,20 +2,20 @@
 
     @slot('body')
         <x-header.header-group>
-            <x-header.header-title title="Cadastrar Almoxarifado" />
+            <x-header.header-title title="Novo Almoxarifado" />
             <div class="flex gap-2">
-                <x-button.link-secondary href="{{ route('warehouse_storages.index') }}" value="Voltar" />
+                <x-button.link-secondary href="{{ route('warehouse_storages.index') }}" value="Voltar à Lista" />
             </div>
         </x-header.header-group>
 
         <div>
-            <x-pages.conteiner>
-                <form action="{{ route('warehouse_storages.store') }}" method="post">
+            <x-pages.container>
+                <form action="{{ route('warehouse_storages.store') }}" method="POST">
                     @csrf
                     <livewire:warehouse.warehouse-storage.warehouse-storage-form />
-                    <x-button.btn-primary value="Cadastrar Almoxarifado" />
+                    <x-button.btn-primary value="Salvar Almoxarifado" />
                 </form>
-            </x-pages.conteiner>
+            </x-pages.container>
         </div>
     @endslot
 

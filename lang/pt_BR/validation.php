@@ -196,6 +196,7 @@ return [
         'body'      => 'conteúdo',
         'cell'      => 'célula',
         'city'      => 'cidade',
+        'code'      => 'código',
         'country'   => 'país',
         'date'      => 'data',
         'day'       => 'dia',
