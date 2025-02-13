@@ -65,7 +65,7 @@ return [
 
     'logo' => 'Stratus<b>PRO</b>',
     'logo_img' => 'assets/img/logo.png',
-    'logo_img_class' => 'brand-image',
+    'logo_img_class' => 'brand-image size-8',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => env('APP_NAME', 'Laravel'),
@@ -191,7 +191,7 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
+    'classes_brand' => 'text-xl',
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
@@ -319,7 +319,8 @@ return [
         //Perfil
         [
             'text'    => 'Perfil',
-            'icon'    => 'fas fa-user-circle pr-1',
+            'icon'    => 'fas fa-user-circle pr-1 w-5 text-center',
+            'icon_color' => 'white',
             'can'     => 'user_profile',
             'submenu' => [
 
@@ -327,7 +328,7 @@ return [
                 [
                     'text'    => 'Dados dos Usuários',
                     'route'   => 'profiles.editPersonal',
-                    'icon'    => 'fas fa-user pr-1',
+                    'icon'    => 'fas fa-user pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
@@ -336,7 +337,7 @@ return [
                 [
                     'text'    => 'Dados dos Profissionais',
                     'route'   => 'profiles.editProfessional',
-                    'icon'    => 'fas fa-id-badge pr-1',
+                    'icon'    => 'fas fa-id-badge pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
@@ -345,7 +346,7 @@ return [
                 [
                     'text'    => 'Alterar Senha',
                     'route'   => 'profiles.editPassword',
-                    'icon'    => 'fas fa-key pr-1',
+                    'icon'    => 'fas fa-key pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can'     => 'user_profile',
                 ],
@@ -353,41 +354,45 @@ return [
         ],
 
         [
-            'text' => 'Almoxarifado',
+            'text'  => 'Almoxarifado',
             'route' => 'warehouse_inventories.index',
-            'icon' => 'fas fa-boxes pr-1',
-            'can' => 'warehouse_inventory_managenment',
+            'icon'  => 'fas fa-boxes pr-1 w-5 text-center',
+            'icon_color' => 'white',
+            'can'   => 'warehouse_inventory_managenment',
         ],
 
         [
-            'text' => 'Contratos',
+            'text'  => 'Contratos',
             'route' => 'contracts.index',
-            'icon' => 'fas fa-file-contract pr-1',
-            'can' => 'managenment_contracts',
+            'icon'  => 'fas fa-file-contract pr-1 w-5 text-center',
+            'icon_color' => 'white',
+            'can'   => 'managenment_contracts',
         ],        
 
         [
             'text' => 'Usuários',
             'route' => 'users.index',
-            'icon' => 'fas fa-users pr-1',
+            'icon' => 'fas fa-users pr-1 w-5 text-center',
+            'icon_color' => 'white',
             'can' => 'managenment_users',
         ],
         
         [
             'text' => 'Configurações do Sistema',
-            'icon' => 'fas fa-cogs pr-1',
+            'icon' => 'fas fa-cogs pr-1 w-5 text-center',
+            'icon_color' => 'white',
             'can'     => ['configuration_users','configuration_regions', 'configuration_measurement_unit', 'configuration_company_establishments', 'warehouse_storage_configurations', 'warehouse_product_configurations'],
             'submenu' => [
                 [
                     'text' => 'Configuração de Usuários',
-                    'icon' => 'fas fa-users-cog pr-1',
+                    'icon' => 'fas fa-users-cog pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can' => 'configuration_users',
                     'submenu' => [
                         [
                             'text' => 'Gêneros',
                             'route' => 'genders.index',
-                            'icon' => 'fas fa-venus-mars pr-1',
+                            'icon' => 'fas fa-venus-mars pr-1 w-5 text-center',
                             'icon_color' => 'teal',
                             'can' => 'configuration_users',
                         ],
@@ -395,35 +400,35 @@ return [
                 ],
                 [
                     'text' => 'Configuração da Empresa',
-                    'icon' => 'fas fa-cogs pr-1',
+                    'icon' => 'fas fa-cogs pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can' => ['configuration_company_establishments', 'warehouse_storage_configurations', 'warehouse_product_configurations', 'configuration_measurement_units'], 
                     'submenu' => [
                         [
                             'text' => 'Estabelecimentos',
                             'route' => 'establishments.index',
-                            'icon' => 'fas fa-building pr-1',
+                            'icon' => 'fas fa-building pr-1 w-5 text-center',
                             'icon_color' => 'teal',
                             'can' => 'configuration_company_establishments',
                         ],
                         
                         [
                             'text' => 'Configuração de Estoques',
-                            'icon' => 'fas fa-pallet pr-1',
+                            'icon' => 'fas fa-pallet pr-1 w-5 text-center',
                             'icon_color' => 'teal',
                             'can' => ['warehouse_storage_configurations', 'warehouse_product_configurations', 'configuration_measurement_units'],
                             'submenu' => [
                                 [
                                     'text' => 'Almoxarifados',
                                     'route' => 'warehouse_storages.index',
-                                    'icon' => 'fas fa-warehouse pr-1',
+                                    'icon' => 'fas fa-warehouse pr-1 w-5 text-center',
                                     'icon_color' => 'info',
                                     'can' => 'warehouse_storage_configurations',
                                 ],
                                 [
                                     'text' => 'Produtos',
                                     'route' => 'warehouse_products.index',
-                                    'icon' => 'fas fa-apple-alt pr-1',
+                                    'icon' => 'fas fa-apple-alt pr-1 w-5 text-center',
                                     'icon_color' => 'info',
                                     'can' => 'warehouse_product_configurations',
                                 ],
@@ -431,7 +436,7 @@ return [
                                 [
                                     'text' => 'Unidade de Medidas',
                                     'route' => 'measurement_units.index',
-                                    'icon' => 'fas fa-balance-scale pr-1',
+                                    'icon' => 'fas fa-balance-scale pr-1 w-5 text-center',
                                     'icon_color' => 'info',
                                     'can' => 'configuration_measurement_units',
                                 ],
@@ -441,29 +446,29 @@ return [
                 ],
                 [
                     'text' => 'Configuração de Regiões',
-                    'icon' => 'fas fa-globe-americas pr-1',
+                    'icon' => 'fas fa-globe-americas pr-1 w-5 text-center',
                     'icon_color' => 'primary',
                     'can' => 'configuration_regions',
                     'submenu' => [
                         [
                             'text' => 'Paises',
                             'route' => 'countries.index',
-                            'icon' => 'fas fa-flag pr-1',
-                            'icon_color' => 'primary',
+                            'icon' => 'fas fa-flag pr-1 w-5 text-center',
+                            'icon_color' => 'teal',
                             'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Estados',
                             'route' => 'states.index',
-                            'icon' => 'fas fa-flag pr-1',
-                            'icon_color' => 'primary',
+                            'icon' => 'fas fa-flag pr-1 w-5 text-center',
+                            'icon_color' => 'teal',
                             'can' => 'configuration_regions',
                         ],
                         [
                             'text' => 'Cidades',
                             'route' => 'cities.index',
-                            'icon' => 'fas fa-flag pr-1',
-                            'icon_color' => 'primary',
+                            'icon' => 'fas fa-flag pr-1 w-5 text-center',
+                            'icon_color' => 'teal',
                             'can' => 'configuration_regions',
                         ],
 

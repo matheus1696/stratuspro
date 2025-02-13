@@ -2,7 +2,7 @@
     <x-form.form-group>
         
         <!-- Seção para seleção de produto -->
-        <div class="col-span-12 md:col-span-8">
+        <div class="col-span-12 md:col-span-7">
             <x-form.form-label for="product_id" value="Produto"/>
             <x-form.form-select name="product_id" id="product_id" wire:model.live.debounce.300ms="product_id">
                 <!-- Iteração para listar os produtos disponíveis no estoque -->
@@ -28,6 +28,13 @@
             <x-form.form-input name="quantity" placeholder="1" required />
             <x-form.form-error for="quantity" />
         </div>
+
+        <!-- Seção para input da quantidade -->
+        <div class="col-span-12 md:col-span-1">
+            <x-form.form-label value="." class="text-transparent"/>
+            <x-button.btn-primary-min/>
+        </div>
+        
 
     </x-form.form-group>
 </div>

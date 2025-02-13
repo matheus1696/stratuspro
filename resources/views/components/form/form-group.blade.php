@@ -9,6 +9,6 @@
     </div>
 @endif
 
-<div {{ $attributes->merge(['class'=>'grid grid-cols-12 gap-4 mb-8']) }}>
+<div {{ $attributes->merge(['class'=>'grid grid-cols-12 gap-4']) }}>
     {{$slot}}
 </div>

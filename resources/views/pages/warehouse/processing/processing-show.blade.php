@@ -44,7 +44,6 @@
                         @csrf                    
                         <!-- Formulário Livewire para adicionar produto -->
                         <livewire:warehouse.warehouse-processing.warehouse-processing-item-form :dbWarehouseProcessingId="$warehouseProcessing->id"/>
-                        <x-button.btn-primary value="Adicionar Produto" />
                     </form>
                 </div>
             </x-pages.container>
