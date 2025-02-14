@@ -8,15 +8,15 @@
         </x-header.header-group>
 
         <div>
-            <x-pages.container>
+            <x-pages.container open="true" title="Informação do Produto" icon="fas fa-receipt">
                 <form action="{{ route('warehouse_inventories.entryStore', $warehouseStorage->id) }}" method="post">
                     @csrf
                     <livewire:warehouse.warehouse-moviment.warehouse-moviment-form />
-                    <x-button.btn-primary value="Cadastrar Produto" />
+                    <x-button.btn-primary value="Cadastrar Produto"/>
                 </form>
             </x-pages.container>
 
-            <div class="pb-10">
+            <div class="pb-8">
                 <x-header.header-group class="pb-1">
                     <x-header.header-subtitle title="Últimas Entradas"/>
                 </x-header.header-group>

@@ -3,12 +3,8 @@
 
         <!-- Início do Slot de Filtros -->
         @slot('search')
-            <x-pages.container class="px-3 py-3">
-                <p class="font-bold uppercase text-sm pl-1 text-gray-400">
-                    <i class="fas fa-filter text-xs"></i> Filtros:
-                </p>
+            <x-pages.container>
                 <div class="grid grid-cols-12 gap-3">
-
                     <!-- Filtro de Data de Criação -->
                     <div class="col-span-12 md:col-span-2">
                         <x-form.form-label for="date" value="Data de Criação" />
@@ -44,7 +40,6 @@
                             @endforeach
                         </x-form.form-select>
                     </div>
-
                 </div>
             </x-pages.container>
         @endslot

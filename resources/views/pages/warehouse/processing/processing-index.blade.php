@@ -5,14 +5,8 @@
             <x-header.header-title title="Solicitação de Suprimento" />
             <div class="flex gap-2">
                 <!-- Botões de navegação -->
-                <x-button.link-primary 
-                    href="{{ route('warehouse_processings.create', $warehouseStorage->id) }}" 
-                    value="Abrir Solicitação" 
-                />
-                <x-button.link-secondary 
-                    href="{{ route('warehouse_inventories.show', $warehouseStorage->id) }}" 
-                    value="Voltar" 
-                />
+                <x-button.link-primary href="{{ route('warehouse_processings.create', $warehouseStorage->id) }}" value="Abrir Solicitação" />
+                <x-button.link-secondary href="{{ route('warehouse_inventories.show', $warehouseStorage->id) }}" value="Voltar" />
             </div>
         </x-header.header-group>
     

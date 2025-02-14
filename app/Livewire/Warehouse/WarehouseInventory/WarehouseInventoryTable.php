@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Warehouse\WarehouseInventory;
 
+use App\Models\Configuration\Company\CompanyEstablishment;
 use App\Models\Warehouse\WarehousePermission;
 use App\Models\Warehouse\WarehouseStorage;
 use Illuminate\Support\Facades\Auth;
@@ -9,11 +10,8 @@ use Livewire\Component;
 
 class WarehouseInventoryTable extends Component
 {
-    public $search;
-
-    public function oneStorage($url){
-        return redirect()->to($url);
-    }
+    public $searchWarehouse;
+    public $searchEstablishment;
 
     public function render()
     {
@@ -25,18 +23,20 @@ class WarehouseInventoryTable extends Component
         $dbWarehouseStorageQuery->whereIn('id', $userPermission);
 
         // Adiciona filtro de pesquisa, se existir
-        if (!empty($this->search)) {
-            $dbWarehouseStorageQuery->where('filter', 'like', '%' . strtolower($this->search) . '%');
+        if (!empty($this->searchWarehouse)) {
+            $dbWarehouseStorageQuery->where('filter', 'like', '%' . strtolower($this->searchWarehouse) . '%');
+        }
+
+        // Adiciona filtro de pesquisa, se existir
+        if (!empty($this->searchEstablishment)) {
+            $dbWarehouseStorageQuery->where('establishment_id', $this->searchEstablishment);
         }
 
         // Executa a query para obter os resultados
         $dbWarehouseStorages = $dbWarehouseStorageQuery->get();
 
-        // Se o usuário tiver acesso a apenas um almoxarifado, emite um evento de redirecionamento
-        if ($dbWarehouseStorages->count() === 1 && $this->search === NULL) {
-            $this->oneStorage(route('warehouse_inventories.show', $dbWarehouseStorages->first()->id));
-        }
+        $dbEstablishments = CompanyEstablishment::orderBy('title')->get();
 
-        return view('livewire.warehouse.warehouse-inventory.warehouse-inventory-table', compact('dbWarehouseStorages'));
+        return view('livewire.warehouse.warehouse-inventory.warehouse-inventory-table', compact('dbWarehouseStorages', 'dbEstablishments'));
     }
 }

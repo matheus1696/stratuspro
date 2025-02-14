@@ -1,5 +1,5 @@
 <div>
-    <x-form.form-group>
+    <div class="grid grid-cols-12 gap-3">
         <!-- Campo Nota Fiscal -->
         <div class="col-span-12 md:col-span-2">
             <x-form.form-label for="invoice_number" value="Nº da Nota Fiscal" />
@@ -103,6 +103,5 @@
             />
             <x-form.form-error for="price" />
         </div>
-
-    </x-form.form-group>
+    </div>
 </div>

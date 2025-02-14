@@ -15,7 +15,7 @@
 
         <!-- Formulário para abrir solicitação -->
         <div>
-            <x-pages.container>
+            <x-pages.container open="true" title="Abertura de Solicitação" icon="fas fa-file-contract">
                 <!-- Formulário para abrir solicitação de processamento -->
                 <form action="{{ route('warehouse_processings.store', $warehouseStorage->id) }}" method="post">
                     @csrf
