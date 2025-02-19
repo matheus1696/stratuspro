@@ -1,7 +1,7 @@
 <div>
     <x-table.table>
         @slot('search')
-            <x-pages.container>
+            <x-pages.container open="true">
                 <div class="grid grid-cols-12 gap-3">
                     <!-- Filtro de Produto -->
                     <div class="col-span-12 md:col-span-9">

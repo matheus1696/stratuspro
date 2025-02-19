@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Warehouse;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Warehouse\WarehouseProcessingItemStoreRequest;
 use App\Http\Requests\Warehouse\WarehouseProcessingStoreRequest;
 use App\Http\Requests\Warehouse\WarehouseProcessingUpdateRequest;
 use App\Models\Warehouse\WarehouseInventory;
@@ -11,7 +12,6 @@ use App\Models\Warehouse\WarehouseProcessingCategory;
 use App\Models\Warehouse\WarehouseProcessingItem;
 use App\Models\Warehouse\WarehouseProcessingLog;
 use App\Models\Warehouse\WarehouseStorage;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class WarehouseProcessingController extends Controller
@@ -80,6 +80,15 @@ class WarehouseProcessingController extends Controller
             $dbInventory = WarehouseInventory::where('warehouse_id', $warehouseProcessing->warehouse_id)
                 ->where('product_id', $value->product_id)->first();
 
+            if ($dbInventory->quantity < $value->quantity) {
+                return redirect()->back()->with('error','Verifique a quantidade do item ' . $dbInventory->WarehouseProduct->title);
+            }
+        }
+
+        foreach ($dbWarehouseProcessingItems as $value) {
+            $dbInventory = WarehouseInventory::where('warehouse_id', $warehouseProcessing->warehouse_id)
+                ->where('product_id', $value->product_id)->first();
+
             $dbInventory->update([
                 'quantity' => $dbInventory->quantity - $value->quantity,
             ]);
@@ -117,7 +126,7 @@ class WarehouseProcessingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function itemStore(Request $request, WarehouseProcessing $warehouseProcessing)
+    public function itemStore(WarehouseProcessingItemStoreRequest $request, WarehouseProcessing $warehouseProcessing)
     {
         //Verifica se produto está cadastrado na solicitação
         $dbProduct = WarehouseProcessingItem::where('processing_id', $warehouseProcessing->id)
@@ -156,13 +165,13 @@ class WarehouseProcessingController extends Controller
     public function itemDestroy(WarehouseProcessingItem $warehouseProcessingItem)
     {
         //
-        $warehouseProcessingItem->delete();
-
         WarehouseProcessingLog::create([
             'description' => 'Produto ' . $warehouseProcessingItem->WarehouseProduct->title . ' retirado da solicitação por ' .  Auth::user()->name,
-            'processing_id' => $warehouseProcessingItem->id,
+            'processing_id' => $warehouseProcessingItem->processing_id,
             'user_id' => Auth::user()->id,
         ]);
+
+        $warehouseProcessingItem->delete();
 
         return redirect()->back()->with('success','Produto excluido com sucesso');
     }

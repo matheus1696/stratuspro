@@ -1,5 +1,5 @@
 <div>
-    <x-pages.container class="text-sm mb-5 relative">        
+    <x-pages.container class="text-sm mb-5 relative" open="true" title="Informação do Almoxarifado" icon="fas fa-warehouse">        
         <div class="flex justify-end mb-2 absolute right-4">
             <a href="{{ route('warehouse_storages.edit', $dbWarehouseStorage->id) }}" 
                class="bg-yellow-500 hover:bg-yellow-600 text-gray-800 hover:text-gray-900 rounded-full shadow-lg text-xs transition-all duration-300 px-3 py-2">
@@ -26,7 +26,7 @@
         </div>
     </x-pages.container>
 
-    <x-pages.container class="mb-5">
+    <x-pages.container class="mb-5" open="true" title="Acessos ao Almoxarifado" icon="fas fa-user-lock">
         
         <div class="flex flex-col lg:flex-row justify-between items-center gap-2 pb-3 border-b border-gray-300">
             <h2 class="font-semibold text-lg">Permissões de Acesso</h2>
@@ -73,12 +73,12 @@
 
     </x-pages.container>
 
-    <x-pages.container class="mb-5">
+    <x-pages.container class="mb-5" open="true" title="Estoque" icon="fas fa-apple-alt">
         <h2 class="text-lg font-semibold mb-2">Itens em Estoque</h2>
         <p class="text-gray-500">Nenhum item registrado no momento.</p>
     </x-pages.container>
     
-    <x-pages.container class="mb-5">
+    <x-pages.container class="mb-5" open="true" title="Movimentações" icon="fas fa-arrows-alt-h">
         <h2 class="text-lg font-semibold mb-2">Movimentações</h2>
         <p class="text-gray-500">Nenhuma movimentação registrada ainda.</p>
     </x-pages.container>

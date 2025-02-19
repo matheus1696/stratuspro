@@ -27,7 +27,7 @@
         </div>
 
         @if ($warehouseProcessing->processing_category_id === 1)
-            <x-pages.container title="Adicionar Produto" icon="fas fa-apple-alt">
+            <x-pages.container open="true" title="Adicionar Produto" icon="fas fa-apple-alt">
                 <div>
                     <form action="{{ route('warehouse_processing_items.store', $warehouseProcessing->id) }}" method="post">
                         @csrf                    

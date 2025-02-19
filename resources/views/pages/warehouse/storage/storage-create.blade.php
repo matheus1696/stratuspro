@@ -9,7 +9,7 @@
         </x-header.header-group>
 
         <div>
-            <x-pages.container>
+            <x-pages.container open="true" title="Informação do Novo Almoxarifado" icon="fas fa-warehouse">
                 <form action="{{ route('warehouse_storages.store') }}" method="POST">
                     @csrf
                     <livewire:warehouse.warehouse-storage.warehouse-storage-form />

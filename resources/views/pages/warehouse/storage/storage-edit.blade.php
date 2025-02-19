@@ -9,7 +9,7 @@
         </x-header.header-group>
 
         <div>
-            <x-pages.container>
+            <x-pages.container open="true" title="Informação do Almoxarifado" icon="fas fa-warehouse">
                 <form action="{{ route('warehouse_storages.update', $dbWarehouseStorage) }}" method="POST">
                     @csrf
                     @method('PUT')
