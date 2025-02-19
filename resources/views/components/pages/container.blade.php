@@ -1,4 +1,4 @@
-<div x-data="{ open: {{ $open ?? 'false' }} }" {{ $attributes->merge(['class' => 'bg-white border border-gray-200 px-3 py-3 rounded-lg shadow-lg']) }} >
+<div x-data="{ open: {{ $open ?? 'true' }} }" {{ $attributes->merge(['class' => 'bg-white border border-gray-200 px-3 py-3 rounded-lg shadow-lg']) }} >
     <!-- Cabeçalho do container -->
     <div class="flex justify-between items-center" :class="open ? 'border-b border-gray-100 pb-1.5 mb-1.5' : ''">
         <p class="font-bold uppercase pl-1 text-xs text-gray-400">

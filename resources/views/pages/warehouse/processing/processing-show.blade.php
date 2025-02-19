@@ -9,6 +9,9 @@
                 @if ($warehouseProcessing->processing_category_id === 1)
                     <x-button.link-primary href="{{ route('warehouse_processings.separation', $warehouseProcessing->id) }}" value="Separação" />
                 @endif
+                @if ($warehouseProcessing->processing_category_id === 2)
+                    <x-button.link-tertiary href="{{ route('warehouse_processings.separationReport', $warehouseProcessing->id) }}" value="Impressão" class="bg-green-500 hover:bg-green-600 text-white hover:text-white" target="_blank"/>
+                @endif
                 <!-- Botão para voltar -->
                 <x-button.link-secondary href="{{ route('warehouse_processings.index', $warehouseProcessing->warehouse_id) }}" value="Voltar" />
             </div>

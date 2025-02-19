@@ -68,6 +68,7 @@
                     <x-table.td>
                         <x-table.button.btn-group>
                             <x-table.button.btn-show href="{{ route('warehouse_processings.show', $dbWarehouseProcessing->id) }}" />
+                            <x-table.button.btn-report href="{{ route('warehouse_processings.separationReport', $dbWarehouseProcessing->id) }}" />
                         </x-table.button.btn-group>
                     </x-table.td>
                 </x-table.tr>
