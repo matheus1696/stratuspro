@@ -12,6 +12,7 @@ use App\Models\Warehouse\WarehouseProcessingCategory;
 use App\Models\Warehouse\WarehouseProcessingItem;
 use App\Models\Warehouse\WarehouseProcessingLog;
 use App\Models\Warehouse\WarehouseStorage;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class WarehouseProcessingController extends Controller
@@ -106,22 +107,24 @@ class WarehouseProcessingController extends Controller
 
         return redirect()->back()->with('success','Solicitação Encaminhada para Separação');
     }
-
+    
     /**
-     * Update the specified resource in storage.
+     * Gera o relatório de separação do processamento de almoxarifado.
      */
-    public function update(WarehouseProcessingUpdateRequest $request, WarehouseProcessing $warehouseProcessing)
+    public function separationReport(WarehouseProcessing $warehouseProcessing)
     {
-        //
+        $dbWarehouseProcessingItems = WarehouseProcessingItem::where('processing_id', $warehouseProcessing->id)->get();
+
+        // Carrega a view e gera o PDF
+        $pdf = Pdf::loadView('pages.warehouse.processing.processing-report', [
+            'warehouseProcessing' => $warehouseProcessing,
+            'dbWarehouseProcessingItems' => $dbWarehouseProcessingItems,
+        ]);
+
+        // Retorna o PDF para abrir no navegador
+        return $pdf->stream('relatorio.pdf');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(WarehouseProcessing $warehouseProcessing)
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
