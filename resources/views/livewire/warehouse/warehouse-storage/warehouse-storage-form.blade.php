@@ -1,5 +1,5 @@
 <div>
-    <x-form.form-group>
+    <div class="grid grid-cols-12 gap-3">
 
         {{-- Código do Almoxarifado --}}
         <div class="col-span-12 md:col-span-2">
@@ -53,5 +53,5 @@
             <x-form.form-error for="establishment_id" />
         </div>
 
-    </x-form.form-group>
+    </div>
 </div>

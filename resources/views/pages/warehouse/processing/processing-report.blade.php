@@ -17,12 +17,12 @@
             font-family: Arial, sans-serif; /* Adicione uma fonte padrão */
             margin: 0; /* Remova margens padrão */
             padding-top: 120px;
+            padding-bottom: 100px;
         }
 
         .container {
             max-width: 800px; /* Largura máxima */
             margin: 0 50px; /* Centraliza o container */
-            padding: 20px; /* Espaçamento interno */
             border-radius: 8px; /* Cantos arredondados */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
         }
@@ -31,7 +31,7 @@
             font-size: 24px; /* Tamanho do título */
             font-weight: bold; /* Negrito */
             color: #4A4A4A; /* Cor do título */
-            margin-bottom: 5px; /* Espaço abaixo do título */
+            margin-bottom: 0; /* Espaço abaixo do título */
             text-align: center; /* Centraliza o título */
         }
 
@@ -60,11 +60,12 @@
         th, td {
             border: 1px solid #ccc; /* Borda nas células */
             padding: 8px; /* Espaçamento interno */
-            text-align: left; /* Alinhamento à esquerda */
+            text-align: center; /* Alinhamento à esquerda */
         }
 
         th {
-            background-color: #f2f2f2; /* Cor de fundo dos cabeçalhos */
+            background-color: #004B43; /* Cor de fundo dos cabeçalhos */
+            color: #FFF;
         }
 
         .signature {
@@ -73,11 +74,12 @@
         }
 
         .signature div {
-            margin: 20px; /* Espaço acima da seção de assinatura */
+            margin: 32px; /* Espaço acima da seção de assinatura */
             text-align: center; /* Centraliza a assinatura */
         }
 
         .signature p {
+            font-size: 12px;
             margin: 4px; /* Espaço acima da seção de assinatura */
             text-align: center; /* Centraliza a assinatura */
         }
@@ -103,12 +105,12 @@
         <!-- Detalhes da Solicitação -->
         <div class="info">
             <div>
-                <p><strong>Data da Solicitação:</strong></p>
-                <p>{{ $warehouseProcessing->created_at->format('d/m/Y H:i') }}</p>
+                <span><strong>Data da Solicitação:</strong></span>
+                <span>{{ $warehouseProcessing->created_at->format('d/m/Y H:i') }}</span>
             </div>            
             <div>
-                <p><strong>Unidade:</strong></p>
-                <p>{{ $warehouseProcessing->CompanyEstablishment->title }}</p>
+                <span><strong>Unidade:</strong></span>
+                <span>{{ $warehouseProcessing->CompanyEstablishment->title }}</span>
             </div>
         </div>
 
@@ -118,6 +120,7 @@
                 <tr>
                     <th>Produto</th>
                     <th>Quantidade</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -125,6 +128,7 @@
                     <tr>
                         <td>{{ $dbWarehouseProcessingItem->WarehouseProduct->title }}</td>
                         <td class="text-center">{{ $dbWarehouseProcessingItem->quantity }}</td>
+                        <td class="text-center"></td>
                     </tr>
                 @endforeach
             </tbody>
