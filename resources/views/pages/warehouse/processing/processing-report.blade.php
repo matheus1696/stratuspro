@@ -21,7 +21,7 @@
 
         .container {
             max-width: 800px; /* Largura máxima */
-            margin: 100px auto; /* Centraliza o container */
+            margin: 0 50px; /* Centraliza o container */
             padding: 20px; /* Espaçamento interno */
             border-radius: 8px; /* Cantos arredondados */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
@@ -31,28 +31,26 @@
             font-size: 24px; /* Tamanho do título */
             font-weight: bold; /* Negrito */
             color: #4A4A4A; /* Cor do título */
-            margin-bottom: 20px; /* Espaço abaixo do título */
+            margin-bottom: 5px; /* Espaço abaixo do título */
             text-align: center; /* Centraliza o título */
         }
 
         h2 {
-            font-size: 20px; /* Tamanho do subtítulo */
+            font-size: 16px; /* Tamanho do subtítulo */
             color: #4A4A4A; /* Cor do subtítulo */
+            margin-bottom: 40px; /* Espaço abaixo do título */
             text-align: center; /* Centraliza o subtítulo */
         }
 
-        .info {
-            display: grid; /* Usando grid para layout */
-            grid-template-columns: repeat(2, 1fr); /* Duas colunas */
-            gap: 15px; /* Espaçamento entre as colunas */
-            margin-top: 20px; /* Espaço acima */
-        }
-
-        .info p {
-            margin: 0; /* Remove margens */
+        .info div {
+            margin-top: 10px; /* Remove margens */
             color: #333; /* Cor do texto */
         }
 
+        .info p {
+            margin: 0px; /* Remove margens */
+            color: #333; /* Cor do texto */
+        }
         table {
             width: 100%; /* Tabela ocupa 100% da largura */
             border-collapse: collapse; /* Remove espaçamento entre células */
@@ -74,6 +72,16 @@
             text-align: center; /* Centraliza a assinatura */
         }
 
+        .signature div {
+            margin: 20px; /* Espaço acima da seção de assinatura */
+            text-align: center; /* Centraliza a assinatura */
+        }
+
+        .signature p {
+            margin: 4px; /* Espaço acima da seção de assinatura */
+            text-align: center; /* Centraliza a assinatura */
+        }
+
         .footer {
             text-align: center; /* Centraliza o rodapé */
             font-size: 12px; /* Tamanho da fonte do rodapé */
@@ -88,7 +96,6 @@
     <div class="container">
         <!-- Cabeçalho -->
         <h1>Relatório de Entrega</h1>
-        <p>Gerado em: {{ now()->format('d/m/Y H:i') }}</p>
 
         <!-- Número da Solicitação em destaque -->
         <h2>Solicitação Nº {{ str_pad($warehouseProcessing->ticket, 6, '0', STR_PAD_LEFT) }}</h2>
@@ -98,18 +105,10 @@
             <div>
                 <p><strong>Data da Solicitação:</strong></p>
                 <p>{{ $warehouseProcessing->created_at->format('d/m/Y H:i') }}</p>
-            </div>
+            </div>            
             <div>
                 <p><strong>Unidade:</strong></p>
                 <p>{{ $warehouseProcessing->CompanyEstablishment->title }}</p>
-            </div>
-            <div>
-                <p><strong>Tipo de Processamento:</strong></p>
-                <p>{{ $warehouseProcessing->WarehouseProcessingCategory->title }}</p>
-            </div>
-            <div>
-                <p><strong>Responsável pela Separação:</strong></p>
-                <p>{{ auth()->user()->name }}</p>
             </div>
         </div>
 
@@ -135,21 +134,22 @@
         <div class="signature">
             <h3>Recebimento</h3>
             <div>
-                <p>____________________</p>
+                <p>________________________________________</p>
                 <p>Assinatura</p>
             </div>
             <div>
-                <p>____________________</p>
+                <p>________________________________________</p>
                 <p>Nome do Legível</p>
             </div>
             <div>
-                <p>____________________</p>
+                <p>________________________________________</p>
                 <p>Matrícula</p>
             </div>
         </div>
 
         <!-- Rodapé -->
         <div class="footer">
+            <p>Gerado em: {{ now()->format('d/m/Y H:i') }}</p>
             <p>Sistema de Gestão de Almoxarifado - StratusPro</p>
         </div>
     </div>

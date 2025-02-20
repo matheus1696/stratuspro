@@ -32,12 +32,12 @@
         @if ($warehouseProcessing->processing_category_id === 1)
             <x-pages.container open="true" title="Adicionar Produto" icon="fas fa-apple-alt">
                 <div>
-                    <form action="{{ route('warehouse_processing_items.store', $warehouseProcessing->id) }}" method="post">
+                    <x-form.form-group action="{{ route('warehouse_processing_items.store', $warehouseProcessing->id) }}" method="post">
                         @csrf                    
                         
                         <livewire:warehouse.warehouse-processing.warehouse-processing-item-form :dbWarehouseProcessingId="$warehouseProcessing->id"/>
                         <x-button.btn-primary value="Abrir Solicitação" />
-                    </form>
+                    </x-form.form-group>
                 </div>
             </x-pages.container>
         @endif

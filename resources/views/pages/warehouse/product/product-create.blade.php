@@ -10,12 +10,12 @@
 
         <div>
             <x-pages.container>
-                <form action="{{ route('warehouse_products.store') }}" method="POST">
+                <x-form.form-group action="{{ route('warehouse_products.store') }}" method="POST">
                     @csrf
                     <livewire:warehouse.warehouse-product.warehouse-product-form />
                     
                     <x-button.btn-primary value="Cadastrar Produto" />
-                </form>
+                </x-form.form-group>
             </x-pages.container>
         </div>
     @endslot

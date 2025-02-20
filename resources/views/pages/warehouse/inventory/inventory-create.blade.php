@@ -9,11 +9,11 @@
 
         <div>
             <x-pages.container open="true" title="Informação do Produto" icon="fas fa-receipt">
-                <form action="{{ route('warehouse_inventories.entryStore', $warehouseStorage->id) }}" method="post">
+                <x-form.form-group action="{{ route('warehouse_inventories.entryStore', $warehouseStorage->id) }}" method="post">
                     @csrf
                     <livewire:warehouse.warehouse-moviment.warehouse-moviment-form />
                     <x-button.btn-primary value="Cadastrar Produto"/>
-                </form>
+                </x-form.form-group>
             </x-pages.container>
 
             <div class="pb-8">

@@ -10,11 +10,11 @@
 
         <div>
             <x-pages.container open="true" title="Informação do Novo Almoxarifado" icon="fas fa-warehouse">
-                <form action="{{ route('warehouse_storages.store') }}" method="POST">
+                <x-form.form-group action="{{ route('warehouse_storages.store') }}" method="POST">
                     @csrf
                     <livewire:warehouse.warehouse-storage.warehouse-storage-form />
                     <x-button.btn-primary value="Salvar Almoxarifado" />
-                </form>
+                </x-form.form-group>
             </x-pages.container>
         </div>
     @endslot

@@ -39,13 +39,14 @@ class WarehouseProcessingController extends Controller
     public function store(WarehouseProcessingStoreRequest $request, WarehouseStorage $warehouseStorage)
     {
         //Quantidade de Registros
-        $count = WarehouseProcessing::count();
+        $date = now()->toDateString(); // Retorna 'YYYY-MM-DD'
+        $count = WarehouseProcessing::whereDate('created_at', $date)->count();
 
         //Categoria Padrão
         $processingCategory = WarehouseProcessingCategory::where('is_default', TRUE)->first();
 
         //Ajuste para Cadastros
-        $request['ticket'] = now()->format('Ymd') . str_pad($count, 6, '0', STR_PAD_LEFT);
+        $request['ticket'] = now()->format('Ymd') . str_pad($count, 4, '0', STR_PAD_LEFT);
         $request['warehouse_id'] = $warehouseStorage->id;
         $request['processing_category_id'] = $processingCategory->id;
 

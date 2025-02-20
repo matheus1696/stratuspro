@@ -5,7 +5,7 @@
             <x-pages.conteiner class="w-full md:w-3/4 xl:w-2/3">
                 <h3 class="mb-3 text-lg font-semibold text-center">Dados do Pessoais</h3>
 
-                <form action="{{ route('profiles.updatePersonal', $dbUser->id) }}" method="post">
+                <x-form.form-group action="{{ route('profiles.updatePersonal', $dbUser->id) }}" method="post">
                     @csrf @method('PUT')
 
                     <x-form.form-group>
@@ -53,7 +53,7 @@
                     </x-form.form-group>
 
                     <x-button.btn-primary value="Salvar Alteração"/>
-                </form>
+                </x-form.form-group>
             </x-pages.conteiner>
         </div>
     @endslot

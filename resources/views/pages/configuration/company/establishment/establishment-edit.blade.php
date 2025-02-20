@@ -10,7 +10,7 @@
         </x-header.header-group>  
     
         <div>
-            <form action="{{ route('establishments.update', $dbEstablishment) }}" method="post" class="bg-white p-6 rounded-lg shadow-lg">
+            <x-form.form-group action="{{ route('establishments.update', $dbEstablishment) }}" method="post" class="bg-white p-6 rounded-lg shadow-lg">
                 @csrf @method('PUT')
                 
                 
@@ -18,7 +18,7 @@
                 
                 <x-button.btn-secondary value="Salvar Alterações" />
         
-            </form>
+            </x-form.form-group>
         </div>
 
     @endslot

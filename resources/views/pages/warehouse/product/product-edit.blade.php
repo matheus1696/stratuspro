@@ -10,14 +10,14 @@
 
         <div>
             <x-pages.container>
-                <form action="{{ route('warehouse_products.update', $dbWarehouseProduct) }}" method="POST">
+                <x-form.form-group action="{{ route('warehouse_products.update', $dbWarehouseProduct) }}" method="POST">
                     @csrf
                     @method('PUT')
 
                     <livewire:warehouse.warehouse-product.warehouse-product-form :warehouseProductId="$dbWarehouseProduct" />
                     
                     <x-button.btn-secondary value="Alterar Produto" />
-                </form>
+                </x-form.form-group>
             </x-pages.container>
         </div>
     @endslot

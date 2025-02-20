@@ -17,12 +17,12 @@
         <div>
             <x-pages.container open="true" title="Abertura de Solicitação" icon="fas fa-file-contract">
                 <!-- Formulário para abrir solicitação de processamento -->
-                <form action="{{ route('warehouse_processings.store', $warehouseStorage->id) }}" method="post">
+                <x-form.form-group action="{{ route('warehouse_processings.store', $warehouseStorage->id) }}" method="post">
                     @csrf
                     <!-- Componente Livewire para formulário de solicitação -->
                     <livewire:warehouse.warehouse-processing.warehouse-processing-form />
                     <x-button.btn-primary value="Abrir Solicitação" />
-                </form>
+                </x-form.form-group>
             </x-pages.container>
         </div>
         
